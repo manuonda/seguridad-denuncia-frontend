@@ -8,8 +8,7 @@ import Comisaria  from './views/Comisaria.vue';
 import Seguimiento  from './views/Seguimiento.vue';
 
 export const routes = [
-    { path : ''            ,  component :  Home },
-    { path : '/denuncia'   ,  component :  Denuncia},
+    { path : ''            ,  component :  Denuncia},
     { path : '/dependencia' , component :  Dependencia},
     { path : '/comisaria'  , component :   Comisaria},
     { path : '/seguimiento' , component :  Seguimiento }

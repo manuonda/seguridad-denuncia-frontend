@@ -23,22 +23,20 @@
   </div>
 </div>
 
+
 <div class="container-fluid menu-background">
   <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary2">
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="nav navbar-nav">
-        <li class="nav-item active">
-          <router-link tag="a" to="/" class="nav-link">Inicio</router-link>
-         </li>
+      <ul class="nav2 navbar-nav">
         <li class="nav-item">
-          <router-link tag="a" to="/denuncia" class="nav-link">Denuncia</router-link>
+          <router-link tag="a" to="/" >DENUNCIAS</router-link>
         </li>
           <li class="nav-item">
-         <router-link  tag="a" to="/dependencia" class="nav-link">Dependencia</router-link>
+         <router-link  tag="a" to="/dependencia" >DEPENDENCIAS</router-link>
         </li>
          <li class="nav-item">
-          <router-link  tag="a" to="/comisaria" class="nav-link">Comisaria</router-link>
+          <router-link  tag="a" to="/comisaria" >COMISARIAS</router-link>
          </li>
       </ul>
     </div>
@@ -48,17 +46,28 @@
 </div>
 </div>
 
+
+
+<!-- container -->
 <div class="container">
 <router-view></router-view>
-
 </div>
+
+<!-- footer -->
+<pie></pie>
+
 
 </div>
 </template>
 
 <script>
+import Pie from './components/Pie.vue';
+
 export default {
   name: "app",
+  components :  {
+     pie : Pie
+  },
   data() {
     return {
       msg: "Welcome to Your Vue.js App"
@@ -92,10 +101,13 @@ export default {
     padding-right: 15px;
     padding-bottom: 20px;
     padding-left: 15px;
+    background-color: #801c1a ! important;
 }
 
+
 .menu-background {
-    background-color: #DF691A  !important;
+    /*background-color: #DF691A  !important;*/
+    background-color: #1955a6;
     border-color: #003461 !important;
 }
 .container-fluid {
@@ -104,4 +116,27 @@ export default {
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.navbar-primary2 {
+    font-size: 14px;
+}
+
+.bg-primary2 {
+    background-color: #1955a6 !important;
+}
+
+.nav2 > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    font-family: 'din';
+}
+
+.nav2 > li > a:hover, .nav2 > li > a:focus {
+    text-decoration: none;
+    background-color: #567890;
+    color: #9aca3c;
+}
+
 </style>
