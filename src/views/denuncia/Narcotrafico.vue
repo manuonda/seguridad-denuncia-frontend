@@ -1,5 +1,7 @@
 <template>
-
+ <div>
+   Narcotrafico
+ </div>
 </template>
 <script>
 export default {

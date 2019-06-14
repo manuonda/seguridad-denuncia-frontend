@@ -1,6 +1,7 @@
 <template>
 <div>
 
+<!--
 <div class="contHeader">
 
 
@@ -46,10 +47,30 @@
 </div>
 </div>
 
+-->
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark bg-primary2">
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+         <ul class="nav2 navbar-nav">
+        <li class="nav-item">
+          <router-link tag="a" to="/" >DENUNCIAS</router-link>
+        </li>
+          <li class="nav-item">
+         <router-link  tag="a" to="/dependencia" >DEPENDENCIAS</router-link>
+        </li>
+         <li class="nav-item">
+          <router-link  tag="a" to="/comisaria" >COMISARIAS</router-link>
+         </li>
+      </ul>
+
+      </div>
+    </nav>
+
 
 
 <!-- container -->
-<div class="container">
+<div class="page-content container">
 <router-view></router-view>
 </div>
 
@@ -138,5 +159,7 @@ export default {
     background-color: #567890;
     color: #9aca3c;
 }
+
+
 
 </style>

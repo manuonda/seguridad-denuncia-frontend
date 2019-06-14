@@ -1,22 +1,16 @@
 <template>
 <div>
-
-  <div class="card mb-3">
-  <h3 class="card-header">Card header</h3>
+  <div class="col-lg-4">
+  <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-  </div>
-  <img style="height: 200px; width: 100%; display: block;"  alt="Card image">
-
-
-  <div class="card-footer text-muted">
-    2 days ago
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
   </div>
-
-
+</div>
 </template>
 <script>
 export default {

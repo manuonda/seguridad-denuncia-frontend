@@ -4,13 +4,13 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="bs-component">
-            <div class="jumbotron">
+            <div class="jumbotron" style="background-color:#4E5D6C">
               <h1
-                class="text-center text-dinBold"
+                class="text-center text-titulo"
               >Ahora podés informar hechos delictivos sin ir a la comisaría</h1>
               <hr class="my-4">
               <p
-                class="text-center text-din h5"
+                class="text-center text-centro h5"
               >Si presenciaste o fuiste víctima de un robo, corrupción policial, venta de drogas, violencia familiar o de género, delito contra la integridad sexual, tenés conocimiento sobre actividades de juego ilegal o sobre comercio ilegal de autopartes, no lo dudes. Las denuncias de corrupción policial, narcotráfico, juego ilegal y comercio ilegal de autopartes, se pueden hacer de forma anónima.</p>
               <br>
               <br>
@@ -34,20 +34,49 @@
 
     <!-- tipo de denuncias -->
     <div id="denuncias" class="secundario">
-       <div class="row">
-        <div v-for=" denuncia in denuncias">
-           {{denuncia.texto}}
-          <denuncia-card
-                  v-bind:texto="denuncia.texto"
-                  v-bind:img="{'background-image': 'url(' + require('../assets/categorias/robo-wide.jpg') + ')'}">
-          </denuncia-card>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="bs-component">
+            <div class="card mb-3">
+              <h3 class="card-header caja-header-2 text-center text-din">ROBO/HURTO</h3>
+              <div class="caja-imagen-robo">
+                 <router-link  to="/denuncia/robo" class="btn btn-denuncia btn-low2 btn-lg">DENUNCIÁ</router-link>
+              </div>
+              <!--
+              <div class="card-footer text-muted text-center text-din">
+
+                 <router-link  to="/denuncia/robo" class="btn btn-primary-denuncia btn-lg text-din btn-rounded">DENUNCIÁ</router-link>
+              </div>
+             -->
+            </div>
+          </div>
         </div>
+
+        <div class="col-lg-4">
+          <div class="bs-component">
+            <div class="card mb-3">
+              <h3 class="card-header caja-header-2 text-center text-din">CORRUPCION POLICIAL</h3>
+              <div class="caja-imagen-corrupcion"></div>
+              <div class="card-footer text-muted text-center text-din">
+                <router-link to="/denuncia/corrupcion"></router-link>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="col-lg-4">
+          <div class="bs-component">
+            <div class="card mb-3">
+              <h3 class="card-header caja-header-2 text-center text-din">VIOLENCIA FAMILIAR O DE GENERO</h3>
+              <div class="caja-imagen-violencia"></div>
+              <div class="card-footer text-muted text-center text-din">ROBO / HURTO</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- end tipo de denuncias -->
-
-
   </div>
+  <!-- end tipo de denuncias -->
 </template>
 <script>
 import DenunciaCard from "../components/denuncia/card.vue";
@@ -59,9 +88,17 @@ export default {
   data() {
     return {
       denuncias: [
-        { id: 1, texto: "ROBO / HURTO" , img : "assets/categorias/robo-wide.jpg"},
-        { id: 2, texto: "NARCOTRÁFICO" , img : "assets/categorias/corrupcion-wide.jpg"},
-        { id: 3, texto: "ROBO CELULAR" , img : "assets/categorias/robo-wide"}
+        {
+          id: 1,
+          texto: "ROBO / HURTO",
+          img: "assets/categorias/robo-wide.jpg"
+        },
+        {
+          id: 2,
+          texto: "NARCOTRÁFICO",
+          img: "assets/categorias/corrupcion-wide.jpg"
+        },
+        { id: 3, texto: "ROBO CELULAR", img: "assets/categorias/robo-wide" }
       ]
     };
   }
@@ -70,8 +107,13 @@ export default {
 
 
 <style>
-.text-bold {
+.text-titulo {
   font-family: "dinBold";
+  color: #EBEBEB;
+}
+.text-centro{
+  font-family: 'din';
+  color: #EBEBEB;
 }
 
 .btn-primary-denuncia {
@@ -109,5 +151,56 @@ export default {
 
 .whiteFont {
   color: white;
+}
+
+.caja-imagen-robo {
+  background-image: url(../assets/categorias/robo-wide.jpg);
+ width: 100%!important;
+   height: 200px!important;
+  background-size: initial;
+}
+
+.caja-imagen-corrupcion {
+  background-image: url(../assets/categorias/corrupcion-wide.jpg);
+  background-size: cover;
+  height: 28vh;
+  position: inherit;
+  /*border-radius: 15px 15px 0px 0px;*/
+
+  height: 200px;
+  width: 100%;
+}
+
+.caja-imagen-violencia {
+  background-image: url(../assets/categorias/violencia-wide.jpg);
+  background-size: cover;
+  height: 28vh;
+  position: inherit;
+  /*border-radius: 15px 15px 0px 0px;*/
+
+  height: 150px;
+  width: 100%;
+}
+
+.caja-header-2 {
+  background-color: #1955a6;
+  font-size: 14px;
+}
+
+.btn-low2 {
+    top: 30%;
+    left: 35%;
+    position: relative;
+    background: rgba(0,0,0,0.4);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border-width: 0.125rem;
+    border-color: rgba(255,255,255,0.8);
+    font-size: 2.3vh;
+}
+.btn-low2:hover {
+  color: #fff;
+  background-color: #bd5916;
+  border-color: #b15315;
 }
 </style>
