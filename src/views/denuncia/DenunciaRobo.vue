@@ -5,25 +5,37 @@
     <sub-header title="ROBO / HURTO"></sub-header>
     <div class="layout-container has-subheader">
       <div class="form-layout">
-        <form>
+        <form @submit.prevent="validateForm()" >
           <fieldset>
+            {{ submitted }}
             <div class="form-group">
               <label for="nombre">
                 <strong>Nombre *</strong>
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="nombre"
-                placeholder="Password"
-              >
+              <input type="text"
+                  id="nombre"
+                  name="nombre"
+                  class="form-control"
+                  placeholder="Ingrese Nombre"
+                  v-model="model.nombre"
+                  v-validate="'required'"
+                  v-bind:class="{ 'is-invalid': submitted && errors.has('nombre') }"
+                  />
+              <div v-if="submitted && errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</div>
             </div>
             <div class="form-group">
               <label for="apellido">
                 <strong>Apellido *</strong>
               </label>
-              <input type="text" class="form-control" placeholder="Ingrese Apellido">
+              <input type="text" class="form-control" placeholder="Ingrese Apellido"
+                 id="apellido"
+                 name="apellido"
+                 v-model="model.apellido"
+                 v-validate="'required'"
+                 v-bind:class="{'is-invalid':submitted && errors.has('apellido')}">
+              <div v-if="submitted && errors.has('apellido')" class="text-danger"> {{ errors.first('apellido')}}</div>
             </div>
+
             <div class="form-group">
               <label for="exampleSelect1">
                 <strong>Tipo Documento *</strong>
@@ -98,7 +110,7 @@
               </div>
             </fieldset>
             <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
-            <button type="button" class="btn btn-primary">Siguiente</button>
+            <button type="submit" class="btn btn-primary">Siguiente</button>
           </fieldset>
         </form>
       </div>
@@ -128,14 +140,31 @@ export default {
       en: en,
       es: es,
       date: new Date(),
-
-      format: "dd MMM yyyy"
+      submitted : false,
+      format: "dd MMM yyyy",
+      model : {
+        nombre : '',
+        apellido: ''
+      }
     };
   },
   methods: {
     cancelar() {
       alert("Canclear");
-    }
+    },
+     validateForm(scope){
+       console.log(this.$validator);
+       console.log("has nombre : ",this.$validator.errors.has('nombre'));
+       this.$validator.validateAll(scope)
+       .then( (result) => {
+         console.log( result );
+          if( result ) {
+             alert(result);
+          }else {
+            this.submitted = true;
+          }
+       })
+     }
   },
   created() {
     console.log(" created");
