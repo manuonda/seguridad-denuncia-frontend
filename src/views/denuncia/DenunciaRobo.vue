@@ -52,14 +52,32 @@
               <label for="numero_documento">
                 <strong>Número de Documento *</strong>
               </label>
-              <input type="text" id="numero_documento" class="form-control">
+              <input type="text"
+                class="form-control"
+                name="numeroDocumento"
+                id = "numeroDocumento"
+                v-validate = "'required'"
+                v-model = "model.numeroDocumento"
+                v-bind:class="{'is-invalid' : submitted && errors.has('numeroDocumento')}">
+                <div v-if="submitted && errors.has('numeroDocumento')" class="text-danger">{{errors.first('numeroDocumento')}}</div>
             </div>
 
             <div class="form-group">
               <label>
                 <strong>Fecha Nacimiento *</strong>
               </label>
-<datepicker  :date="date" :format="format"  :language="es"></datepicker>            </div>
+              <datepicker v-bind:language="es"
+                          v-bind:input-class="{'datepicker-input-reg': true, 'is-invalid-input': errors.has('event_date')}"
+                          v-model="model.fechaNacimiento"
+                          v-bind:v-validate="{required: true, date_format: 'YYYY-MM-DD'}"
+                          name="fechaNacimiento"
+                          id="fechaNacimiento"></datepicker>
+              <span class="form-error" :class="{'is-visible': errors.has('fechaNacimiento')}">
+                {{ errors.first('fechaNacimiento') }}
+              </span>
+
+
+              </div>
 
             <fieldset class="form-group">
               <label>
@@ -144,7 +162,9 @@ export default {
       format: "dd MMM yyyy",
       model : {
         nombre : '',
-        apellido: ''
+        apellido: '',
+        numeroDocumento:0,
+        fechaNacimiento : ''
       }
     };
   },
