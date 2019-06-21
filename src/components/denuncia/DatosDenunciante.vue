@@ -1,26 +1,7 @@
 <template>
   <div>
-    <!--<div id="subheader" class="subheader"><span>RUBO / HORTO </span></div>
-    -->
-    <sub-header title="ROBO / HURTO"></sub-header>
-    <div class="layout-container has-subheader">
-      <div class="form-layout">
-
-        <form @submit.prevent="validateForm()">
-
-          <h1>{{step}}</h1>
-          <fieldset v-if="step == 1">
-            {{ submitted }}
-
-             <datos-denunciante></datos-denunciante>
-            <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
-            <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
-          </fieldset>
-
-
-            <fieldset v-if="step === 2">
-            <div class="form-group">
-              <label for="nombre">
+    <div class="form-group">
+            <label for="nombre">
                 <strong>Nombre *</strong>
               </label>
               <input type="text"
@@ -87,6 +68,9 @@
                 {{ errors.first('fechaNacimiento') }}
               </span>
 
+                      <date-picker v-model="date" :config="options"></date-picker>
+
+
 
               </div>
 
@@ -151,92 +135,15 @@
                    v-model="model.correoElectronico">
             </div>
             </div>
-
-            <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
-            <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-
-    <!-- modal -->
-    <div>
-      <b-modal id="modal-1" title="BootstrapVue">
-        <p class="my-4">Hello from modal!</p>
-      </b-modal>
-    </div>
-  </div>
+</div>
 </template>
 <script>
-import SubHeader from "../../components/SubHeader";
-import {en, es} from 'vuejs-datepicker/dist/locale';
-import Datepicker from "vuejs-datepicker";
-// Import this component
-import datePicker from 'vue-bootstrap-datetimepicker';
-// Import date picker css
-import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
-
-import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
-import DatosDenuncianteVue from '../../components/denuncia/DatosDenunciante.vue';
-
 export default {
-  components: {
-    SubHeader: SubHeader,
-    Datepicker,
-    datePicker,
-    DatosDenunciante: DatosDenuncianteVue
-  },
-  data() {
-    return {
-      en: en,
-      es: es,
-      date: new Date(),
-      submitted : false,
-      format: "dd MMM yyyy",
-      options: {
-          format: 'DD/MM/YYYY',
-          useCurrent: false,
-      } ,
-      step: 1,
-      model : {
-        nombre : '',
-        apellido: '',
-        numeroDocumento:'',
-        fechaNacimiento : '',
-        codigoArea : '',
-        numeroTelefono: '',
-        correoElectronico: ''
-
-      }
-    };
-  },
-  methods: {
-    cancelar() {
-      alert("Canclear");
-    },
-    goNext(){
-      this.step +=1;
-      console.log(this.step);
-      alert(this.step);
-    },
-     validateForm(scope){
-       console.log(this.$validator);
-       console.log("has nombre : ",this.$validator.errors.has('nombre'));
-       this.$validator.validateAll(scope)
-       .then( (result) => {
-         console.log( result );
-          if( result ) {
-             alert(result);
-          }else {
-            this.submitted = true;
-          }
-       })
-     }
-  },
-  created() {
-    console.log(" created");
-  }
-};
+   props :{
+     model
+   }
+}
 </script>
 <style>
+
 </style>
