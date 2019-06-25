@@ -4,156 +4,36 @@
     -->
     <sub-header title="ROBO / HURTO"></sub-header>
     <div class="layout-container has-subheader">
-      <div class="form-layout">
+      <div class="form-layout wizard">
+       <div class="steps clearfix">
+       <ul role="tablist">
+       <li role="tab" class="first done" aria-disabled="false" aria-selected="false">
+       <a id="wizard1-t-0" href="#wizard1-h-0" aria-controls="wizard1-p-0">
+       <span class="number">1</span> <span class="title">Personal Information</span></a></li>
+       <li role="tab" class="done" aria-disabled="false" aria-selected="false">
+       <a id="wizard1-t-1" href="#wizard1-h-1" aria-controls="wizard1-p-1"><span class="number">2</span>
+       <span class="title">Billing Information</span></a></li>
+       <li role="tab" class="last current" aria-disabled="false" aria-selected="true">
+       <a id="wizard1-t-2" href="#wizard1-h-2" aria-controls="wizard1-p-2">
+       <span class="current-info audible">current step: </span><span class="number">3</span>
+       <span class="title">Payment Details</span></a></li></ul>
+        </div>
 
-        <form @submit.prevent="validateForm()">
-
-          <h1>{{step}}</h1>
-          <fieldset v-if="step == 1">
+       <form>
+        <fieldset v-if="step == 1">
             {{ submitted }}
+            {{ denunciante.nombre }}
+            {{ denunciante.apellido}}
 
-             <datos-denunciante></datos-denunciante>
+             <datos-denunciante v-bind:denunciante="denunciante"></datos-denunciante>
+
             <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
             <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
           </fieldset>
-
-
             <fieldset v-if="step === 2">
-            <div class="form-group">
-              <label for="nombre">
-                <strong>Nombre *</strong>
-              </label>
-              <input type="text"
-                  id="nombre"
-                  name="nombre"
-                  class="form-control"
-                  placeholder="Ingrese Nombre"
-                  v-model="model.nombre"
-                  v-validate="'required'"
-                  v-bind:class="{ 'is-invalid': submitted && errors.has('nombre') }"
-                  />
-              <div v-if="submitted && errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</div>
-            </div>
-            <div class="form-group">
-              <label for="apellido">
-                <strong>Apellido *</strong>
-              </label>
-              <input type="text" class="form-control" placeholder="Ingrese Apellido"
-                 id="apellido"
-                 name="apellido"
-                 v-model="model.apellido"
-                 v-validate="'required'"
-                 v-bind:class="{'is-invalid':submitted && errors.has('apellido')}">
-              <div v-if="submitted && errors.has('apellido')" class="text-danger"> {{ errors.first('apellido')}}</div>
-            </div>
-
-            <div class="form-group">
-              <label for="exampleSelect1">
-                <strong>Tipo Documento *</strong>
-              </label>
-              <select class="form-control" id="exampleSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="numero_documento">
-                <strong>Número de Documento *</strong>
-              </label>
-              <input type="text"
-                class="form-control"
-                name="numeroDocumento"
-                id = "numeroDocumento"
-                v-validate = "'required'"
-                v-model = "model.numeroDocumento"
-                v-bind:class="{'is-invalid' : submitted && errors.has('numeroDocumento')}">
-                <div v-if="submitted && errors.has('numeroDocumento')" class="text-danger">{{errors.first('numeroDocumento')}}</div>
-            </div>
-
-            <div class="form-group">
-              <label>
-                <strong>Fecha Nacimiento *</strong>
-              </label>
-              <datepicker v-bind:language="es"
-                          v-bind:input-class="{'datepicker-input-reg': true, 'is-invalid-input': errors.has('event_date')}"
-                          v-model="model.fechaNacimiento"
-                          v-bind:v-validate="{required: true, date_format: 'YYYY-MM-DD'}"
-                          name="fechaNacimiento"
-                          id="fechaNacimiento"></datepicker>
-              <span class="form-error" :class="{'is-visible': errors.has('fechaNacimiento')}">
-                {{ errors.first('fechaNacimiento') }}
-              </span>
-
-
-              </div>
-
-            <fieldset class="form-group">
-              <label>
-                <strong>Género *</strong>
-              </label>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="genero"
-                    id="genero"
-                    value="femenino"
-                    v-model="model.genero"
-
-                  >
-                  Femenino
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="optionsRadios"
-                    id="optionsRadios2"
-                    value="option2"
-                  >
-                  Masculino
-                </label>
-              </div>
-            </fieldset>
-
-            <strong>DATOS DE CONTACTO(Ingrese al menos una via de contacto)</strong>
-            <hr>
-            <div class="form-group">
-             <label>Telefono </label>
-             <div class="row">
-              <div class="col-md-3">
-             <input type="text"
-                class="form-control"
-                name="codigoArea"
-                id = "codigoArea"
-                v-model = "model.codigoArea"
-                v-bind:class="{'is-invalid' : submitted && errors.has('codigoArea')}">
-             </div>
-              <div class="col-md-6">
-             <input type="text"
-                class="form-control"
-                name="numeroTelefono"
-                v-model = "model.numeroTelefono">
-             </div>
-            </div>
-
-            <div class="form-group">
-            <label for="email">Correo electronico</label>
-            <input type="text"
-                   class="form-control"
-                   name="correoElectronico"
-                   v-model="model.correoElectronico">
-            </div>
-            </div>
-
-            <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
-            <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
+               <localizacion-hecho v-bind:localizacion="localizacion"></localizacion-hecho>
+               <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
+               <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
           </fieldset>
         </form>
       </div>
@@ -169,27 +49,27 @@
 </template>
 <script>
 import SubHeader from "../../components/SubHeader";
-import {en, es} from 'vuejs-datepicker/dist/locale';
-import Datepicker from "vuejs-datepicker";
-// Import this component
-import datePicker from 'vue-bootstrap-datetimepicker';
-// Import date picker css
-import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
-
 import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
-import DatosDenuncianteVue from '../../components/denuncia/DatosDenunciante.vue';
+import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
+import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
+
+
+//local registration
+import {FormWizard, TabContent} from 'vue-form-wizard'
+import 'vue-form-wizard/dist/vue-form-wizard.min.css'
+
 
 export default {
   components: {
     SubHeader: SubHeader,
-    Datepicker,
-    datePicker,
-    DatosDenunciante: DatosDenuncianteVue
+    DatosDenunciante: DatosDenunciante,
+    LocalizacionHecho : LocalizacionHecho,
+
+    FormWizard,
+    TabContent
   },
   data() {
     return {
-      en: en,
-      es: es,
       date: new Date(),
       submitted : false,
       format: "dd MMM yyyy",
@@ -198,7 +78,7 @@ export default {
           useCurrent: false,
       } ,
       step: 1,
-      model : {
+      denunciante : {
         nombre : '',
         apellido: '',
         numeroDocumento:'',
@@ -207,6 +87,11 @@ export default {
         numeroTelefono: '',
         correoElectronico: ''
 
+      },
+      localizacion : {
+        fechaHecho : '',
+        latitud : 0,
+        longitud : 0
       }
     };
   },
@@ -239,4 +124,5 @@ export default {
 };
 </script>
 <style>
+
 </style>

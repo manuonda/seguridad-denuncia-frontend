@@ -1,4 +1,7 @@
 require('./vue-resource')
 require('./vue-scrollto')
 require('./vue-bootstrap')
-require('./vue-validate')
+require('./vue-veevalidate')
+require('./vue-bootrap-datepicker')
+require('./vue-form-wizard')
+require('./vue-simple-vue-validator')

@@ -9,7 +9,7 @@
                   name="nombre"
                   class="form-control"
                   placeholder="Ingrese Nombre"
-                  v-model="model.nombre"
+                  v-model="denunciante.nombre"
                   v-validate="'required'"
                   v-bind:class="{ 'is-invalid': submitted && errors.has('nombre') }"
                   />
@@ -22,7 +22,7 @@
               <input type="text" class="form-control" placeholder="Ingrese Apellido"
                  id="apellido"
                  name="apellido"
-                 v-model="model.apellido"
+                 v-model="denunciante.apellido"
                  v-validate="'required'"
                  v-bind:class="{'is-invalid':submitted && errors.has('apellido')}">
               <div v-if="submitted && errors.has('apellido')" class="text-danger"> {{ errors.first('apellido')}}</div>
@@ -49,7 +49,7 @@
                 name="numeroDocumento"
                 id = "numeroDocumento"
                 v-validate = "'required'"
-                v-model = "model.numeroDocumento"
+                v-model = "denunciante.numeroDocumento"
                 v-bind:class="{'is-invalid' : submitted && errors.has('numeroDocumento')}">
                 <div v-if="submitted && errors.has('numeroDocumento')" class="text-danger">{{errors.first('numeroDocumento')}}</div>
             </div>
@@ -58,17 +58,18 @@
               <label>
                 <strong>Fecha Nacimiento *</strong>
               </label>
+              <!--
               <datepicker v-bind:language="es"
                           v-bind:input-class="{'datepicker-input-reg': true, 'is-invalid-input': errors.has('event_date')}"
-                          v-model="model.fechaNacimiento"
+                          v-model="denunciante.fechaNacimiento"
                           v-bind:v-validate="{required: true, date_format: 'YYYY-MM-DD'}"
                           name="fechaNacimiento"
                           id="fechaNacimiento"></datepicker>
               <span class="form-error" :class="{'is-visible': errors.has('fechaNacimiento')}">
                 {{ errors.first('fechaNacimiento') }}
               </span>
-
-                      <date-picker v-model="date" :config="options"></date-picker>
+              -->
+              <date-picker v-model="date" :config="options" :language="es"></date-picker>
 
 
 
@@ -86,7 +87,7 @@
                     name="genero"
                     id="genero"
                     value="femenino"
-                    v-model="model.genero"
+                    v-model="denunciante.genero"
 
                   >
                   Femenino
@@ -116,14 +117,14 @@
                 class="form-control"
                 name="codigoArea"
                 id = "codigoArea"
-                v-model = "model.codigoArea"
+                v-model = "denunciante.codigoArea"
                 v-bind:class="{'is-invalid' : submitted && errors.has('codigoArea')}">
              </div>
               <div class="col-md-6">
              <input type="text"
                 class="form-control"
                 name="numeroTelefono"
-                v-model = "model.numeroTelefono">
+                v-model = "denunciante.numeroTelefono">
              </div>
             </div>
 
@@ -132,16 +133,49 @@
             <input type="text"
                    class="form-control"
                    name="correoElectronico"
-                   v-model="model.correoElectronico">
+                   v-model="denunciante.correoElectronico">
             </div>
             </div>
 </div>
 </template>
 <script>
+
+import {en, es} from 'vuejs-datepicker/dist/locale';
+import DatePicker from "vuejs-datepicker"
+
 export default {
-   props :{
-     model
+  props: {
+    denunciante :Object
+  },
+  components : {
+    DatePicker
+  },
+  validators : {
+      nombre : function (value ) {
+      return Validator.value(value).required();
+    },
+    apellido : function( value ) {
+
+    }
+  },
+  data(){
+   return {
+      es : es ,
+      date:  "" ,
+      submitted : false,
+      format: "dd MMM yyyy",
+      options: {
+          format: 'DD/MM/YYYY',
+          useCurrent: false,
+      } ,
+      step: 1
    }
+  },
+  created(){
+    console.log("created datos denunciante ");
+    console.log(this.denunciante);
+  }
+
 }
 </script>
 <style>
