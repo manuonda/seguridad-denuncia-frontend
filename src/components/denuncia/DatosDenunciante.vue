@@ -140,22 +140,28 @@
 </template>
 <script>
 
+import Vue from "vue"
 import {en, es} from 'vuejs-datepicker/dist/locale';
 import DatePicker from "vuejs-datepicker"
+import SimpleVueValidator from "simple-vue-validator";
+
+
+const Validator = SimpleVueValidator.Validator
+
 
 export default {
   props: {
-    denunciante :Object
+     denunciante: Object
   },
   components : {
     DatePicker
   },
   validators : {
-      nombre : function (value ) {
+      'denunciante.nombre' : function (value ) {
       return Validator.value(value).required();
     },
-    apellido : function( value ) {
-
+      'denunciante.apellido' : function( value ) {
+      return Validator.value(value).required();
     }
   },
   data(){

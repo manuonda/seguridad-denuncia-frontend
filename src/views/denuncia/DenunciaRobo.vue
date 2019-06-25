@@ -22,7 +22,7 @@
        <form>
         <fieldset v-if="step == 1">
             {{ submitted }}
-            {{ denunciante.nombre }}
+            Nombre{{ denunciante.nombre }}
             {{ denunciante.apellido}}
 
              <datos-denunciante v-bind:denunciante="denunciante"></datos-denunciante>
