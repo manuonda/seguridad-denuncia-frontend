@@ -15,6 +15,9 @@
               <br>
               <br>
               <br>
+              <br>
+              <br>
+              <br>
               <p class="lead text-center">
                 <button
                   class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
@@ -135,14 +138,14 @@ export default {
 
 .btn-primary-denuncia {
   display: inline-block;
-  font-weight: 400;
+  font-weight: 700;
   font-family: Raleway-SemiBold;
   font-size: 13px;
   color: #fff;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
   line-height: 15px;
-  border: 2px solid #1955a6;
-  background-color: #1955a6;
+  border: 2px solid rgb(204, 124, 122);
+  background-color: #801C1A;
   border-radius: 40px;
   transition: all 0.3s ease 0s;
   padding: 0.375rem 0.75rem;
@@ -222,7 +225,7 @@ export default {
 }
 
 .presentacion {
-    background-image: url(../assets/images/denuncia.png);
+    background-image: url(../assets/images/denuncia4.png);
     background-size: cover;
     padding-left: 30px;
     text-align: center;

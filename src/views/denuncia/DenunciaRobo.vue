@@ -19,20 +19,21 @@
        <span class="title">Payment Details</span></a></li></ul>
         </div>
 
-       <form>
-        <fieldset v-if="step == 1">
-            {{ submitted }}
+        <form>
+          {{ submitted }}
             Nombre{{ denunciante.nombre }}
             <br>Apellido{{ denunciante.apellido}}
 
-             <datos-denunciante v-bind:denunciante="denunciante"></datos-denunciante>
-
-
+        <fieldset v-if="step == 1">
+            <datos-denunciante v-bind:denunciante="denunciante"></datos-denunciante>
           </fieldset>
-            <fieldset v-if="step === 2">
+          <fieldset v-if="step === 2">
                <localizacion-hecho v-bind:localizacion="localizacion"></localizacion-hecho>
                <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
                <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
+          </fieldset>
+          <fieldset v-if="step === 3 ">
+            <caracteristica-hecho></caracteristica-hecho>
           </fieldset>
 
         </form>
@@ -45,14 +46,15 @@ import SubHeader from "../../components/SubHeader";
 import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
 import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
 import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
-
+import CaracteristicaHecho from '../../components/denuncia/CaracteristicaHecho';
 
 
 export default {
   components: {
     SubHeader: SubHeader,
     DatosDenunciante: DatosDenunciante,
-    LocalizacionHecho : LocalizacionHecho
+    LocalizacionHecho : LocalizacionHecho,
+    CaracteristicaHecho : CaracteristicaHecho
   },
   data() {
     return {

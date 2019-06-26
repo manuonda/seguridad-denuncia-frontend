@@ -15,13 +15,13 @@
           </li>
           <li style="margin: 10px 0;">
             <a href="http://www.mseg.gba.gov.ar/" target="_blank" class="footer-icon" analytics-on="click" analytics-event="access_web" analytics-category="ButtonsCommands">
-              <img src="assets/images/social_web.png" target="_blank" alt="Web">
+              <img src="../assets/images/social_web.png" target="_blank" alt="Web">
             </a>
             <a href="https://www.youtube.com/channel/UCPS1hWmfwR4gd5qdP5FExEA" target="_blank" class="footer-icon" analytics-on="click" analytics-event="access_youtube" analytics-category="ButtonsCommands">
-              <img src="assets/images/social_yt.png" alt="Youtube">
+              <img src="../assets/images/social_yt.png" alt="Youtube">
             </a>
             <a href="https://twitter.com/SeguridadProv" target="_blank" class="footer-icon" analytics-on="click" analytics-event="access_twitter" analytics-category="ButtonsCommands">
-              <img src="assets/images/social_tw.png" alt="Twitter">
+              <img src="../assets/images/social_tw.png" alt="Twitter">
             </a>
           </li>
         </ul>
@@ -29,7 +29,7 @@
 
       <div class="col-md-6 logoProv">
         <a href="http://seguridad.jujuy.gob.ar/" target="_blank">
-          <img src="/assets/logo-footer.png" width="200" alt="Logo Provincia">
+          <img src="../assets/images/minseg.png" width="200"  alt="Logo Provincia">
         </a>
         <div class="version ng-binding">
           Seguridad Provincia v1.0.1

@@ -128,7 +128,8 @@ export default {
 
 .menu-background {
     /*background-color: #DF691A  !important;*/
-    background-color: #1955a6;
+    /* background-color: #1955a6; */
+    background-color: #801C1A;
     border-color: #003461 !important;
 }
 .container-fluid {
@@ -143,7 +144,7 @@ export default {
 }
 
 .bg-primary2 {
-    background-color: #1955a6 !important;
+    background-color: #801C1A !important;
 }
 
 .nav2 > li > a {
@@ -157,7 +158,7 @@ export default {
 .nav2 > li > a:hover, .nav2 > li > a:focus {
     text-decoration: none;
     background-color: #567890;
-    color: #9aca3c;
+    color: #ffffff;
 }
 
 
