@@ -23,27 +23,20 @@
         <fieldset v-if="step == 1">
             {{ submitted }}
             Nombre{{ denunciante.nombre }}
-            {{ denunciante.apellido}}
+            <br>Apellido{{ denunciante.apellido}}
 
              <datos-denunciante v-bind:denunciante="denunciante"></datos-denunciante>
 
-            <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
-            <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
+
           </fieldset>
             <fieldset v-if="step === 2">
                <localizacion-hecho v-bind:localizacion="localizacion"></localizacion-hecho>
                <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
                <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
           </fieldset>
+
         </form>
       </div>
-    </div>
-
-    <!-- modal -->
-    <div>
-      <b-modal id="modal-1" title="BootstrapVue">
-        <p class="my-4">Hello from modal!</p>
-      </b-modal>
     </div>
   </div>
 </template>
@@ -54,19 +47,12 @@ import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
 import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
 
 
-//local registration
-import {FormWizard, TabContent} from 'vue-form-wizard'
-import 'vue-form-wizard/dist/vue-form-wizard.min.css'
-
 
 export default {
   components: {
     SubHeader: SubHeader,
     DatosDenunciante: DatosDenunciante,
-    LocalizacionHecho : LocalizacionHecho,
-
-    FormWizard,
-    TabContent
+    LocalizacionHecho : LocalizacionHecho
   },
   data() {
     return {
@@ -79,6 +65,7 @@ export default {
       } ,
       step: 1,
       denunciante : {
+        anonimo:'NO',
         nombre : '',
         apellido: '',
         numeroDocumento:'',

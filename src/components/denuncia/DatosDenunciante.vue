@@ -1,189 +1,295 @@
 <template>
-  <div>
+  <div id="denunciante">
+
+     <fieldset class="form-group">
+     <label>
+     <strong>¿Desea hacer la denuncia de forma anónima? *</strong>
+     </label>
+     <div class="form-check">
+     <label class="form-check-label">
+     <input type="radio" class="form-check-input" name="anonimato" value="SI" v-model="denunciante.anonimo"> Si </label>
+     </div>
+     <div class="form-check">
+     <label class="form-check-label">
+     <input type="radio" class="form-check-input" name="anonima"  value="NO" v-model="denunciante.anonimo"> No
+     </label>
+     </div>
+     </fieldset>
+
+   Anonimo {{denunciante.anonimo}}
+    <!-- NOMBRE -->
     <div class="form-group">
-            <label for="nombre">
-                <strong>Nombre *</strong>
-              </label>
-              <input type="text"
-                  id="nombre"
-                  name="nombre"
-                  class="form-control"
-                  placeholder="Ingrese Nombre"
-                  v-model="denunciante.nombre"
-                  v-validate="'required'"
-                  v-bind:class="{ 'is-invalid': submitted && errors.has('nombre') }"
-                  />
-              <div v-if="submitted && errors.has('nombre')" class="text-danger">{{ errors.first('nombre') }}</div>
-            </div>
-            <div class="form-group">
-              <label for="apellido">
-                <strong>Apellido *</strong>
-              </label>
-              <input type="text" class="form-control" placeholder="Ingrese Apellido"
-                 id="apellido"
-                 name="apellido"
-                 v-model="denunciante.apellido"
-                 v-validate="'required'"
-                 v-bind:class="{'is-invalid':submitted && errors.has('apellido')}">
-              <div v-if="submitted && errors.has('apellido')" class="text-danger"> {{ errors.first('apellido')}}</div>
-            </div>
+    <label for="nombre">
+       <div v-if="denunciante.anonimo == 'SI'">Nombre</div>
+       <div v-if="denunciante.anonimo == 'NO'"> Nombre *</div>
+    </label>
+    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese Nombre"
+        v-model="denunciante.nombre"
+        v-bind:class="{'is-invalid': denunciante.anonimo == 'NO' && validation.hasError('denunciante.nombre')}">
+     <div v-if="denunciante.anonimo =='NO' && submitted && validation.hasError('denunciante.nombre')"
+        class="text-danger">
+     {{ validation.firstError('denunciante.nombre') }}</div>
+    </div>
 
-            <div class="form-group">
-              <label for="exampleSelect1">
-                <strong>Tipo Documento *</strong>
-              </label>
-              <select class="form-control" id="exampleSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="numero_documento">
-                <strong>Número de Documento *</strong>
-              </label>
-              <input type="text"
-                class="form-control"
-                name="numeroDocumento"
-                id = "numeroDocumento"
-                v-validate = "'required'"
-                v-model = "denunciante.numeroDocumento"
-                v-bind:class="{'is-invalid' : submitted && errors.has('numeroDocumento')}">
-                <div v-if="submitted && errors.has('numeroDocumento')" class="text-danger">{{errors.first('numeroDocumento')}}</div>
-            </div>
+    <div class="form-group">
+      <label for="apellido">
+        <div v-if="denunciante.anonimo=='SI'">Apellido</div>
+        <div v-if="denunciante.anonimo =='NO'">Apellido *</div>
+      </label>
+      <input type="text" class="form-control" placeholder="Ingrese Apellido" id="apellido"
+        name="apellido"
+        v-model="denunciante.apellido"
+        v-bind:class="{'is-invalid': denunciante.anonimo=='NO' && submitted && validation.hasError('denunciante.apellido')}">
+      <div v-if="denunciante.anonimo == 'NO' && submitted && validation.hasError('denunciante.apellido')" class="text-danger">
+        {{ validation.firstError('denunciante.apellido')}}
+      </div>
+    </div>
 
-            <div class="form-group">
-              <label>
-                <strong>Fecha Nacimiento *</strong>
-              </label>
-              <!--
-              <datepicker v-bind:language="es"
-                          v-bind:input-class="{'datepicker-input-reg': true, 'is-invalid-input': errors.has('event_date')}"
-                          v-model="denunciante.fechaNacimiento"
-                          v-bind:v-validate="{required: true, date_format: 'YYYY-MM-DD'}"
-                          name="fechaNacimiento"
-                          id="fechaNacimiento"></datepicker>
-              <span class="form-error" :class="{'is-visible': errors.has('fechaNacimiento')}">
-                {{ errors.first('fechaNacimiento') }}
-              </span>
-              -->
-              <date-picker v-model="date" :config="options" :language="es"></date-picker>
+    <div class="form-group">
+      <label for="exampleSelect1">
+        <strong>Tipo Documento *</strong>
+      </label>
+      <select class="form-control" id="exampleSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+    <!-- numero de documento -->
+    <div class="form-group">
+      <label for="numero_documento">
+        <div v-if="denunciante.anonimo == 'SI'">Número de Documento</div>
+        <div v-if="denunciante.anonimo == 'NO'">Número de Documento *</div>
+      </label>
+      <input type="text" class="form-control" name="numeroDocumento" id="numeroDocumento"
+        v-model="denunciante.numeroDocumento"
+        v-bind:class="{'is-invalid' : denunciante.anonimo =='NO'  && validation.hasError('denunciante.numeroDocumento')}">
+      <div v-if="denunciante.anonimo=='NO' && validation.hasError('denunciante.numeroDocumento')" class="text-danger">
+         {{validation.firstError('denunciante.numeroDocumento')}}</div>
+    </div>
 
+    <div class="form-group">
+      <label for="fechaNacimiento">
+       <div v-if="denunciante.anonimo=='SI'">Fecha Nacimiento</div>
+       <div v-if="denunciante.anonimo=='NO'">Fecha Nacimiento *</div>
+      </label>
+       <date-picker v-model="denunciante.fechaNacimiento" :config="options" :language="es"></date-picker>
+       <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.fechaNacimiento')" class="text-danger">
+         {{validation.firstError('denunciante.fechaNacimiento')}}</div>
+    </div>
 
+    <fieldset class="form-group">
+      <label>
+        <strong>Género *</strong>
+      </label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            type="radio"
+            class="form-check-input"
+            name="genero"
+            id="genero"
+            value="femenino"
+            v-model="denunciante.genero"
+          >
+          Femenino
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input
+            type="radio"
+            class="form-check-input"
+            name="optionsRadios"
+            id="optionsRadios2"
+            value="option2"
+          >
+          Masculino
+        </label>
+      </div>
+    </fieldset>
 
-              </div>
+    <strong>DATOS DE CONTACTO(Ingrese al menos una via de contacto)</strong>
+    <hr>
+    <div class="form-group">
+      <label>Telefono</label>
+      <div class="row">
+        <div class="col-md-3">
+          <input
+            type="text"
+            class="form-control"
+            name="codigoArea"
+            id="codigoArea"
+            v-model="denunciante.codigoArea"
+            v-bind:class="{'is-invalid' : submitted && errors.has('codigoArea')}"
+          >
+        </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            class="form-control"
+            name="numeroTelefono"
+            v-model="denunciante.numeroTelefono"
+          >
+        </div>
+      </div>
 
-            <fieldset class="form-group">
-              <label>
-                <strong>Género *</strong>
-              </label>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="genero"
-                    id="genero"
-                    value="femenino"
-                    v-model="denunciante.genero"
+      <div class="form-group">
+        <label for="email">Correo electronico</label>
+        <input
+          type="text"
+          class="form-control"
+          name="correoElectronico"
+          v-model="denunciante.correoElectronico"
+        >
+      </div>
+    </div>
+    <div class="form-cancel-button">
+      <button type="button" class="btn btn-primary" @click="cancelar">Cancelar</button>
+    </div>
+    <div class="form-right-button">
+      <button type="button" class="btn btn-primary" @click="enviarDatos">Siguiente</button>
+    </div>
 
-                  >
-                  Femenino
-                </label>
-              </div>
-              <div class="form-check">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="optionsRadios"
-                    id="optionsRadios2"
-                    value="option2"
-                  >
-                  Masculino
-                </label>
-              </div>
-            </fieldset>
-
-            <strong>DATOS DE CONTACTO(Ingrese al menos una via de contacto)</strong>
-            <hr>
-            <div class="form-group">
-             <label>Telefono </label>
-             <div class="row">
-              <div class="col-md-3">
-             <input type="text"
-                class="form-control"
-                name="codigoArea"
-                id = "codigoArea"
-                v-model = "denunciante.codigoArea"
-                v-bind:class="{'is-invalid' : submitted && errors.has('codigoArea')}">
-             </div>
-              <div class="col-md-6">
-             <input type="text"
-                class="form-control"
-                name="numeroTelefono"
-                v-model = "denunciante.numeroTelefono">
-             </div>
-            </div>
-
-            <div class="form-group">
-            <label for="email">Correo electronico</label>
-            <input type="text"
-                   class="form-control"
-                   name="correoElectronico"
-                   v-model="denunciante.correoElectronico">
-            </div>
-            </div>
-</div>
+    <!-- modal -->
+    <b-modal
+      ref="modal-cancelar"
+      headerClass="header-toc"
+      hide-footer
+      cancel-title="Cancelar"
+      ok-title="Aceptar"
+      title="Salir"
+    >
+      <div class="d-block text-center">
+        <p class="warning ng-binding">¿Estás seguro de salir y borrar todos los datos?</p>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-secondary" @click="cancelarModal">NO</button>
+        <button type="button" class="btn btn-primary" @click="aceptarModal">SI</button>
+      </footer>
+    </b-modal>
+  </div>
 </template>
 <script>
-
-import Vue from "vue"
-import {en, es} from 'vuejs-datepicker/dist/locale';
-import DatePicker from "vuejs-datepicker"
+import Vue from "vue";
+import { en, es } from "vuejs-datepicker/dist/locale";
+import DatePicker from "vuejs-datepicker";
 import SimpleVueValidator from "simple-vue-validator";
 
-
-const Validator = SimpleVueValidator.Validator
-
+const Validator = SimpleVueValidator.Validator;
 
 export default {
   props: {
-     denunciante: Object
+    denunciante: Object
   },
-  components : {
+  components: {
     DatePicker
   },
-  validators : {
-      'denunciante.nombre' : function (value ) {
-      return Validator.value(value).required();
+  validators: {
+    "denunciante.nombre": function(value) {
+      return Validator.custom(function() {
+        if (Validator.isEmpty(value)) {
+          return "Debe Ingresar Nombre";
+        }
+      });
     },
-      'denunciante.apellido' : function( value ) {
-      return Validator.value(value).required();
+    "denunciante.apellido": function(value) {
+      return Validator.custom(function() {
+        if (Validator.isEmpty(value)) {
+          return "Debe Ingresar Apelllido";
+        }
+      });
+    },
+    "denunciante.numeroDocumento" : function(value){
+       /*return Validator.custon(function() {
+          if(!Validator.isEmpty(value)) {
+            var numero = parseInt( value );
+            if(isNaN(numero) || numero % 2 !== 1)  {
+              return " Debe ingresar solamente numeros"
+            }
+          }
+       });*/
+      return Validator.value(value).required().regex('^[0-9]', 'Debe contener solamente valor numericos.');
+
+    },
+    "denunciante.fechaNacimiento": function( value ){
+      return Validator.custom( function () {
+        if(Validator.isEmpty(value)) {
+          return "Debe Ingresar una fecha de Nacimiento"
+        }
+      })
     }
   },
-  data(){
-   return {
-      es : es ,
-      date:  "" ,
-      submitted : false,
+  data() {
+    return {
+      es: es,
+      date: "",
+      submitted: false,
       format: "dd MMM yyyy",
       options: {
-          format: 'DD/MM/YYYY',
-          useCurrent: false,
-      } ,
+        format: "DD/MM/YYYY",
+        useCurrent: false
+      },
       step: 1
-   }
+    };
   },
-  created(){
+  methods: {
+    enviarDatos() {
+      this.submitted = true;
+      this.$validate()
+        .then(function(success) {
+          console.log(success);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    cancelar() {
+      console.log(this.$refs);
+      this.$refs["modal-cancelar"].show();
+    },
+    cancelarModal() {
+      this.$refs["modal-cancelar"].hide();
+    },
+    aceptarModal() {
+      alert("aceptar modal");
+    }
+  },
+  created() {
     console.log("created datos denunciante ");
     console.log(this.denunciante);
   }
-
-}
+};
 </script>
 <style>
+.warning {
+  background-color: #f2e18c;
+  border-radius: 6px;
+  line-height: 30px;
+  padding: 5px;
+}
 
+p {
+  margin: 0 0 10px;
+}
+
+.header-toc {
+  background-color: #1955a6;
+  height: 2.5em;
+  font-size: 1em;
+  font-family: "dinBold";
+  color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.form-cancel-button {
+  float: left;
+}
+
+.form-right-button {
+  float: right;
+}
 </style>

@@ -1,16 +1,16 @@
 <template>
-  <div>
+
     <div class="bs-docs-section">
       <div class="row">
         <div class="col-lg-12">
           <div class="bs-component">
-            <div class="jumbotron" style="background-color:#4E5D6C">
+            <div class="presentacion" >
               <h1
-                class="text-center text-titulo"
+                class="text-titulo home-title sombra"
               >Ahora podés informar hechos delictivos sin ir a la comisaría</h1>
               <hr class="my-4">
               <p
-                class="text-center text-centro h5"
+                class="text-center text-centro sombra intro h5"
               >Si presenciaste o fuiste víctima de un robo, corrupción policial, venta de drogas, violencia familiar o de género, delito contra la integridad sexual, tenés conocimiento sobre actividades de juego ilegal o sobre comercio ilegal de autopartes, no lo dudes. Las denuncias de corrupción policial, narcotráfico, juego ilegal y comercio ilegal de autopartes, se pueden hacer de forma anónima.</p>
               <br>
               <br>
@@ -19,8 +19,7 @@
                 <button
                   class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
                   role="button"
-                  v-scroll-to="'#denuncias'"
-                >
+                  @click="showPageDenuncia">
                   <span>
                     <strong>DENUNCIÁ</strong>
                   </span>
@@ -32,7 +31,7 @@
       </div>
     </div>
 
-    <!-- tipo de denuncias -->
+    <!-- tipo de denuncias
     <div id="denuncias" class="secundario">
       <div class="row">
         <div class="col-lg-4">
@@ -42,12 +41,6 @@
               <div class="caja-imagen-robo">
                  <router-link  to="/denuncia/robo" class="btn btn-denuncia btn-low2 btn-lg">DENUNCIÁ</router-link>
               </div>
-              <!--
-              <div class="card-footer text-muted text-center text-din">
-
-                 <router-link  to="/denuncia/robo" class="btn btn-primary-denuncia btn-lg text-din btn-rounded">DENUNCIÁ</router-link>
-              </div>
-             -->
             </div>
           </div>
         </div>
@@ -74,8 +67,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div>-->
   <!-- end tipo de denuncias -->
 </template>
 <script>
@@ -101,6 +93,11 @@ export default {
         { id: 3, texto: "ROBO CELULAR", img: "assets/categorias/robo-wide" }
       ]
     };
+  },
+  methods : {
+    showPageDenuncia() {
+      this.$router.push('/denuncia/robo')
+    }
   }
 };
 </script>
@@ -110,10 +107,30 @@ export default {
 .text-titulo {
   font-family: "dinBold";
   color: #EBEBEB;
+  padding-top: 50px;
 }
 .text-centro{
   font-family: 'din';
   color: #EBEBEB;
+}
+.sombra {
+    text-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+}
+
+.intro {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.4;
+    height: 250px;
+    -webkit-transition: opacity 0.2s,-webkit-transform 0.35s;
+    transition: opacity 0.2s,transform 0.35s;
+    max-width: 700px;
+    display: inline-block;
+}
+.home-title {
+    font-size: 45px;
+    margin-top: 30 px!important;
+    margin-bottom: 5px !important;
 }
 
 .btn-primary-denuncia {
@@ -124,9 +141,9 @@ export default {
   color: #fff;
   letter-spacing: 1px;
   line-height: 15px;
-  border: 2px solid #df691a;
+  border: 2px solid #1955a6;
+  background-color: #1955a6;
   border-radius: 40px;
-  background: transparent;
   transition: all 0.3s ease 0s;
   padding: 0.375rem 0.75rem;
   font-size: 1.5rem;
@@ -202,5 +219,20 @@ export default {
   color: #fff;
   background-color: #bd5916;
   border-color: #b15315;
+}
+
+.presentacion {
+    background-image: url(../assets/images/denuncia.png);
+    background-size: cover;
+    padding-left: 30px;
+    text-align: center;
+    padding-top: 50px;
+    padding: 30px;
+    vertical-align: middle;
+    height: 90vh;
+    position: relative;
+}
+.whiteFont {
+    color: white;
 }
 </style>
