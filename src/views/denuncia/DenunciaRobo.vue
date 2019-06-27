@@ -25,7 +25,7 @@
             <br>Apellido{{ denunciante.apellido}}
 
         <fieldset v-if="step == 1">
-            <datos-denunciante v-bind:denunciante="denunciante"></datos-denunciante>
+            <datos-denunciante v-bind:denunciante="denunciante" @increment-step="incrementStep"></datos-denunciante>
           </fieldset>
           <fieldset v-if="step === 2">
                <localizacion-hecho v-bind:localizacion="localizacion"></localizacion-hecho>
@@ -88,24 +88,11 @@ export default {
     cancelar() {
       alert("Canclear");
     },
-    goNext(){
+    incrementStep(){
       this.step +=1;
       console.log(this.step);
       alert(this.step);
-    },
-     validateForm(scope){
-       console.log(this.$validator);
-       console.log("has nombre : ",this.$validator.errors.has('nombre'));
-       this.$validator.validateAll(scope)
-       .then( (result) => {
-         console.log( result );
-          if( result ) {
-             alert(result);
-          }else {
-            this.submitted = true;
-          }
-       })
-     }
+    }
   },
   created() {
     console.log(" created");

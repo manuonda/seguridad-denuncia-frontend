@@ -101,6 +101,7 @@ export default {
     showPageDenuncia() {
       this.$router.push('/denuncia/robo')
     }
+
   }
 };
 </script>

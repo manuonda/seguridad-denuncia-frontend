@@ -25,6 +25,7 @@
     </label>
     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese Nombre"
         v-model="denunciante.nombre"
+        :disabled="denunciante.anonimo == 'SI'"
         v-bind:class="{'is-invalid': denunciante.anonimo == 'NO' && validation.hasError('denunciante.nombre')}">
      <div v-if="denunciante.anonimo =='NO' && submitted && validation.hasError('denunciante.nombre')"
         class="text-danger">
@@ -39,6 +40,7 @@
       <input type="text" class="form-control" placeholder="Ingrese Apellido" id="apellido"
         name="apellido"
         v-model="denunciante.apellido"
+        :disabled="denunciante.anonimo == 'SI'"
         v-bind:class="{'is-invalid': denunciante.anonimo=='NO' && submitted && validation.hasError('denunciante.apellido')}">
       <div v-if="denunciante.anonimo == 'NO' && submitted && validation.hasError('denunciante.apellido')" class="text-danger">
         {{ validation.firstError('denunciante.apellido')}}
@@ -49,7 +51,8 @@
       <label for="exampleSelect1">
         <strong>Tipo Documento *</strong>
       </label>
-      <select class="form-control" id="exampleSelect1">
+      <select class="form-control" id="exampleSelect1"
+              :disabled="denunciante.anonimo == 'SI'">
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -65,6 +68,7 @@
       </label>
       <input type="text" class="form-control" name="numeroDocumento" id="numeroDocumento"
         v-model="denunciante.numeroDocumento"
+        v-bind:disabled=" denunciante.anonimo == 'SI'"
         v-bind:class="{'is-invalid' : denunciante.anonimo =='NO'  && validation.hasError('denunciante.numeroDocumento')}">
       <div v-if="denunciante.anonimo=='NO' && validation.hasError('denunciante.numeroDocumento')" class="text-danger">
          {{validation.firstError('denunciante.numeroDocumento')}}</div>
@@ -75,7 +79,10 @@
        <div v-if="denunciante.anonimo=='SI'">Fecha Nacimiento</div>
        <div v-if="denunciante.anonimo=='NO'">Fecha Nacimiento *</div>
       </label>
-       <date-picker v-model="denunciante.fechaNacimiento" :config="options" :language="es"></date-picker>
+       <date-picker v-model="denunciante.fechaNacimiento" :config="options" :language="es"
+          v-bind:disabled="denunciante.anonimo == 'SI'"
+          v-bind:class="{'is-invalid' : denunciante.anonimo == 'NO' && validation.hasError('denunciante.fechaNacimiento')}"
+       ></date-picker>
        <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.fechaNacimiento')" class="text-danger">
          {{validation.firstError('denunciante.fechaNacimiento')}}</div>
     </div>
@@ -86,15 +93,9 @@
       </label>
       <div class="form-check">
         <label class="form-check-label">
-          <input
-            type="radio"
-            class="form-check-input"
-            name="genero"
-            id="genero"
-            value="femenino"
-            v-model="denunciante.genero"
-          >
-          Femenino
+        <input type="radio" class="form-check-input" name="genero" id="genero" value="femenino"
+               v-bind:class="{'is-invalid': denunciante.anonimo == 'NO'}" v-model="denunciante.genero">
+            Femenino
         </label>
       </div>
       <div class="form-check">
@@ -111,17 +112,13 @@
       </div>
     </fieldset>
 
-    <strong>DATOS DE CONTACTO(Ingrese al menos una via de contacto)</strong>
+    <strong>DATOS DE CONTACTO</strong>
     <hr>
     <div class="form-group">
       <label>Telefono</label>
       <div class="row">
         <div class="col-md-3">
-          <input
-            type="text"
-            class="form-control"
-            name="codigoArea"
-            id="codigoArea"
+        <input type="text" class="form-control" name="codigoArea" id="codigoArea"
             v-model="denunciante.codigoArea"
             v-bind:class="{'is-invalid' : submitted && errors.has('codigoArea')}"
           >
@@ -146,11 +143,13 @@
         >
       </div>
     </div>
+    <div id="actions">
     <div class="form-cancel-button">
       <button type="button" class="btn btn-primary" @click="cancelar">Cancelar</button>
     </div>
     <div class="form-right-button">
       <button type="button" class="btn btn-primary" @click="enviarDatos">Siguiente</button>
+    </div>
     </div>
 
     <!-- modal -->
@@ -203,14 +202,6 @@ export default {
       });
     },
     "denunciante.numeroDocumento" : function(value){
-       /*return Validator.custon(function() {
-          if(!Validator.isEmpty(value)) {
-            var numero = parseInt( value );
-            if(isNaN(numero) || numero % 2 !== 1)  {
-              return " Debe ingresar solamente numeros"
-            }
-          }
-       });*/
       return Validator.value(value).required().regex('^[0-9]', 'Debe contener solamente valor numericos.');
 
     },
@@ -220,7 +211,8 @@ export default {
           return "Debe Ingresar una fecha de Nacimiento"
         }
       })
-    }
+    },
+
   },
   data() {
     return {
@@ -238,13 +230,20 @@ export default {
   methods: {
     enviarDatos() {
       this.submitted = true;
-      this.$validate()
+      if ( this.denunciante.anonimo == 'NO') {
+         this.$validate()
         .then(function(success) {
-          console.log(success);
+
         })
         .catch(error => {
           console.log(error);
         });
+      } else { // incrementa el paso
+        console.log("se incrementa por la que denuncia es anonima")
+        this.$emit('increment-step');
+
+      }
+
     },
     cancelar() {
       console.log(this.$refs);
