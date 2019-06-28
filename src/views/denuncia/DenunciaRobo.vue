@@ -25,7 +25,7 @@
             <br>Apellido{{ denunciante.apellido}}
 
         <fieldset v-if="step == 1">
-            <datos-denunciante v-bind:denunciante="denunciante" @increment-step="incrementStep"></datos-denunciante>
+          <datos-denunciante v-bind:denunciante="denunciante" @increment-step="incrementStep"></datos-denunciante>
           </fieldset>
           <fieldset v-if="step === 2">
                <localizacion-hecho v-bind:localizacion="localizacion"></localizacion-hecho>
@@ -80,7 +80,9 @@ export default {
       localizacion : {
         fechaHecho : '',
         latitud : 0,
-        longitud : 0
+        longitud : 0,
+        calle:'',
+        numero:''
       }
     };
   },
