@@ -19,21 +19,28 @@
        <span class="title">Payment Details</span></a></li></ul>
         </div>
 
-        <form>
-          {{ submitted }}
-            Nombre{{ denunciante.nombre }}
-            <br>Apellido{{ denunciante.apellido}}
-
+        <form >
         <fieldset v-if="step == 1">
           <datos-denunciante v-bind:denunciante="denunciante" @increment-step="incrementStep"></datos-denunciante>
           </fieldset>
           <fieldset v-if="step === 2">
-               <localizacion-hecho v-bind:localizacion="localizacion"></localizacion-hecho>
-               <button type="button" class="btn btn-primary" @click="cancelar()">Cancelar</button>
-               <button type="submit" class="btn btn-primary" @click="goNext()">Siguiente</button>
+               <localizacion-hecho v-bind:localizacion="localizacion"
+                                   @decrement-step="decrementStep"
+                                   @increment-step="incrementStep">
+              </localizacion-hecho>
           </fieldset>
           <fieldset v-if="step === 3 ">
-            <caracteristica-hecho></caracteristica-hecho>
+            <caracteristica-hecho v-bind:caracteristica="caracteristica"
+                                  @decrement-step="decrementStep"
+                                  @increment-step="incrementStep"></caracteristica-hecho>
+          </fieldset>
+          <fieldset v-if= "step === 4 ">
+             <resumen-hecho       v-bind:denunciante="denunciante"
+                                  v-bind:localizacion="localizacion"
+                                  v-bind:caracteristica="caracteristica"
+                                  @decrement-step="decrementStep"
+                                  @finalizar-denuncia="finalizarDenuncia"
+                                  ></resumen-hecho>
           </fieldset>
 
         </form>
@@ -42,11 +49,15 @@
   </div>
 </template>
 <script>
+
+import axios from 'axios';
+
 import SubHeader from "../../components/SubHeader";
 import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
 import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
 import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
 import CaracteristicaHecho from '../../components/denuncia/CaracteristicaHecho';
+import ResumenHecho from '../../components/denuncia/ResumenHecho';
 
 
 export default {
@@ -54,7 +65,8 @@ export default {
     SubHeader: SubHeader,
     DatosDenunciante: DatosDenunciante,
     LocalizacionHecho : LocalizacionHecho,
-    CaracteristicaHecho : CaracteristicaHecho
+    CaracteristicaHecho : CaracteristicaHecho,
+    ResumenHecho :  ResumenHecho
   },
   data() {
     return {
@@ -66,6 +78,12 @@ export default {
           useCurrent: false,
       } ,
       step: 1,
+      denuncia : {
+         tipo: '',
+         from : '',
+         date : '',
+         time  : ''
+      },
       denunciante : {
         anonimo:'NO',
         nombre : '',
@@ -74,7 +92,8 @@ export default {
         fechaNacimiento : '',
         codigoArea : '',
         numeroTelefono: '',
-        correoElectronico: ''
+        correoElectronico: '',
+        genero:''
 
       },
       localizacion : {
@@ -83,6 +102,11 @@ export default {
         longitud : 0,
         calle:'',
         numero:''
+      },
+      caracteristica : {
+        descripcion: '',
+        files : []
+
       }
     };
   },
@@ -92,12 +116,28 @@ export default {
     },
     incrementStep(){
       this.step +=1;
-      console.log(this.step);
-      alert(this.step);
+    },
+    decrementStep() {
+      if ( this.step > 0 ){
+        this.step -=1;
+      }
+    },
+    finalizarDenuncia(){
+      let form = new FormData();
+      axios.post( '' , formData ).then ( (result ) =>{
+
+      })
+      .catch( error => {
+
+      });
     }
   },
   created() {
-    console.log(" created");
+    this.denuncia.tipo = 'GENERAL';
+    this.denuncia.plataforma = 'WEB';
+    var dateNow = new Date();
+    this.denuncia.date = dateNow.getDate() + "/"+dateNow.getMonth() + "/" + dateNow.getFullYear();
+    this.denuncia.time = "";
   }
 };
 </script>

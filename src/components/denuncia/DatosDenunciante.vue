@@ -7,7 +7,9 @@
      </label>
      <div class="form-check">
      <label class="form-check-label">
-     <input type="radio" class="form-check-input" name="anonimato" value="SI" v-model="denunciante.anonimo"> Si </label>
+     <input type="radio" class="form-check-input" name="anonimato" value="SI" v-model="denunciante.anonimo"
+             v-on:change="cambiaToDenunciaAnonima" > Si
+     </label>
      </div>
      <div class="form-check">
      <label class="form-check-label">
@@ -16,7 +18,6 @@
      </div>
      </fieldset>
 
-   Anonimo {{denunciante.anonimo}}
     <!-- NOMBRE -->
     <div class="form-group">
     <label for="nombre">
@@ -40,7 +41,7 @@
       <input type="text" class="form-control" placeholder="Ingrese Apellido" id="apellido"
         name="apellido"
         v-model="denunciante.apellido"
-        :disabled="denunciante.anonimo == 'SI'"
+        v-bind:disabled="denunciante.anonimo == 'SI'"
         v-bind:class="{'is-invalid': denunciante.anonimo=='NO' && submitted && validation.hasError('denunciante.apellido')}">
       <div v-if="denunciante.anonimo == 'NO' && submitted && validation.hasError('denunciante.apellido')" class="text-danger">
         {{ validation.firstError('denunciante.apellido')}}
@@ -48,16 +49,15 @@
     </div>
 
     <div class="form-group">
-      <label for="exampleSelect1">
-        <strong>Tipo Documento *</strong>
+      <label for="tipoDocumento">
+        <div v-if="denunciante.anonimo=='SI'">Tipo Documento</div>
+        <div v-if="denunciante.anonimo =='NO'">Tipo Documento *</div>
       </label>
-      <select class="form-control" id="exampleSelect1"
-              :disabled="denunciante.anonimo == 'SI'">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+      <select class="form-control" id="exampleSelect1" v-bind:disabled="denunciante.anonimo == 'SI'"
+              v-bind:class="{'is-invalid' : denunciante.anonimo == 'NO' && validation.hasError('denunciante.tipoDocumento')}">
+        <option value="DNI">DNI</option>
+        <option value="LC">LC</option>
+        <option value="LE">LE</option>
       </select>
     </div>
     <!-- numero de documento -->
@@ -89,27 +89,24 @@
 
     <fieldset class="form-group">
       <label>
-        <strong>Género *</strong>
+      <div v-if="denunciante.anonimo=='SI'">Género</div>
+      <div v-if="denunciante.anonimo=='NO'">Género *</div>
       </label>
       <div class="form-check">
         <label class="form-check-label">
-        <input type="radio" class="form-check-input" name="genero" id="genero" value="femenino"
-               v-bind:class="{'is-invalid': denunciante.anonimo == 'NO'}" v-model="denunciante.genero">
-            Femenino
+        <input type="radio" class="form-check-input" value="femenino" v-model="denunciante.genero"
+               v-bind:disabled="denunciante.anonimo=='SI'" v-bind:class="{'is-invalid': denunciante.anonimo == 'NO'}" >
+               Femenino
         </label>
       </div>
       <div class="form-check">
         <label class="form-check-label">
-          <input
-            type="radio"
-            class="form-check-input"
-            name="optionsRadios"
-            id="optionsRadios2"
-            value="option2"
-          >
+        <input type="radio" class="form-check-input" value="masculino" v-model="denunciante.genero" v-bind:disabled="denunciante.anonimo== 'SI'">
           Masculino
         </label>
       </div>
+       <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.genero')" class="text-danger">
+         {{validation.firstError('denunciante.genero')}}</div>
     </fieldset>
 
     <strong>DATOS DE CONTACTO</strong>
@@ -118,29 +115,16 @@
       <label>Telefono</label>
       <div class="row">
         <div class="col-md-3">
-        <input type="text" class="form-control" name="codigoArea" id="codigoArea"
-            v-model="denunciante.codigoArea"
-            v-bind:class="{'is-invalid' : submitted && errors.has('codigoArea')}"
-          >
+        <input type="text" class="form-control" name="codigoArea" id="codigoArea" v-model="denunciante.codigoArea">
         </div>
         <div class="col-md-6">
-          <input
-            type="text"
-            class="form-control"
-            name="numeroTelefono"
-            v-model="denunciante.numeroTelefono"
-          >
+          <input type="text" class="form-control" name="numeroTelefono" v-model="denunciante.numeroTelefono">
         </div>
       </div>
 
       <div class="form-group">
         <label for="email">Correo electronico</label>
-        <input
-          type="text"
-          class="form-control"
-          name="correoElectronico"
-          v-model="denunciante.correoElectronico"
-        >
+        <input  type="text" class="form-control" name="correoElectronico" v-model="denunciante.correoElectronico">
       </div>
     </div>
     <div id="actions">
@@ -148,7 +132,7 @@
       <button type="button" class="btn btn-primary" @click="cancelar">Cancelar</button>
     </div>
     <div class="form-right-button">
-      <button type="button" class="btn btn-primary" @click="enviarDatos">Siguiente</button>
+      <button type="button" class="btn btn-primary" @click="siguiente">Siguiente</button>
     </div>
     </div>
 
@@ -212,6 +196,14 @@ export default {
         }
       })
     },
+    "denunciante.genero" : function ( value ) {
+      return Validator.custom( function () {
+        console.log( "genero : value ", value);
+        if( Validator.isEmpty(value)) {
+          return "Debe Seleccionar el Genero"
+        }
+      })
+    }
 
   },
   data() {
@@ -228,7 +220,7 @@ export default {
     };
   },
   methods: {
-    enviarDatos() {
+    siguiente() {
       this.submitted = true;
       if ( this.denunciante.anonimo == 'NO') {
          this.$validate()
@@ -241,9 +233,12 @@ export default {
       } else { // incrementa el paso
         console.log("se incrementa por la que denuncia es anonima")
         this.$emit('increment-step');
-
       }
 
+    },
+    cambiaToDenunciaAnonima() {
+      this.denunciante.anonimo = 'SI';
+      this.$scrollTo('#actions','body', 2000)
     },
     cancelar() {
       console.log(this.$refs);
@@ -257,8 +252,7 @@ export default {
     }
   },
   created() {
-    console.log("created datos denunciante ");
-    console.log(this.denunciante);
+     this.$scrollTo('#denunciante', 'body', 2000);
   }
 };
 </script>

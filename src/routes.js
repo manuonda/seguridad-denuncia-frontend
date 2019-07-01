@@ -6,16 +6,14 @@ import Denuncia from     './views/Denuncia.vue';
 import Dependencia from  './views/Dependencia.vue';
 import Comisaria  from './views/Comisaria.vue';
 import Seguimiento  from './views/Seguimiento.vue';
-import DenunciaRobo from './views/denuncia/DenunciaRobo.vue';
-import DenunciaNarcotrafico from './views/denuncia/Narcotrafico.vue';
+import DenunciaGeneral from './views/denuncia/DenunciaGeneral.vue';
 
 export const routes = [
     { path : ''            ,  redirect : 'denuncia'},
     { path : '/denuncia'   ,  component : Home  ,
       children : [
         { path: '' , component : Denuncia},
-        { path : 'robo', component : DenunciaRobo },
-        { path : 'narcotrafico', component : DenunciaNarcotrafico }
+        { path : 'robo', component : DenunciaGeneral }
       ]
     },
     { path : '/dependencia' , component :  Dependencia},

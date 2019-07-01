@@ -1,7 +1,7 @@
 <template>
- <div>
-   Narcotrafico
- </div>
+  <div id="resumen">
+
+  </div>
 </template>
 <script>
 export default {
