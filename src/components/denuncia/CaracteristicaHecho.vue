@@ -72,22 +72,32 @@ export default {
     caracteristica: Object
   },
   methods: {
-    uploadFileReference(e) {
-      if (this.$refs.fileUpload.files.length > 3) {
+    uploadFileReference() {
+      var files = this.$refs.fileUpload.files;
+      console.log( " files antes ",files );
+      console.log(" opcion 0 => ",files[0].name);
+
+      if ( files.length > 3 ) {
         // fix show alert boostrap
         alert("Se pueden adjuntar hasta 3 archivos ");
       }
-      let cantFaltante = 3 - this.caracteristica.files.length;
+      var sizeVector = this.caracteristica.files.length ;
+      console.log ( sizeVector );
+      var cantFaltante = 3 - sizeVector ;
+      console.log("cant Faltante : ", cantFaltante);
+
+       files.const [propertyName] = arrayToDestruct
+
       for (let i = 0; i < cantFaltante; i++) {
         var reader = new FileReader();
-        var file = this.$refs.fileUpload.files[i];
+        var file = files[i];
         const fileReader = new FileReader();
         const getResult = new Promise(resolve => {
             fileReader.onload = e => {
               this.caracteristica.files.push({
-                name  : this.$refs.fileUpload.files[i].name,
-                size  : this.$refs.fileUpload.files[i].size,
-                type  : this.$refs.fileUpload.files[i].type,
+                name  : files[i].name,
+                size  : files[i].size,
+                type  : files[i].type,
                 image : e.target.result
               });
             };
