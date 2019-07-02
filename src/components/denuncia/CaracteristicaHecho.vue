@@ -64,6 +64,34 @@
     </tbody>
   </table>
     </div>
+     <div id="actions">
+    <div class="form-cancel-button">
+      <button type="button" class="btn btn-primary" @click="anterior">Anterior</button>
+      <button type="button" class="btn btn-primary" @click="cancelar">Cancelar</button>
+    </div>
+
+    <div class="form-right-button">
+      <button type="button" class="btn btn-primary" @click="siguiente">Siguiente</button>
+    </div>
+    </div>
+      <!-- modal -->
+    <b-modal
+      ref="modal-cancelar"
+      headerClass="header-toc"
+      hide-footer
+      cancel-title="Cancelar"
+      ok-title="Aceptar"
+      title="Salir"
+    >
+      <div class="d-block text-center">
+        <p class="warning ng-binding">¿Estás seguro de salir y borrar todos los datos?</p>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-secondary" @click="cancelarModal">NO</button>
+        <button type="button" class="btn btn-primary" @click="aceptarModal">SI</button>
+      </footer>
+    </b-modal>
+  </div>
   </div>
 </template>
 <script>
@@ -86,31 +114,28 @@ export default {
       var cantFaltante = 3 - sizeVector ;
       console.log("cant Faltante : ", cantFaltante);
 
-       files.const [propertyName] = arrayToDestruct
 
-      for (let i = 0; i < cantFaltante; i++) {
-        var reader = new FileReader();
-        var file = files[i];
-        const fileReader = new FileReader();
-        const getResult = new Promise(resolve => {
-            fileReader.onload = e => {
-              this.caracteristica.files.push({
+      for (let i = 0; i < files.length ; i++) {
+        if ( i < cantFaltante ) {
+           var reader = new FileReader();
+           var file = files[i];
+           const fileReader = new FileReader();
+           fileReader.onload = e => {
+           this.caracteristica.files.push({
                 name  : files[i].name,
                 size  : files[i].size,
                 type  : files[i].type,
                 image : e.target.result
               });
             };
-          });
+            fileReader.readAsDataURL(file);
+          }
+        }
 
-          fileReader.readAsDataURL(file);
-          return getResult.then(file => {
-            return file;
-          });
-      }
     },
     removeItem (image ) {
-
+      var indexOf = this.caracteristica.files.indexOf( image );
+      this.caracteristica.files.splice ( indexOf, 1 );
     }
   },
   created() {

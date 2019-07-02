@@ -32,15 +32,16 @@
           <fieldset v-if="step === 3 ">
             <caracteristica-hecho v-bind:caracteristica="caracteristica"
                                   @decrement-step="decrementStep"
-                                  @increment-step="incrementStep"></caracteristica-hecho>
+                                  @increment-step="incrementStep">
+            </caracteristica-hecho>
           </fieldset>
           <fieldset v-if= "step === 4 ">
              <resumen-hecho       v-bind:denunciante="denunciante"
                                   v-bind:localizacion="localizacion"
                                   v-bind:caracteristica="caracteristica"
                                   @decrement-step="decrementStep"
-                                  @finalizar-denuncia="finalizarDenuncia"
-                                  ></resumen-hecho>
+                                  @finalizar-denuncia="finalizarDenuncia">
+            </resumen-hecho>
           </fieldset>
 
         </form>
