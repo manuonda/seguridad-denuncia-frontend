@@ -133,9 +133,34 @@ export default {
         }
 
     },
+      siguiente() {
+      this.submitted = true;
+      this.$emit('increment-step');
+
+       /*this.$validate()
+        .then(function(success) {
+
+        })
+        .catch(error => {
+          console.log(error);
+        });*/
+    },
     removeItem (image ) {
       var indexOf = this.caracteristica.files.indexOf( image );
       this.caracteristica.files.splice ( indexOf, 1 );
+    },
+    anterior() {
+      this.$emit('decrement-step')
+    },
+    cancelar() {
+      console.log(this.$refs);
+      this.$refs["modal-cancelar"].show();
+    },
+    cancelarModal() {
+      this.$refs["modal-cancelar"].hide();
+    },
+    aceptarModal() {
+      alert("aceptar modal");
     }
   },
   created() {
