@@ -2,17 +2,15 @@
   <div id="caracteristica">
     <div class="row">
       <div class="form-group">
-        <label>Descripción del Hecho</label>
+        <label>Descripción del Hecho(*)</label>
         <textarea
-          type="text"
-          class="form-control"
-          rows="11"
-          cols="150"
-          name="descripcion"
-          v-model="caracteristica.descripcion"
-        />
+          type="text" rows="11" cols="150" name="descripcion" v-model="caracteristica.descripcion"
+          v-bind:class="{'is-invalid' :  validation.hasError('descripcion.descripcion')}"/>
       </div>
+       <div v-if="validation.hasError('caracteristica.descripcion')" class="text-danger">
+         {{validation.firstError('caracteristica.descripcion')}}</div>
     </div>
+
     <h3>Adjuntar Imágenes de Evidencia</h3>
     <span class="file-validations">Se pueden enviar hasta 3 archivos de 5MB cada uno</span>
     <div class="form-group">
@@ -51,8 +49,8 @@
             <br>
             <img :src="item.image" style="width: 320px;">
           </td>
-          <td>{{ item.name}}</td>
-          <td>{{ item.size }}</td>
+          <td>{{ item.size}}</td>
+          <td>{{ item.type }}</td>
           <td> <button type="button" class="btn btn-danger btn-xs ng-binding" @click="removeItem(item)">
             <span class="glyphicon glyphicon-trash"></span> Eliminar
           </button>
@@ -92,12 +90,23 @@
       </footer>
     </b-modal>
   </div>
-  </div>
 </template>
 <script>
+import SimpleVueValidator from "simple-vue-validator";
+const Validator = SimpleVueValidator.Validator;
+
 export default {
   props: {
     caracteristica: Object
+  },
+  validators :{
+    'caracteristica.descripcion' : function ( value ) {
+      return Validator.custom(function() {
+          if( Validator.isEmpty(value )) {
+            return "Debe ingresar una descripción del Hecho"
+          }
+      })
+    }
   },
   methods: {
     uploadFileReference() {
@@ -133,17 +142,13 @@ export default {
         }
 
     },
-      siguiente() {
-      this.submitted = true;
-      this.$emit('increment-step');
-
-       /*this.$validate()
-        .then(function(success) {
-
-        })
-        .catch(error => {
-          console.log(error);
-        });*/
+    siguiente() {
+      this.$validate().then( success => {
+       if ( success ) {
+          console.log("increment-step");
+          this.$emit('increment-step');
+         }
+       });
     },
     removeItem (image ) {
       var indexOf = this.caracteristica.files.indexOf( image );

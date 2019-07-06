@@ -1,39 +1,57 @@
 <template>
   <div id="localizacion">
+
+     <h3>Localización del Hecho</h3>
+     <hr/>
      <!-- calle -->
      <div class="form-group">
-      <label for="calle">
-       <div>Calle </div>
-      </label>
-      <input type="text" class="form-control" name="calle" id="calle"
-        v-model="localizacion.calle">
+      <label for="calle"> Calle (*)</label>
+      <input type="text" class="form-control" name="calle" id="calle" v-model="localizacion.calle"
+       v-bind:class="{'is-invalid' :  validation.hasError('localizacion.calle')}"
+       placeholder="Ejemplo : Calle la angostura">
+      <div v-if="validation.hasError('localizacion.calle')" class="text-danger">
+        {{ validation.firstError('localizacion.calle')}}
+      </div>
       </div>
 
-       <!-- numero -->
+
+      <div class="row">
+      <!-- numero -->
+      <div class="col">
       <div class="form-group">
-      <label for="calle">
-       <div>Número</div>
-      </label>
-      <input type="text" class="form-control" name="calle" id="calle"
-        v-model="localizacion.numero">
+      <label for="numero">Número</label>
+      <input type="text" class="form-control" name="numero" id="numero" v-model="localizacion.numero">
+      </div>
+      </div>
+      <!-- piso -->
+      <div class="col">
+      <div class="form-group">
+      <label for="numero">Piso</label>
+      <input type="text" class="form-control" name="piso" id="piso" v-model="localizacion.piso"/>
+      </div>
+      </div>
+      <!-- puerta -->
+      <div class="col">
+      <div class="form-group">
+      <label for="puerta">Puerta</label>
+      <input type="text" class="form-control" name="puerta" id="puerta" v-model="localizacion.puerta"/>
+      </div>
+      </div>
       </div>
 
+     <!-- mapa -->
+     <div id="map" class="map"></div>
 
-
-    <!--
-    <div class="row">
-      <div id="app" style="width: 200px ; height :200px">
-        <l-map :zoom="zoom" :center="center">
-          <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-          <l-marker :lat-lng="marker"></l-marker>
-        </l-map>
-      </div>
-    </div>
-    -->
+     <div class="form-group">
+     <label>Detalle de la ubicación</label>
+     <input type="text" class="form-control" name="detalle" v-model="localizacion.detalle"
+      placeholder="Ej: Casa de rejas negras, timbre 2A"/>
+     </div>
+     <br>
+     <hr>
     <div id="actions">
     <div class="form-cancel-button">
       <button type="button" class="btn btn-primary" @click="cancelar">Cancelar</button>
-      <button type="button" class="btn btn-primary" @click="anterior">Anterior</button>
     </div>
 
     <div class="form-right-button">
@@ -47,8 +65,7 @@
       hide-footer
       cancel-title="Cancelar"
       ok-title="Aceptar"
-      title="Salir"
-    >
+      title="Salir">
       <div class="d-block text-center">
         <p class="warning ng-binding">¿Estás seguro de salir y borrar todos los datos?</p>
       </div>
@@ -60,41 +77,38 @@
   </div>
 </template>
 <script>
-import { LMap, LTileLayer, LMarker } from "vue2-leaflet";
+import SimpleVueValidator from "simple-vue-validator";
+const Validator = SimpleVueValidator.Validator;
+
 
 export default {
   props: {
     localizacion: Object
   },
-  components: {
-    LMap,
-    LTileLayer,
-    LMarker
+  validators:{
+   'localizacion.calle':function ( value ){
+     return Validator.custom(function() {
+        if ( Validator.isEmpty( value )) {
+           return "Debe Ingresar Calle"
+        }
+     })
+   }
   },
   data() {
     return {
-      latitud: 0,
-      longitud: 0,
-      zoom: 8,
-      center: L.latLng(47.41322, -1.219482),
-      url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-      attribution:
-        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      marker: L.latLng(47.41322, -1.219482)
+       map : '',
+       latitud : 0,
+       longitud : 0
     };
   },
   methods: {
       siguiente() {
-      this.submitted = true;
-      this.$emit('increment-step');
-
-       /*this.$validate()
-        .then(function(success) {
-
-        })
-        .catch(error => {
-          console.log(error);
-        });*/
+      this.$validate().then( success => {
+       if ( success ) {
+          console.log("increment-step");
+          this.$emit('increment-step');
+         }
+       })
     },
     anterior() {
       this.$emit('decrement-step')
@@ -108,25 +122,72 @@ export default {
     },
     aceptarModal() {
       alert("aceptar modal");
+    },
+    initMap( localizacion , latitud = null  , longitud = null) {
+       this.latitud = -24.1945700;
+       this.longitud= -65.2971200;
+
+      if ( latitud != null && longitud != null ) {
+          this.latitud = latitud ;
+          this.longitud = longitud ;
+      }
+      this.map = L.map('map').setView( [ this.latitud , this.longitud ] , 12);
+      this.tileLayer = L.tileLayer( 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',{
+      maxZoom: 20,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>',
+      });
+     this.tileLayer.addTo(this.map);
+
+     var marker =  L.marker( [ this.latitud , this.longitud ] ,{
+          draggable : true
+     }).addTo(this.map);
+
+     marker.on('dragend', function( event) {
+      if ( event != null && event != undefined ) {
+        var marker = event.target;  // you could also simply access the marker through the closure
+        var result = marker.getLatLng();  // but using the passed event is cleaner
+        this.latitud = result.lat;
+        this.longitud = result.lng;
+        localizacion.latitud = result.lat;
+        localizacion.longitud = result.lng;
+
+      }
+
+     });
+
     }
   },
   created(){
      console.log("created localizacion");
-     this.$scrollTo('#localizacion', 'body', 2000);
+     console.log("localizacion: ", this.localizacion);
+
   },
+  // Code to run when app is mounted
   mounted() {
-    this.$scrollTo('#localizacion','body', 2000);
+    console.log("mounted");
+    this.$getLocation({
+       enableHighAccuracy: false, //defaults to false
+       maximumAge: 1 //defaults to 0
+    }).then(coordinates => {
+       this.initMap( this.localizacion, coordinates.lat, coordinates.lng);
+    }).catch( error => {
+       this.initMap(this.localizacion, null , null );
+    });
+     //this.$scrollTo('#localizacion','body', 2000);
+     //this.$scrollTo('#steps', 'body', 1000);
+     //this.$scrollTo("#localizacion",'body', 1000)
+     $('#localizacion').scrollTop(100);
   },
   beforeUpdate(){
-    console.log("beforeUpdate localizacion");
-    this.$scrollTo('#localizacion','body',2000);
+    $('#localizacion').scrollTop(100);
   }
 };
 </script>
 <style>
 #app {
-    width: 100%;
-    height: 500px;
+    width:  100%;
+    height: 250px;
     z-index: 0 !important;
 }
+.map { height: 600px; }
 </style>

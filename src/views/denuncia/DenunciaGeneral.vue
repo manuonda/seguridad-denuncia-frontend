@@ -5,7 +5,7 @@
     <sub-header title="ROBO / HURTO"></sub-header>
     <div class="layout-container has-subheader">
       <div class="form-layout wizard">
-       <div class="steps clearfix">
+       <div class="steps clearfix" id="steps">
        <ul role="tablist">
        <li role="tab" class="first done" aria-disabled="false" aria-selected="false">
        <a id="wizard1-t-0" href="#wizard1-h-0" aria-controls="wizard1-p-0">
@@ -21,22 +21,38 @@
 
         <form >
         <fieldset v-if="step == 1">
-          <datos-denunciante v-bind:denunciante="denunciante" @increment-step="incrementStep"></datos-denunciante>
-          </fieldset>
-          <fieldset v-if="step === 2">
-               <localizacion-hecho v-bind:localizacion="localizacion"
+              <localizacion-hecho  v-bind:localizacion="localizacion"
                                    @decrement-step="decrementStep"
                                    @increment-step="incrementStep">
               </localizacion-hecho>
           </fieldset>
-          <fieldset v-if="step === 3 ">
-            <caracteristica-hecho v-bind:caracteristica="caracteristica"
-                                  @decrement-step="decrementStep"
-                                  @increment-step="incrementStep">
-            </caracteristica-hecho>
+          <fieldset v-if="step === 2">
+            <caracteristica-hecho
+                              v-bind:caracteristica="caracteristica"
+                              @decrement-step="decrementStep"
+                              @increment-step="incrementStep">
+          </caracteristica-hecho>
+
+
           </fieldset>
-          <fieldset v-if= "step === 4 ">
+             <fieldset v-if="step === 3  ">
+             <datos-denunciado
+                              v-bind:denunciado="denunciado"
+                              @increment-step="incrementStep"
+                              @decrement-step="decrementStep">
+             </datos-denunciado>
+           </fieldset>
+           <fieldset v-if="step === 4 ">
+             <datos-denunciante
+                              v-bind:denunciante="denunciante"
+                              @increment-step="incrementStep"
+                              @decrement-step="decrementStep">
+            </datos-denunciante>
+           </fieldset>
+
+           <fieldset v-if="step === 5 ">
              <resumen-hecho       v-bind:denunciante="denunciante"
+                                  v-bind:denunciado="denunciado"
                                   v-bind:localizacion="localizacion"
                                   v-bind:caracteristica="caracteristica"
                                   @decrement-step="decrementStep"
@@ -55,6 +71,7 @@ import axios from 'axios';
 
 import SubHeader from "../../components/SubHeader";
 import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
+import DatosDenunciado  from './../../components/denuncia/DatosDenunciado';
 import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
 import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
 import CaracteristicaHecho from '../../components/denuncia/CaracteristicaHecho';
@@ -67,7 +84,8 @@ export default {
     DatosDenunciante: DatosDenunciante,
     LocalizacionHecho : LocalizacionHecho,
     CaracteristicaHecho : CaracteristicaHecho,
-    ResumenHecho :  ResumenHecho
+    ResumenHecho :  ResumenHecho,
+    DatosDenunciado : DatosDenunciado
   },
   data() {
     return {
@@ -95,14 +113,22 @@ export default {
         numeroTelefono: '',
         correoElectronico: '',
         genero:''
-
+      },
+      denunciado : {
+        nombre: '',
+        apellido : '',
+        apodo : '',
+        genero: ''
       },
       localizacion : {
         fechaHecho : '',
         latitud : 0,
         longitud : 0,
         calle:'',
-        numero:''
+        numero:'',
+        piso : '',
+        puerta : '',
+        detalle: ''
       },
       caracteristica : {
         descripcion: '',
@@ -116,7 +142,9 @@ export default {
       alert("Canclear");
     },
     incrementStep(){
+      console.log( " step : "+this.step);
       this.step +=1;
+
     },
     decrementStep() {
       if ( this.step > 0 ){

@@ -127,10 +127,12 @@
         <input  type="text" class="form-control" name="correoElectronico" v-model="denunciante.correoElectronico">
       </div>
     </div>
-    <div id="actions">
+     <div id="actions">
     <div class="form-cancel-button">
+      <button type="button" class="btn btn-primary" @click="anterior">Anterior</button>
       <button type="button" class="btn btn-primary" @click="cancelar">Cancelar</button>
     </div>
+
     <div class="form-right-button">
       <button type="button" class="btn btn-primary" @click="siguiente">Siguiente</button>
     </div>
@@ -220,18 +222,22 @@ export default {
     };
   },
   methods: {
+    anterior () {
+      this.$emit('decrement-step');
+    },
     siguiente() {
       this.submitted = true;
       if ( this.denunciante.anonimo == 'NO') {
          this.$validate()
         .then(function(success) {
-
+          if ( success ) {
+                this.$emit('increment-step');
+          }
         })
         .catch(error => {
           console.log(error);
         });
       } else { // incrementa el paso
-        console.log("se incrementa por la que denuncia es anonima")
         this.$emit('increment-step');
       }
 
