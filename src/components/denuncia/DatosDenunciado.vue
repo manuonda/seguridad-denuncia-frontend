@@ -38,6 +38,38 @@
     </fieldset>
 
     <strong>DOMICILIO DEL DENUNCIADO</strong>
+     <hr>
+      <!-- calle -->
+     <div class="form-group">
+      <label for="calle"> Calle (*)</label>
+      <input type="text" class="form-control" name="calle" id="calle" v-model="denunciado.calle" placeholder="Ejemplo : Calle la angostura">
+      </div>
+
+
+      <div class="row">
+      <!-- numero -->
+      <div class="col">
+      <div class="form-group">
+      <label for="numero">Número</label>
+      <input type="text" class="form-control" name="numero" id="numero" v-model="denunciado.numero">
+      </div>
+      </div>
+      <!-- piso -->
+      <div class="col">
+      <div class="form-group">
+      <label for="numero">Piso</label>
+      <input type="text" class="form-control" name="piso" id="piso" v-model="denunciado.piso"/>
+      </div>
+      </div>
+      <!-- puerta -->
+      <div class="col">
+      <div class="form-group">
+      <label for="puerta">Puerta</label>
+      <input type="text" class="form-control" name="puerta" id="puerta" v-model="denunciado.puerta"/>
+      </div>
+      </div>
+      </div>
+
     <hr>
        <div id="actions">
     <div class="form-cancel-button">

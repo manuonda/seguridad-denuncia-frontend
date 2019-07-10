@@ -5,21 +5,8 @@
     <sub-header title="ROBO / HURTO"></sub-header>
     <div class="layout-container has-subheader">
       <div class="form-layout wizard">
-       <div class="steps clearfix" id="steps">
-       <ul role="tablist">
-       <li role="tab" class="first done" aria-disabled="false" aria-selected="false">
-       <a id="wizard1-t-0" href="#wizard1-h-0" aria-controls="wizard1-p-0">
-       <span class="number">1</span> <span class="title">Personal Information</span></a></li>
-       <li role="tab" class="done" aria-disabled="false" aria-selected="false">
-       <a id="wizard1-t-1" href="#wizard1-h-1" aria-controls="wizard1-p-1"><span class="number">2</span>
-       <span class="title">Billing Information</span></a></li>
-       <li role="tab" class="last current" aria-disabled="false" aria-selected="true">
-       <a id="wizard1-t-2" href="#wizard1-h-2" aria-controls="wizard1-p-2">
-       <span class="current-info audible">current step: </span><span class="number">3</span>
-       <span class="title">Payment Details</span></a></li></ul>
-        </div>
-
-        <form >
+        <slider></slider>
+        <form  style="display: block;margin-top: 0em;">
         <fieldset v-if="step == 1">
               <localizacion-hecho  v-bind:localizacion="localizacion"
                                    @decrement-step="decrementStep"
@@ -70,6 +57,7 @@
 import axios from 'axios';
 
 import SubHeader from "../../components/SubHeader";
+import Slider    from "../../components/Slide";
 import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
 import DatosDenunciado  from './../../components/denuncia/DatosDenunciado';
 import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
@@ -85,7 +73,8 @@ export default {
     LocalizacionHecho : LocalizacionHecho,
     CaracteristicaHecho : CaracteristicaHecho,
     ResumenHecho :  ResumenHecho,
-    DatosDenunciado : DatosDenunciado
+    DatosDenunciado : DatosDenunciado ,
+    Slider : Slider
   },
   data() {
     return {
@@ -118,7 +107,11 @@ export default {
         nombre: '',
         apellido : '',
         apodo : '',
-        genero: ''
+        genero: '',
+        calle : '',
+        numero : '',
+        piso   : '' ,
+        puerta : ''
       },
       localizacion : {
         fechaHecho : '',

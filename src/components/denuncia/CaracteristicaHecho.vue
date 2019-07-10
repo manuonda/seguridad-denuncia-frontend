@@ -62,6 +62,7 @@
     </tbody>
   </table>
     </div>
+    <hr>
      <div id="actions">
     <div class="form-cancel-button">
       <button type="button" class="btn btn-primary" @click="anterior">Anterior</button>
