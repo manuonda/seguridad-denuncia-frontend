@@ -677,7 +677,9 @@ md-dialog .md-dialog-content {
 }
 
 .layout-container {
-  padding-top: 90px;
+
+  padding-top: 50px;
+
   padding-bottom: 60px;
   background-color: #ece7e7
 }

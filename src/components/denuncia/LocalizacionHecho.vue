@@ -186,8 +186,8 @@ export default {
 <style>
 #app {
     width:  100%;
-    height: 250px;
+    height: 200px;
     z-index: 0 !important;
 }
-.map { height: 600px; }
+.map { height: 500px; }
 </style>
