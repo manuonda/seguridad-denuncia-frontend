@@ -1,8 +1,5 @@
 <template>
   <div id="localizacion">
-
-     <h3>Localización del Hecho</h3>
-     <hr/>
      <!-- calle -->
      <div class="form-group">
       <label for="calle"> Calle (*)</label>

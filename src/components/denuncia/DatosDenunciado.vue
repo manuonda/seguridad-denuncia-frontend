@@ -1,7 +1,5 @@
 <template>
   <div id="denunciante">
-
-    <h3>Información Relativa al Denunciado</h3>
     <!-- NOMBRE -->
     <div class="form-group"><label for="nombre">Nombre</label>
     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese Nombre"

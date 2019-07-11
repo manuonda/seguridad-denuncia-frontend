@@ -5,17 +5,22 @@
     <li ng-class="{default: !step.completed &amp;&amp; !step.selected, current: step.selected &amp;&amp; !step.completed, done: step.completed &amp;&amp; !step.selected, editing: step.selected &amp;&amp; step.completed}" ng-repeat="step in getEnabledSteps()" class="ng-scope done" style="">
         <a  class="ng-binding">
           <span class="step-icon" style="position: absolute;left: 50%;">1</span>
-          <span class="" style="color: #999; font-weight: 400;padding: 14px 0 8px; display: block;">Datos del denunciante</span>
+          <span class="" style="color: #999; font-weight: 400;padding: 14px 0 8px; display: block;">
+            Datos del Hecho</span>
         </a>
-      </li><!-- end ngRepeat: step in getEnabledSteps() --><li ng-class="{default: !step.completed &amp;&amp; !step.selected, current: step.selected &amp;&amp; !step.completed, done: step.completed &amp;&amp; !step.selected, editing: step.selected &amp;&amp; step.completed}" ng-repeat="step in getEnabledSteps()" class="ng-scope current" style="">
-        <a>Datos del hecho</a>
-      </li><!-- end ngRepeat: step in getEnabledSteps() --><li ng-class="{default: !step.completed &amp;&amp; !step.selected, current: step.selected &amp;&amp; !step.completed, done: step.completed &amp;&amp; !step.selected, editing: step.selected &amp;&amp; step.completed}" ng-repeat="step in getEnabledSteps()" class="ng-scope default">
-        <a>Características del hecho</a>
-      </li><!-- end ngRepeat: step in getEnabledSteps() --><li ng-class="{default: !step.completed &amp;&amp; !step.selected, current: step.selected &amp;&amp; !step.completed, done: step.completed &amp;&amp; !step.selected, editing: step.selected &amp;&amp; step.completed}" ng-repeat="step in getEnabledSteps()" class="ng-scope default">
-        <a ng-click="goTo(step)" class="ng-binding">Evidencias</a>
-      </li><!-- end ngRepeat: step in getEnabledSteps() --><li ng-class="{default: !step.completed &amp;&amp; !step.selected, current: step.selected &amp;&amp; !step.completed, done: step.completed &amp;&amp; !step.selected, editing: step.selected &amp;&amp; step.completed}" ng-repeat="step in getEnabledSteps()" class="ng-scope default">
-        <a ng-click="goTo(step)" class="ng-binding">Resumen</a>
-      </li><!-- end ngRepeat: step in getEnabledSteps() -->
+      </li>
+      <li>
+        <a>Característica del Hecho</a>
+      </li>
+      <li>
+        <a>Datos del Denunciado</a>
+      </li>
+      <li>
+        <a >Datos del Denunciante</a>
+      </li>
+      <li>
+        <a>Resumen</a>
+      </li>
     </ul>
 
   </div>

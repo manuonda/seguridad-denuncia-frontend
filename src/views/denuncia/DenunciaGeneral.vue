@@ -96,6 +96,7 @@ export default {
         anonimo:'NO',
         nombre : '',
         apellido: '',
+        tipoDocumento : '',
         numeroDocumento:'',
         fechaNacimiento : '',
         codigoArea : '',

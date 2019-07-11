@@ -54,6 +54,7 @@
         <div v-if="denunciante.anonimo =='NO'">Tipo Documento *</div>
       </label>
       <select class="form-control" id="exampleSelect1" v-bind:disabled="denunciante.anonimo == 'SI'"
+              v-model="denunciante.tipoDocumento"
               v-bind:class="{'is-invalid' : denunciante.anonimo == 'NO' && validation.hasError('denunciante.tipoDocumento')}">
         <option value="DNI">DNI</option>
         <option value="LC">LC</option>
@@ -74,6 +75,7 @@
          {{validation.firstError('denunciante.numeroDocumento')}}</div>
     </div>
 
+    <!--
     <div class="form-group">
       <label for="fechaNacimiento">
        <div v-if="denunciante.anonimo=='SI'">Fecha Nacimiento</div>
@@ -86,6 +88,7 @@
        <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.fechaNacimiento')" class="text-danger">
          {{validation.firstError('denunciante.fechaNacimiento')}}</div>
     </div>
+
 
     <fieldset class="form-group">
       <label>
@@ -108,23 +111,29 @@
        <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.genero')" class="text-danger">
          {{validation.firstError('denunciante.genero')}}</div>
     </fieldset>
-
+     -->
     <strong>DATOS DE CONTACTO</strong>
     <hr>
     <div class="form-group">
       <label>Telefono</label>
       <div class="row">
         <div class="col-md-3">
-        <input type="text" class="form-control" name="codigoArea" id="codigoArea" v-model="denunciante.codigoArea">
+        <input type="text" class="form-control" name="codigoArea" id="codigoArea" v-model="denunciante.codigoArea"
+          placeholder="Ej : 388"
+         >
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" name="numeroTelefono" v-model="denunciante.numeroTelefono">
+          <input type="text" class="form-control" name="numeroTelefono" v-model="denunciante.numeroTelefono"
+           placeholder="Ej: 154589546"
+          >
         </div>
       </div>
 
       <div class="form-group">
         <label for="email">Correo electronico</label>
-        <input  type="text" class="form-control" name="correoElectronico" v-model="denunciante.correoElectronico">
+        <input  type="text" class="form-control" name="correoElectronico" v-model="denunciante.correoElectronico"
+         placeholder="Ej : seguridad@gmail.com"
+        >
       </div>
     </div>
      <div id="actions">
@@ -190,21 +199,6 @@ export default {
     "denunciante.numeroDocumento" : function(value){
       return Validator.value(value).required().regex('^[0-9]', 'Debe contener solamente valor numericos.');
 
-    },
-    "denunciante.fechaNacimiento": function( value ){
-      return Validator.custom( function () {
-        if(Validator.isEmpty(value)) {
-          return "Debe Ingresar una fecha de Nacimiento"
-        }
-      })
-    },
-    "denunciante.genero" : function ( value ) {
-      return Validator.custom( function () {
-        console.log( "genero : value ", value);
-        if( Validator.isEmpty(value)) {
-          return "Debe Seleccionar el Genero"
-        }
-      })
     }
 
   },
@@ -228,15 +222,11 @@ export default {
     siguiente() {
       this.submitted = true;
       if ( this.denunciante.anonimo == 'NO') {
-         this.$validate()
-        .then(function(success) {
+          this.$validate().then( success => {
           if ( success ) {
-                this.$emit('increment-step');
+               this.$emit('increment-step');
           }
         })
-        .catch(error => {
-          console.log(error);
-        });
       } else { // incrementa el paso
         this.$emit('increment-step');
       }
