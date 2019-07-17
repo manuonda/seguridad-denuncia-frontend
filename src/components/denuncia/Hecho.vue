@@ -1,14 +1,14 @@
 <template>
-  <div id="caracteristica">
+  <div id="hecho">
     <div class="row">
       <div class="form-group">
         <label>Descripción del Hecho(*)</label>
         <textarea
-          type="text" rows="11" cols="150" name="descripcion" v-model="caracteristica.descripcion"
-          v-bind:class="{'is-invalid' :  validation.hasError('descripcion.descripcion')}"/>
+          type="text" rows="11" cols="150" name="descripcion" v-model="hecho.descripcion"
+          v-bind:class="{'is-invalid' :  validation.hasError('hecho.descripcion')}"/>
       </div>
-       <div v-if="validation.hasError('caracteristica.descripcion')" class="text-danger">
-         {{validation.firstError('caracteristica.descripcion')}}</div>
+       <div v-if="validation.hasError('hecho.descripcion')" class="text-danger">
+         {{validation.firstError('hecho.descripcion')}}</div>
     </div>
 
     <h3>Adjuntar Imágenes de Evidencia</h3>
@@ -20,11 +20,11 @@
         ref="fileUpload"
         @change="uploadFileReference"
         accept=".jpg, .png, .jpeg"
-        v-bind:disabled="caracteristica.files.length >= 3"
+        v-bind:disabled="hecho.files.length >= 3"
       />
-      files.length {{ caracteristica.files.length}}
+      files.length {{ hecho.files.length}}
     </div>
-    <div class="form-group" v-show="caracteristica.files.length > 0">
+    <div class="form-group" v-show="hecho.files.length > 0">
       <table class="table">
     <thead>
       <tr>
@@ -32,7 +32,7 @@
           Nombre
         </th>
         <th aria-hidden="false">
-          Tamaño
+          Tamaño MB
         </th>
         <th aria-hidden="false">
           Tipo
@@ -43,11 +43,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in caracteristica.files" >
+      <tr v-for="item in hecho.files" >
          <td >
             <strong> {{ item.name }} </strong>
             <br>
-            <img :src="item.image" style="width: 320px;">
+            <img :src="item.image" style="width: 220px;">
           </td>
           <td>{{ item.size}}</td>
           <td>{{ item.type }}</td>
@@ -98,10 +98,10 @@ const Validator = SimpleVueValidator.Validator;
 
 export default {
   props: {
-    caracteristica: Object
+    hecho: Object
   },
   validators :{
-    'caracteristica.descripcion' : function ( value ) {
+    'hecho.descripcion' : function ( value ) {
       return Validator.custom(function() {
           if( Validator.isEmpty(value )) {
             return "Debe ingresar una descripción del Hecho"
@@ -119,7 +119,7 @@ export default {
         // fix show alert boostrap
         alert("Se pueden adjuntar hasta 3 archivos ");
       }
-      var sizeVector = this.caracteristica.files.length ;
+      var sizeVector = this.hecho.files.length ;
       console.log ( sizeVector );
       var cantFaltante = 3 - sizeVector ;
       console.log("cant Faltante : ", cantFaltante);
@@ -131,17 +131,18 @@ export default {
            var file = files[i];
            const fileReader = new FileReader();
            fileReader.onload = e => {
-           this.caracteristica.files.push({
+             console.log( "size image ",files[i].size /  (1024*1024).toFixed(2));
+           this.hecho.files.push({
                 name  : files[i].name,
-                size  : files[i].size,
+                size  : (files[i].size / Math.pow(1024,2)),
                 type  : files[i].type,
-                image : e.target.result
+                image : e.target.result,
+                file  : files[i]
               });
             };
             fileReader.readAsDataURL(file);
           }
         }
-
     },
     siguiente() {
       this.$validate().then( success => {
@@ -152,8 +153,8 @@ export default {
        });
     },
     removeItem (image ) {
-      var indexOf = this.caracteristica.files.indexOf( image );
-      this.caracteristica.files.splice ( indexOf, 1 );
+      var indexOf = this.hecho.files.indexOf( image );
+      this.hecho.files.splice ( indexOf, 1 );
     },
     anterior() {
       this.$emit('decrement-step')
@@ -170,7 +171,7 @@ export default {
     }
   },
   created() {
-    console.log(this.caracteristica);
+    console.log(this.hecho);
   },
   mounted() {
 

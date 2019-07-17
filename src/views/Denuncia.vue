@@ -74,11 +74,10 @@
   <!-- end tipo de denuncias -->
 </template>
 <script>
-import DenunciaCard from "../components/denuncia/card.vue";
+
 
 export default {
   components: {
-    DenunciaCard: DenunciaCard
   },
   data() {
     return {

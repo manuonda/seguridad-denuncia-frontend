@@ -39,7 +39,7 @@
      <hr>
       <!-- calle -->
      <div class="form-group">
-      <label for="calle"> Calle (*)</label>
+      <label for="calle"> Calle</label>
       <input type="text" class="form-control" name="calle" id="calle" v-model="denunciado.calle" placeholder="Ejemplo : Calle la angostura">
       </div>
 

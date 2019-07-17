@@ -75,21 +75,6 @@
          {{validation.firstError('denunciante.numeroDocumento')}}</div>
     </div>
 
-    <!--
-    <div class="form-group">
-      <label for="fechaNacimiento">
-       <div v-if="denunciante.anonimo=='SI'">Fecha Nacimiento</div>
-       <div v-if="denunciante.anonimo=='NO'">Fecha Nacimiento *</div>
-      </label>
-       <date-picker v-model="denunciante.fechaNacimiento" :config="options" :language="es"
-          v-bind:disabled="denunciante.anonimo == 'SI'"
-          v-bind:class="{'is-invalid' : denunciante.anonimo == 'NO' && validation.hasError('denunciante.fechaNacimiento')}"
-       ></date-picker>
-       <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.fechaNacimiento')" class="text-danger">
-         {{validation.firstError('denunciante.fechaNacimiento')}}</div>
-    </div>
-
-
     <fieldset class="form-group">
       <label>
       <div v-if="denunciante.anonimo=='SI'">Género</div>
@@ -111,7 +96,7 @@
        <div v-if="denunciante.anonimo == 'NO'&& validation.hasError('denunciante.genero')" class="text-danger">
          {{validation.firstError('denunciante.genero')}}</div>
     </fieldset>
-     -->
+
     <strong>DATOS DE CONTACTO</strong>
     <hr>
     <div class="form-group">
@@ -119,21 +104,18 @@
       <div class="row">
         <div class="col-md-3">
         <input type="text" class="form-control" name="codigoArea" id="codigoArea" v-model="denunciante.codigoArea"
-          placeholder="Ej : 388"
-         >
+        placeholder="Ej: 388">
         </div>
         <div class="col-md-6">
           <input type="text" class="form-control" name="numeroTelefono" v-model="denunciante.numeroTelefono"
-           placeholder="Ej: 154589546"
-          >
+           placeholder="Ej: 155423568">
         </div>
       </div>
 
       <div class="form-group">
         <label for="email">Correo electronico</label>
         <input  type="text" class="form-control" name="correoElectronico" v-model="denunciante.correoElectronico"
-         placeholder="Ej : seguridad@gmail.com"
-        >
+         placeholder="Ej: correo@hotmail.com">
       </div>
     </div>
      <div id="actions">
