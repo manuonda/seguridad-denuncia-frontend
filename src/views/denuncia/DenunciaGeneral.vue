@@ -203,29 +203,30 @@ export default {
          'content-type': 'application/x-www-form-urlencoded'
          }
         }).then ( (result ) =>{
-          if( result != null && result.status == 'OK '){
+         console.log( result );
 
-          }
       })
       .catch( error => {
-         console.log( error );
+          if ( error != null  && error.status == 429 ) {
+
+          }
       });
 
-       axios.get('http://localhost:4000/evidencia/list').then ( (result ) =>{
+      /* axios.get('http://localhost:4000/evidencia/list').then ( (result ) =>{
           console.log( result );
           var imagen = result.data[0];
             console.log( imagen );
               /* var bytes = new Uint8Array(imagen.file.data);
               var binary = bytes.reduce((data, b) => data += String.fromCharCode(b), '');
               this.src = "data:image/jpeg;base64," + btoa(binary);*/
-                var binary = '';
+           /*     var binary = '';
                 var bytes = [].slice.call(new Uint8Array(imagen.file.data));
                 bytes.forEach((b) => binary += String.fromCharCode(b));
                 this.src = 'data:image/jpeg;base64,' + window.btoa(binary);
       })
       .catch( error => {
          console.log( error );
-      });
+      });*/
 
     }
   },
