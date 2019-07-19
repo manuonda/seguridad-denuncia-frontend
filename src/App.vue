@@ -122,7 +122,7 @@ export default {
     padding-right: 15px;
     padding-bottom: 20px;
     padding-left: 15px;
-    background-color: #801c1a ! important;
+    background-color: #1955a6 ! important;
 }
 
 
@@ -144,7 +144,7 @@ export default {
 }
 
 .bg-primary2 {
-    background-color: #801C1A !important;
+    background-color: #1955a6 !important;
 }
 
 .nav2 > li > a {

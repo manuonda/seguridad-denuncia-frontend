@@ -5,19 +5,7 @@
         <div class="col-lg-12">
           <div class="bs-component">
             <div class="presentacion" >
-              <h1
-                class="text-titulo home-title sombra"
-              >Ahora podés informar hechos delictivos sin ir a la comisaría</h1>
-              <hr class="my-4">
-              <p
-                class="text-center text-centro sombra intro h5"
-              >Si presenciaste o fuiste víctima de un robo, corrupción policial, venta de drogas, violencia familiar o de género, delito contra la integridad sexual, tenés conocimiento sobre actividades de juego ilegal o sobre comercio ilegal de autopartes, no lo dudes. Las denuncias de corrupción policial, narcotráfico, juego ilegal y comercio ilegal de autopartes, se pueden hacer de forma anónima.</p>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
+
               <p class="lead text-center">
                 <button
                   class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
@@ -98,7 +86,7 @@ export default {
   },
   methods : {
     showPageDenuncia() {
-      this.$router.push('/denuncia/robo')
+      this.$router.push('/denuncia/general')
     }
 
   }
@@ -225,7 +213,7 @@ export default {
 }
 
 .presentacion {
-    background-image: url(../assets/images/denuncia4.png);
+    background-image: url(../assets/images/vecinoweb.png);
     background-size: cover;
     padding-left: 30px;
     text-align: center;

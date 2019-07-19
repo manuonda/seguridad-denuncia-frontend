@@ -1,0 +1,1575 @@
+@font-face {
+  font-family: 'din';
+  src: url('../fonts/DINNextRoundedLTPro-Light.eot?#iefix') format('embedded-opentype'),  url('../fonts/DINNextRoundedLTPro-Light.otf')  format('opentype'),
+       url('../fonts/DINNextRoundedLTPro-Light.ttf')  format('truetype'), url('../fonts/DINNextRoundedLTPro-Light.svg#DINNextRoundedLTPro-Light') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+font-family: 'dinBold';
+src: url('../fonts/DINNextRoundedLTPro-Bold.otf')  format('opentype'), url("../fonts/DINNextRoundedLTPro-Bold.ttf") format("truetype");
+}
+
+@media (max-width: 768px) {
+
+  [class*="col-"]{
+      margin-bottom: 25px;
+  }
+
+  .row-tree{
+    margin-top: 30px;
+  }
+
+  .no-padding {
+    padding-right: 15px !important;
+  }
+
+  .caja-imagen-robo {
+    background-image: url("../img/robo-wide.jpg") !important;
+  }
+
+  .caja-imagen-drogas {
+      background-image: url("../img/drogas-wide.jpg") !important;
+  }
+
+  .caja-imagen-corrupcion {
+      background-image: url("../img/corrupcion-wide.jpg") !important;
+  }
+
+  .caja-imagen-juego {
+    background-image: url("../img/juego-wide.jpg") !important;
+  }
+
+  .caja-imagen-violencia {
+    background-image: url("../img/violencia-wide.jpg") !important;
+  }
+
+  .caja-imagen-autopartes {
+    background-image: url("../img/autopartes-wide.jpg") !important;
+  }
+
+  .caja-imagen-celular {
+    background-image: url("../img/celular-wide.jpg") !important;
+  }
+
+  .caja-imagen-cuatrerismo {
+    background-image: url("../img/cuatrerismo-wide.jpg") !important;
+  }
+
+  .caja-imagen-abuso {
+    background-image: url("../img/abuso-wide.jpg") !important;
+  }
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+  /* background-color: #2b2b2b; */
+}
+
+body {
+  /*padding-top:100px;*/
+  margin-bottom: 60px;
+  font-family: 'din';
+  /* background-color:#ece7e7; */
+}
+
+h2 {
+  font-size: 40px;
+  font-family: 'dinBold';
+}
+
+.container {
+  width: 100% !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  top: 22px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+   .subheader {
+      margin-top: 0px !important;
+      top: 70px !important;
+  }
+
+  .home-title {
+    font-size: 25px;
+    margin-top: 5px!important;
+    margin-bottom: 5px !important;
+  }
+
+  .optional-title {
+    display: none;
+  }
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+ .subheader {
+      margin-top: 50px !important;
+      top: 70px !important;
+  }
+}
+
+/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+/* Styles */
+}
+/**********
+iPad 3
+**********/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+}
+
+/* iPhone 4 ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+/* Styles */
+}
+
+/* iPhone 5 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6 ----------- */
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* iPhone 6+ ----------- */
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S3 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
+/* Styles */
+}
+
+/* Samsung Galaxy S4 ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+/* Samsung Galaxy S5 ----------- */
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
+
+}
+
+@media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
+/* Styles */
+}
+
+
+@media screen  and (max-width: 950px){
+        .container {
+          top: -20px;
+        }
+
+        .intro {
+          font-size: 16px !important;
+        }
+
+        .navbar-brand-left  {
+          padding-left: 5% !important;
+        }
+
+        .presentacion {
+          height: 100% !important;
+        }
+
+        .navbar-nav {
+          margin-left: 5% !important;
+        }
+        .map-toolbox {
+          margin-top: 50px !important;
+        }
+
+        .foto-comisario {
+          max-width: 200px !important;
+          text-align: center;
+          float: none !important;
+          margin-bottom: 20px;
+        }
+
+        .datos-comisario {
+          float:right;
+          padding: 20px;
+          text-align: center;
+        }
+
+        .footerPrincipal {
+          text-align: center;
+          margin-top: -40px;
+        }
+
+        .logoProv {
+          text-align: center !important;
+        }
+
+        .btn-low {
+          left: 49% !important;
+          width: auto !important;
+        }
+
+        .steps-indicator {
+        	font-size: 0px !important;
+        }
+
+        .version {
+          margin-right: -15px !important;
+        }
+
+        .logoTelefonos {
+          padding: 10px !important;
+          height: 35px !important;
+        }
+
+        .logoGenero {
+          height: 33px !important;
+        }
+
+        .nav > li > a {
+          font-size: 12px !important;
+        }
+
+        .navbar-brand-right {
+          padding-top: 20px !important;
+          width: 300px !important;
+        }
+
+        .seguimiento {
+            margin-top:40px !important;
+        }
+}
+
+@media screen and (min-height: 1024px){
+        .presentacion {
+            height: 60vh !important;
+        }
+}
+
+.footer {
+  background-color: #2b2b2b;
+}
+
+.header {
+  border-bottom: 4px solid #9aca3c;
+  background-color: #fff;
+  height: 100px;
+  padding-left: 100px;
+  padding-right: 80px;
+}
+
+.whiteFont {
+  color: white;
+}
+
+.header-brand {
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+    height: 55px;
+}
+
+.footerPrincipal {
+    z-index: 0 !important;
+    width: 100%;
+    background-image: url("../img/footer.jpg");
+    background-size: cover;
+    color: #FFF;
+    line-height: 18px;
+    position:absolute;
+    left:0;
+    z-index: 1000050;
+}
+
+.logoProv {
+    text-align: right;
+}
+
+.logoTelefonos {
+  padding: 15px;
+  height:55px;
+}
+
+.logoGenero {
+  height: 51px;
+}
+
+.footer-brand {
+  float: right;
+}
+
+.page-content {
+  position:relative;
+}
+
+.presentacion {
+  background-image: url("../img/background.jpg");
+  background-size: cover;
+  padding-left: 30px;
+  text-align: center;
+  padding: 30px;
+  vertical-align: middle;
+  height: 90vh;
+  position:relative;
+}
+
+.intro {
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.4;
+    height: 250px;
+    -webkit-transition: opacity 0.2s,-webkit-transform 0.35s;
+    transition: opacity 0.2s,transform 0.35s;
+    max-width: 700px;
+    display: inline-block;
+}
+
+.secundario {
+    min-height: 600px;
+    background-color: #6d7163;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8vh;
+    padding-bottom: 15vh;
+    z-index: 1000;
+}
+
+@media only screen  and (min-width : 992px) {
+  .theft-secondary.secundario {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+}
+
+.subheader {
+    background-color: #8aca1c;
+    height: 43px;
+    font-size: 16px;
+    font-family: 'dinBold';
+    color:white;
+    vertical-align: middle;
+    line-height: 43px;
+    padding-left: 15%;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.sombra {
+    text-shadow: 0px 2px 2px rgba(0,0,0,0.4);
+}
+
+.caja-container {
+    border-width: 2px;
+    border-color: white;
+    border-radius: 20px;
+    background-color:#1955a6;
+}
+
+.caja-header {
+    background-color:#1955a6;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
+    padding: 5px 5px 5px 5px;
+    font-family: 'din';
+    min-height: 50px;
+    align-items: center;
+    display: flex;
+    border-radius: 5px;
+}
+
+.caja-header > h4 {
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 2vh;
+}
+
+.caja-imagen-robo {
+    background-image: url("../img/robo.jpg");
+    background-size: cover;
+    height:28vh;
+    position: inherit;
+    border-radius: 16px 16px 0px 0px;
+}
+
+.caja-imagen-drogas {
+    background-image: url("../img/drogas.jpg");
+    background-size: cover;
+    height:28vh;
+    position: inherit;
+    border-radius: 16px 16px 0px 0px;
+}
+
+.caja-imagen-corrupcion {
+    background-image: url("../img/corrupcion.jpg");
+    background-size: cover;
+    height:28vh;
+    position: inherit;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.caja-imagen-juego {
+  background-image: url("../img/juego.jpg");
+  background-size: cover;
+  height:28vh;
+  position: inherit;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.caja-imagen-violencia {
+  background-image: url("../img/violencia.jpg");
+  background-size: cover;
+  height:28vh;
+  position: inherit;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.caja-imagen-autopartes {
+  background-image: url("../img/autopartes.jpg");
+  background-size: cover;
+  height:28vh;
+  position: inherit;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.caja-imagen-celular {
+  background-image: url("../img/celular.jpg");
+  background-size: cover;
+  height:28vh;
+  position: inherit;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.caja-imagen-cuatrerismo {
+  background-image: url("../img/cuatrerismo.jpg");
+  background-size: cover;
+  height:28vh;
+  position: inherit;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.caja-imagen-abuso {
+  background-image: url("../img/abuso.jpg");
+  background-size: cover;
+  height:28vh;
+  position: inherit;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.no-padding{
+    padding-right: 0
+}
+
+.header-toc {
+  background-color: #1955a6;
+  height: 2.5em;
+  font-size: 1.0em;
+  font-family: 'dinBold';
+  color:white;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+md-dialog .md-dialog-content {
+     padding: 0px;
+}
+
+.descripcion {
+    color:#fff;
+    text-shadow: none;
+    font-family: 'din';
+}
+
+.warning {
+  background-color: #f2e18c;
+  border-radius:6px;
+  line-height: 30px;
+  padding:5px
+}
+
+.feedback {
+  font-size:'din';
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.feedback-token-title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.feedback-token {
+  font-weight: bold;
+  color: #1955a6;
+  font-size: 40px;
+}
+
+.btn-action {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    background-color: #1955a6;
+    color: #fff;
+    font-family: 'dinBold';
+    width: 300px;
+}
+
+.btn-action:hover {
+    background-color: #9ACA3C;
+    color: #fff;
+}
+
+.btn-denuncia {
+    margin: 15px -50px;
+    position:relative;
+    top:50%;
+    left:50%;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    background-color: #9ACA3C;
+    color: #fff;
+    font-family: 'dinBold';
+}
+
+.btn-denuncia:hover, .btn-denuncia:focus {
+    background-color: rgb(154, 202, 60, 0.6);
+    color: #fff;
+}
+
+.btn-low {
+  top: 30%;
+  left: 50%;
+  position: relative;
+  background: rgba(0,0,0,0.4);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border-width: 0.125rem;
+  border-color: rgba(255,255,255,0.8);
+  font-size: 2.3vh;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1955a6;
+    border-color: #1955a6;
+}
+
+.contPie {
+    padding: 20px 15px;
+    overflow: auto;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: 'din';
+}
+
+.green-box {
+    background-color: #8aca1c;
+    color: white;
+    font-family: 'dinBold';
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    padding: 50px;
+    font-size: 20px;
+    max-height: 240px;
+    border-radius: 10px;
+    border-bottom-color: white;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+.green-box:hover {
+    background-color: #1955a6;
+}
+
+
+.form-layout {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width:70%;
+  background-color: white;
+  padding-right:30px;
+  padding-left:30px;
+  padding-bottom:30px;
+  padding-top: 0px;
+  box-shadow: 10px 10px 5px #888888;
+  display: table;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px){
+  .form-layout {
+    width:95%;
+  }
+}
+
+.layout-container {
+
+  padding-top: 50px;
+
+  padding-bottom: 60px;
+  background-color: #ece7e7
+}
+
+ul li{margin-bottom:3px;}
+
+/* Redefinimos estilo del wizard */
+.steps {
+  padding-top: 30px;
+}
+
+.steps-indicator li a:before,
+.steps-indicator:before {
+    background-color: #817970;
+    content: ''
+}
+
+.steps-indicator {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-left: -30px;
+    margin-right: -30px;
+    padding: 20px 0 0;
+    height: 60px;
+    list-style: none;
+    font-family: 'dinBold';
+    font-size: 13px;
+    background-color:#f2f2ec;
+}
+
+.steps-indicator:before {
+    position: absolute;
+    height: 0px
+}
+
+.steps-indicator li {
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+    padding-top: 15px;
+    text-align: center;
+    line-height: 15px
+}
+
+.steps-indicator li.current a:before {
+    background-color: #8aca1c;
+}
+
+.steps-indicator li.done a:before {
+    background-color: #8aca1c
+}
+
+.steps-indicator li.editing a:before {
+    background-color: #8aca1c;
+}
+
+.steps-indicator li.editing a, .steps-indicator li.current a, .steps-indicator li.done a {
+  color: #8aca1c;
+}
+
+/* Estilos del formulario */
+
+.display-flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.flex-6 {
+  flex: 6;
+}
+
+[class*="flex-"] {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+[class*="flex-"]:first-child {
+  padding-left: 0;
+}
+
+[class*="flex-"]:nth-last-child(2) {
+  padding-right: 0;
+}
+
+.formly.row, .formly.row .formly-field {
+  margin-bottom: 0;
+}
+
+.formly.row .formly-field:first-child {
+  padding-left: 0;
+}
+
+.formly.row .formly-field:nth-last-child(2) {
+  padding-right: 0;
+}
+
+.formly-field-group ng-form {
+  margin: 0;
+}
+
+.formly-field-group {
+  margin: 0;
+}
+
+.form-left-button {
+  float: left;
+  margin-right: 20px;
+}
+
+.form-right-button {
+  float: right;
+}
+
+.form-cancel-button {
+  float: left;
+}
+/* Fin estilos del formulario */
+
+/* Estilos file upload */
+.file-upload-drop-zone {
+  border: dotted 3px lightgray;
+}
+
+.nv-file-over {
+  border: dotted 3px green;
+}
+
+.file-upload-add {
+  color: transparent;
+}
+
+canvas {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    box-shadow: 3px 3px 3px 0 #e3e3e3;
+    border: 1px solid #c3c3c3;
+    height: 100px;
+    margin: 6px 0 0 6px;
+}
+
+.file-validations {
+  font-size: 0.8em;
+  color: #AAA;
+}
+/* Fin estilos file upload */
+
+.md-dialog-container {
+  z-index: 1000100;
+}
+
+.form-resume md-input-container {
+  width: 100%;
+}
+
+/* Agrego un '*' a los campos requeridos */
+.required-input label:after {
+  color: #e32;
+  content: ' *';
+  display:inline;
+}
+
+/* Estilos del recaptcha */
+.grecaptcha-badge {
+  z-index: 100;
+}
+/* Fin estilos del recaptcha */
+
+/* Estilos del componente de teléfono de formly */
+.phone-formly-container {
+  display: flex;
+}
+
+.phone-formly-area {
+  width: 15%;
+}
+
+.phone-formly-separator {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.phone-formly-number {
+  width: 100%;
+}
+/* Fin estilos del componente de teléfono de formly */
+
+/* Estilos del componente datepicker de formly */
+.date-picker-formly {
+  width: 100%;
+}
+
+.date-picker-formly .dropdown[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+
+  > * {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.date-picker-formly .dropdown[disabled] .input-group p{
+  background-color: #eee;
+  opacity: 1;
+}
+/* Fin estilos del componente datepicker de formly */
+
+/* Estilos del multiCheckBox de formly */
+.multi-check-box-formly {
+  margin: 0px 10px 0px 10px;
+}
+/* Fin estilos del multiCheckBox de formly */
+
+/* Oculto el footer del autocomplete de google */
+.pac-logo:after {
+  display: none !important;
+}
+
+/* Estilos componente mapa de formly */
+.angular-google-map-container {
+  height: 400px;
+}
+
+.map-formly-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+
+  > * {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+/* Fin estilos componente mapa de formly */
+
+/* Estilos del componente autocomplete de formly */
+md-autocomplete[disabled] {
+  background-color: #eee;
+}
+
+md-progress-linear {
+  display: none;
+}
+/* Fin estilos del componente autocomplete de formly */
+
+.navbar-nav {
+   margin-left: 15%;
+}
+
+.navbar-header {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.navbar-brand-left {
+    float: left;
+    height: 70px;
+    padding-left: 10%;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.navbar-brand-right {
+    float: right;
+    height: 80px;
+    margin-right: 10%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 450px;
+}
+
+.navbar-subheader {
+    background-color: #1955a6;
+    color: white;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: white;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #567890;
+    color: #9aca3c;
+}
+
+.navbar-toggle {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid #456789;
+    border-radius: 4px;
+}
+
+.icon-bar {
+   background-color:#456789 !important;
+}
+
+.map-toolbox {
+    float: right;
+    /*border-radius: 10px;*/
+    width: 31%;
+    text-align: center;
+    margin-top: 60px;
+    margin-right: 10px;
+    background: white;
+    /*height: 100%;*/
+    /*line-height: 2px;*/
+}
+
+.full-height {
+  height: 100%;
+}
+
+/* Oculto las flechas de los input de tipo number */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Fin estilos de los input de tipo number */
+
+
+.complaint {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  width:70%;
+  background-color: #f2f2ec;
+  padding:30px;
+  display: table;
+  margin: 0 auto;
+  font-family:'din';
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+/* Fin estilos de la página de búsqueda de denuncias */
+
+.has-subheader {
+  margin-top: 20px;
+}
+
+/* Estilos de la página de resumen */
+.form-resume .resume-header {
+  font-size: 20px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #DDD;
+  color: #888;
+  margin-top: 10px;
+}
+
+.form-resume .resume-subheader {
+  font-size: 16px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #DDD;
+  color: #888;
+  margin-top: 10px;
+}
+
+.form-resume p, .form-resume pre {
+  padding-top: 0px;
+  color: #AAA;
+  max-width: 90vw;
+}
+
+.form-resume pre {
+  padding: 10px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.form-resume label {
+  margin-bottom: 0px;
+}
+
+.form-resume .formly-field, .form-resume .form-group{
+  margin-bottom: 0px;
+}
+/* Estilos de la página de resumen */
+
+.formly-validation-error {
+  color: #a94442;
+}
+
+.form-resume .contact-separator {
+  font-size: 20px;
+  color: #888;
+  margin-top: 10px;
+  font-family: din;
+  text-transform: none;
+}
+
+.contact-separator {
+  border-bottom: 2px solid #DDD;
+  font-size: 14px;
+  font-family: dinbold;
+}
+
+.file-upload-resume-container {
+  display: flex;
+}
+
+.file-upload-resume {
+  margin: 0px 20px 20px 0px;
+}
+
+.file-upload-resume img {
+  width: 200px;
+  border: 1px solid #DDD;
+}
+
+.date-time-picker {
+  display: flex;
+}
+
+.date-time-picker-input {
+  width: 40%;
+  margin: 0px 10px;
+}
+
+.foto-comisario {
+  max-width: 120px;
+  float:left;
+}
+
+.datos-comisario {
+  min-width: 200px;
+  float:right;
+  padding-left: 20px;
+}
+
+.datos-comisario span {
+  font-style: 'din';
+  font-size: 12px;
+}
+
+.form-resume .submit-button {
+  margin-top: 20px;
+}
+
+.term-conditions  .md-dialog-content ul {
+  list-style-type: none;
+  padding-right: 40px;
+}
+
+.term-conditions  .md-dialog-content ul li{
+  margin-bottom: 15px;
+}
+
+.term-conditions-warn {
+  border: 1px solid #e0e018;
+  padding: 10px;
+  margin: 10px 10%;
+  text-align: justify;
+  font-size: 15px;
+}
+
+.term-conditions-warn i {
+  color: #e0e018;
+  font-size: 24px;
+}
+
+.term-conditions-highlight {
+  font-weight: bolder;
+}
+
+
+md-dialog .header-toc {
+  text-transform: uppercase;
+}
+
+.footer-icon img {
+  margin-right: 10px;
+}
+
+.anonymous-warn {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-resume pre {
+  margin-bottom: 10px;
+}
+
+.form-resume .anonymous-warn {
+  display: none;
+}
+
+.version {
+  margin-top: 15px;
+  margin-right: 38px
+}
+
+.selected{
+  background: #8aca1c;
+}
+
+.not-selected{
+  background-color: rgba(138,202,28,0.4);
+}
+
+.seguimiento {
+  padding-top:40px;
+  max-width: 800px;
+}
+
+md-checkbox.md-checked[disabled].md-primary .md-icon {
+  background-color: rgba(255, 0, 0, 0.26);
+}
+
+.navbar-nav li a {
+  cursor: pointer;
+}
+
+/* Estilos del mapa de comisarias */
+.stations-map-container #map {
+  height: 80vh;
+  width: 100%;
+}
+
+.stations-map-container .map-toolbox p {
+  color:black;
+  font-size:12px;
+}
+
+.map-toolbox {
+  width: 20%;
+  min-width: 120px;
+  max-width: 200px;
+  display: block;
+}
+
+.map-toolbox .toolbox-select p {
+  word-wrap: break-word;
+}
+
+.map-toolbox .toolbox-select .toolbox-select-radio,
+.map-toolbox .toolbox-select .toolbox-select-content {
+  float: left;
+}
+
+.map-toolbox .toolbox-select .toolbox-select-content {
+  width: 66%;
+  min-width: 80px;
+  max-width: 135px;
+}
+
+.map-toolbox .toolbox-select .toolbox-select-radio{
+  width: 33%;
+  min-width: 40px;
+  max-width: 65px;
+}
+
+.map-toolbox .toolbox-select .toolbox-select-radio md-checkbox {
+  top: 20px;
+}
+
+.map-toolbox .toolbox-select {
+  height: 100px;
+}
+
+.map-toolbox .toolbox-select .toolbox-select-radio {
+  height: 100%;
+}
+/* Fin estilos del mapa de comisarias */
+
+.map-edit-clarification {
+  width: 100%;
+  background-color: #DDDDDD;
+  border: 1px #CCC solid;
+  border-radius: 0px 0px 10px 10px;
+  padding: 10px;
+}
+
+.map-edit-clarification i {
+  font-size: 20px;
+}
+
+.map-marker {
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.map-marker {
+  width: 30px;
+  height: 38px;
+  left: -10px;
+  top: -30px;
+  position: relative;
+  border-radius: 3rem 3rem 0;
+  /*transform: rotate(45deg);*/
+  /*border: 1px solid #FFFFFF;*/
+  display: block;
+  text-align: center;
+}
+
+.map-marker.marker-centered-city {
+  border: 6px solid #FFF;
+  border-style: double;
+}
+
+.leaflet-marker-icon.leaflet-div-icon {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.map-marker.police-station-marker {
+  background: url('/resources/img/icon-police.png')
+}
+
+.map-marker.woman-station-marker {
+  background: url('/resources/img/icon-police-woman.png')
+}
+
+.map-marker.mobile-station-marker {
+  background: url('/resources/img/icon-police-mobile.png')
+}
+
+.map-marker.prosecution-marker {
+  background: url('/resources/img/icon-prosecution.png');
+}
+
+.map-marker.assistantship-marker {
+  background: url('/resources/img/icon-prosecution-assistantships.png');
+}
+
+.cluster {
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  border: 1px solid;
+  font-family: monospace;
+  opacity: 0.7;
+}
+
+.cluster {
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.cluster.police-station-cluster {
+  background-color: #003363 !important;
+  border-color: #003363 !important;
+}
+
+.cluster.woman-station-cluster {
+  background-color: #630052 !important;
+  border-color: #630052 !important;
+}
+
+.cluster.mobile-station-cluster {
+  background-color: #1c55a0 !important;
+  border-color: #1c55a0 !important;
+}
+
+.cluster.prosecution-cluster {
+  background-color: #9aca3c !important;
+  border-color: #9aca3c !important;
+}
+
+.layer-control-icon.police-station-icon {
+  background-color: #003363 !important;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.layer-control-icon.woamn-station-icon {
+  background-color: #630052 !important;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.layer-control-icon.mobile-station-icon {
+  background-color: #1c55a0 !important;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.layer-control-icon.prosecution-icon {
+  background-color: #9aca3c !important;
+  -webkit-print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+.digits-1 {
+  font-size: 14px;
+  height: 28px;
+  width: 28px;
+  line-height: 28px;
+  margin-top: -14px;
+  margin-left: -14px;
+}
+
+.digits-2 {
+  font-size: 16px;
+  height: 34px;
+  width: 34px;
+  line-height: 35px;
+  margin-top: -17px;
+  margin-left: -17px;
+}
+
+.digits-2:before {
+  border-width: 2px;
+}
+
+.digits-3 {
+  font-size: 18px;
+  height: 48px;
+  width: 47px;
+  line-height: 47px;
+  border-width: 3px;
+  margin-top: -24px;
+  margin-left: -24px;
+}
+
+.digits-3:before {
+  border-width: 3px;
+}
+
+.digits-4 {
+  font-size: 18px;
+  height: 58px;
+  width: 58px;
+  line-height: 57px;
+  border-width: 4px;
+  margin-top: -29px;
+  margin-left: -29px;
+}
+
+.digits-4:before {
+  border-width: 4px;
+}
+
+.custom-police .leaflet-popup-content {
+  width: max-content !important;
+}
+
+.custom-prosecution .leaflet-popup-content {
+  width: max-content !important;
+  height: auto;
+}
+
+.custom-mobile .leaflet-popup-content {
+  width: max-content !important;
+  min-height: 120px;
+}
+
+.custom-woman .leaflet-popup-content {
+  width: max-content !important;
+  min-height: 120px;
+}
+
+.report-map {
+  width: 100%;
+  height: 500px;
+  z-index: 0 !important;
+}
+
+.popup-entity-detail-container {
+  display: flex;
+  width: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  width: -moz-max-content;    /* Firefox/Gecko */
+  width: -webkit-max-content; /* Chrome */
+  max-width: 50vw;
+  height: intrinsic;           /* Safari/WebKit uses a non-standard name */
+  height: -moz-max-content;    /* Firefox/Gecko */
+  height: -webkit-max-content; /* Chrome */
+}
+
+@media screen and (max-width: 600px){
+  .popup-entity-detail-container {
+    display: inline-grid;
+    max-width: 80vw;
+  }
+}
+
+.steps-indicator.steps-6 li {
+  /*
+   Para corregir bug en IE que hace que el último
+    paso del formulario de violencia caiga una línea
+  */
+  width: 16% !important;
+}
+
+@media (min-width: 992px) {
+  .col-md-3 {
+      width: 30%;
+  }
+
+  #secundario {
+    padding-left: 0
+  }
+
+  #secundario .row {
+    margin-top: 14px;
+    margin-left: 0;
+    width: 100%;
+  }
+  #secundario .row-tree{
+    margin-top: 14px;
+    margin-left: 13% !important;
+  }
+
+}
+
+.md-autocomplete-suggestions-container.md-virtual-repeat-container {
+  z-index: 10000000;
+}
+
+#toast-container {
+  z-index: 10000001 !important;
+}
+
+/* Estilos de popups de los actionTable */
+md-dialog.popup-action-table, md-dialog.popup-action-table md-dialog-content, md-dialog.popup-action-table .modal-content {
+  height: 100%;
+}
+
+md-dialog.popup-action-table .modal-header {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+md-dialog.popup-action-table .modal-content {
+  box-shadow: none;
+  border: none;
+}
+
+/* Fin estilos de popups de los actionTable */
+
+/* Estilos de popups de los actionTable */
+.formly-field-actionTable table tr.tableRow.header {
+  height: 100%;
+  font-size: 1.1em;
+}
+
+.formly-field-actionTable a.icon {
+  cursor: pointer;
+}
+/* Fin estilos de popups de los actionTable */
+
+.form-title {
+  color: rgba(0, 0, 0, 0.87) !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+
+.input-group-addon.input-datepicker-clean {
+  background-color: transparent !important;
+}

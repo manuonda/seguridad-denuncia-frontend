@@ -13,11 +13,10 @@ export const routes = [
     { path : '/denuncia'   ,  component : Home  ,
       children : [
         { path: '' , component : Denuncia},
-        { path : 'robo', component : DenunciaGeneral }
+        { path : 'general', component : DenunciaGeneral }
       ]
     },
-    { path : '/dependencia' , component :  Dependencia},
     { path : '/comisaria'  , component :   Comisaria},
-    { path : '/seguimiento' , component :  Seguimiento }
+    { path : '*' , redirect : 'denuncia'}
 ];
 

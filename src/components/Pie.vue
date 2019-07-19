@@ -13,7 +13,13 @@
           <li>
             Teléfono: 0388-4239400
           </li>
-          <li style="margin: 10px 0;">
+
+        </ul>
+      </div>
+
+      <div class="col-md-6 ">
+         <ul style="float:right; list-style: none;">
+         <li style="margin: 10px 0;">
             <a href="http://www.mseg.gba.gov.ar/" target="_blank" class="footer-icon" analytics-on="click" analytics-event="access_web" analytics-category="ButtonsCommands">
               <img src="../assets/images/social_web.png" target="_blank" alt="Web">
             </a>
@@ -24,16 +30,18 @@
               <img src="../assets/images/social_tw.png" alt="Twitter">
             </a>
           </li>
-        </ul>
-      </div>
-
-      <div class="col-md-6 logoProv">
+          <li>
+            <div class="version ng-binding">
+              Seguridad Provincia v1.0.1
+            </div>
+          </li>
+         </ul>
+        <!--
         <a href="http://seguridad.jujuy.gob.ar/" target="_blank">
           <img src="../assets/images/minseg.png" width="200"  alt="Logo Provincia">
         </a>
-        <div class="version ng-binding">
-          Seguridad Provincia v1.0.1
-        </div>
+        -->
+
       </div>
     </div>
 </footer>

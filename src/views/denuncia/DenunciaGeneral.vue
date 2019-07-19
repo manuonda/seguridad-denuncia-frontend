@@ -1,11 +1,13 @@
 <template>
   <div>
     <!--<div id="subheader" class="subheader"><span>RUBO / HORTO </span></div>
+      <sub-header title="ROBO / HURTO"></sub-header>
     -->
-    <sub-header title="ROBO / HURTO"></sub-header>
     <div class="layout-container has-subheader">
       <div class="form-layout wizard">
+        <!-- slider -->
         <slider></slider>
+
         <form  style="display: block;margin-top: 0em;">
         <fieldset v-if="step == 1">
               <localizacion-hecho  v-bind:localizacion="localizacion"
@@ -45,7 +47,14 @@
                                   @decrement-step="decrementStep"
                                   @finalizar-denuncia="finalizarDenuncia">
             </resumen-hecho>
-          </fieldset>
+           </fieldset>
+             <fieldset v-if="step === 6 ">
+              <finalizado    v-bind:seguimiento="seguimiento"
+                          @inicio-denuncia="inicio">
+              </finalizado>
+              </fieldset>
+
+
            <img :src="src" style="width: 220px;">
         </form>
       </div>
@@ -62,8 +71,9 @@ import DatosDenuncia from './../../components/denuncia/DatosDenunciante';
 import DatosDenunciado  from './../../components/denuncia/DatosDenunciado';
 import DatosDenunciante from '../../components/denuncia/DatosDenunciante.vue';
 import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
-import Hecho from '../../components/denuncia/Hecho';
-import ResumenHecho from '../../components/denuncia/ResumenHecho';
+import Hecho from '../../components/denuncia/Hecho.vue';
+import ResumenHecho from '../../components/denuncia/ResumenHecho.vue';
+import Finalizado from '../../components/denuncia/Finalizado.vue';
 
 
 export default {
@@ -74,6 +84,7 @@ export default {
     Hecho : Hecho,
     ResumenHecho :  ResumenHecho,
     DatosDenunciado : DatosDenunciado ,
+    Finalizado : Finalizado,
     Slider : Slider
   },
   data() {
@@ -82,6 +93,7 @@ export default {
       submitted : false,
       format: "dd MMM yyyy",
       src : "",
+      disabled: '',
       options: {
           format: 'DD/MM/YYYY',
           useCurrent: false,
@@ -129,8 +141,8 @@ export default {
       hecho : {
         descripcion: '',
         files : []
-
-      }
+      },
+      seguimiento : ''
     };
   },
   methods: {
@@ -146,6 +158,10 @@ export default {
       if ( this.step > 0 ){
         this.step -=1;
       }
+    },
+    inicio () {
+       console.log("inicio");
+       this.$router.push('/');
     },
     finalizarDenuncia(){
       console.log("finalizar denuncias");
@@ -198,34 +214,52 @@ export default {
 
 
       console.log( form );
-      axios.post('http://localhost:4000/denuncia/add', form,
+      axios.post('http://192.168.0.89:4000/denuncia/add', form,
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'
          }
         }).then ( (result ) =>{
-          if( result != null && result.status == 'OK '){
-
+          if( result != null && result.status == '200' && result.data.status =='OK'){
+               console.log('resultado ', result );
+               this.step = 6 ;
+               this.disableAll = true ;
+               this.seguimiento = result.data.seguimiento;
+          } else {
+              this.step = 6 ;
+              this.disableAll = true;
+              this.seguimiento = "Se produjo un error al realizar la denuncia";
           }
       })
       .catch( error => {
          console.log( error );
+         this.step = 6 ;
+         if ( error.response != null && error.response.status == 429) {
+           this.seguimiento = error.response.data;
+         } else {
+           this.seguimiento = "Se produjo un error al realizar la denuncia";
+         }
+
       });
 
-       axios.get('http://localhost:4000/evidencia/list').then ( (result ) =>{
+      /* axios.get('http://localhost:4000/evidencia/list').then ( (result ) =>{
           console.log( result );
           var imagen = result.data[0];
             console.log( imagen );
               /* var bytes = new Uint8Array(imagen.file.data);
               var binary = bytes.reduce((data, b) => data += String.fromCharCode(b), '');
-              this.src = "data:image/jpeg;base64," + btoa(binary);*/
-                var binary = '';
+              this.src = "data:image/jpeg;base64," + btoa(binary);
+               var binary = '';
                 var bytes = [].slice.call(new Uint8Array(imagen.file.data));
                 bytes.forEach((b) => binary += String.fromCharCode(b));
-                this.src = 'data:image/jpeg;base64,' + window.btoa(binary);
+                this.src = 'data:image/jpeg;base64,' + window.btoa(binary);*/
+       /*
+            this.src='data:'+imagen.type+";base64,"+imagen.file_encode;
+
       })
       .catch( error => {
          console.log( error );
       });
+      */
 
     }
   },
