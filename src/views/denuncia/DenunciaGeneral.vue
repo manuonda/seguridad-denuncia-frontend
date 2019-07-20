@@ -6,20 +6,22 @@
     <div class="layout-container has-subheader">
       <div class="form-layout wizard">
         <!-- slider -->
-        <slider></slider>
+        <slider :step="step"></slider>
 
         <form  style="display: block;margin-top: 0em;">
         <fieldset v-if="step == 1">
               <localizacion-hecho  v-bind:localizacion="localizacion"
                                    @decrement-step="decrementStep"
-                                   @increment-step="incrementStep">
+                                   @increment-step="incrementStep"
+                                  @finalizar-denuncia="finalizarDenuncia">
               </localizacion-hecho>
           </fieldset>
           <fieldset v-if="step === 2">
             <hecho
                               v-bind:hecho="hecho"
                               @decrement-step="decrementStep"
-                              @increment-step="incrementStep">
+                              @increment-step="incrementStep"
+                              @finalizar-denuncia="finalizarDenuncia">
           </hecho>
 
 
@@ -28,14 +30,16 @@
              <datos-denunciado
                               v-bind:denunciado="denunciado"
                               @increment-step="incrementStep"
-                              @decrement-step="decrementStep">
+                              @decrement-step="decrementStep"
+                              @finalizar-denuncia="finalizarDenuncia">
              </datos-denunciado>
            </fieldset>
            <fieldset v-if="step === 4 ">
              <datos-denunciante
                               v-bind:denunciante="denunciante"
                               @increment-step="incrementStep"
-                              @decrement-step="decrementStep">
+                              @decrement-step="decrementStep"
+                              @finalizar-denuncia="finalizarDenuncia">
             </datos-denunciante>
            </fieldset>
 

@@ -1,5 +1,6 @@
 <template>
   <div id="hecho">
+       <h4>CARACTERÍSTICA DEL HECHO</h4>
     <div class="row">
       <div class="form-group">
         <label>Descripción del Hecho(*)</label>
@@ -22,7 +23,7 @@
         accept=".jpg, .png, .jpeg"
         v-bind:disabled="hecho.files.length >= 3"
       />
-      files.length {{ hecho.files.length}}
+
     </div>
     <div class="form-group" v-show="hecho.files.length > 0">
       <table class="table">
@@ -120,11 +121,7 @@ export default {
         alert("Se pueden adjuntar hasta 3 archivos ");
       }
       var sizeVector = this.hecho.files.length ;
-      console.log ( sizeVector );
       var cantFaltante = 3 - sizeVector ;
-      console.log("cant Faltante : ", cantFaltante);
-
-
       for (let i = 0; i < files.length ; i++) {
         if ( i < cantFaltante ) {
            var reader = new FileReader();
@@ -144,11 +141,28 @@ export default {
           }
         }
     },
+    scrollToTop: function (scrollDuration) {
+                var cosParameter = window.scrollY / 2,
+                    scrollCount = 0,
+                    oldTimestamp = performance.now();
+
+                function step(newTimestamp) {
+                    scrollCount += Math.PI / (scrollDuration / (newTimestamp - oldTimestamp));
+                    if (scrollCount >= Math.PI) window.scrollTo(0, 0);
+                    if (window.scrollY === 0) return;
+                    window.scrollTo(0, Math.round(cosParameter + cosParameter * Math.cos(scrollCount)));
+                    oldTimestamp = newTimestamp;
+                    window.requestAnimationFrame(step);
+                }
+
+                window.requestAnimationFrame(step);
+    },
     siguiente() {
       this.$validate().then( success => {
        if ( success ) {
-          console.log("increment-step");
           this.$emit('increment-step');
+         } else {
+           this.scrollToTop(2000);
          }
        });
     },
@@ -167,11 +181,11 @@ export default {
       this.$refs["modal-cancelar"].hide();
     },
     aceptarModal() {
-      alert("aceptar modal");
+       this.$router.push('/general');
     }
   },
   created() {
-    console.log(this.hecho);
+     window.scrollTo(0,0)
   },
   mounted() {
 

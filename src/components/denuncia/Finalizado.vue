@@ -1,4 +1,5 @@
 <template>
+
   <div class="form-resume" id="inicio">
         <p class="resume-header">RESULTADO DE LA DENUNCIA REALIZADA</p>
          <div class="form-group">

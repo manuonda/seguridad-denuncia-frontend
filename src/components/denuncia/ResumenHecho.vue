@@ -214,11 +214,11 @@ export default {
       this.$refs["modal-cancelar"].hide();
     },
     aceptarModal() {
-      alert("aceptar modal");
+     this.$router.push('/general');
     }
   },
   created() {
-     this.$scrollTo('#denunciante', 'body', 2000);
+     window.scrollTo(0,0)
   }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div id="localizacion">
+     <h4>DATOS DEL HECHO</h4>
      <!-- calle -->
      <div class="form-group">
       <label for="calle"> Calle (*)</label>
@@ -56,7 +57,7 @@
     </div>
     </div>
       <!-- modal -->
-    <b-modal
+      <b-modal
       ref="modal-cancelar"
       headerClass="header-toc"
       hide-footer
@@ -77,10 +78,14 @@
 import SimpleVueValidator from "simple-vue-validator";
 const Validator = SimpleVueValidator.Validator;
 
+import Modal from '../commons/Modal'
 
 export default {
   props: {
     localizacion: Object
+  },
+  components: {
+    Modal : Modal
   },
   validators:{
    'localizacion.calle':function ( value ){
@@ -99,26 +104,43 @@ export default {
     };
   },
   methods: {
-      siguiente() {
+    siguiente() {
       this.$validate().then( success => {
        if ( success ) {
           console.log("increment-step");
           this.$emit('increment-step');
+         } else {
+             this.scrollToTop(2000);
          }
        })
     },
-    anterior() {
-      this.$emit('decrement-step')
+     scrollToTop: function (scrollDuration) {
+        var cosParameter = window.scrollY / 2,
+                    scrollCount = 0,
+                    oldTimestamp = performance.now();
+
+        function step(newTimestamp) {
+         scrollCount += Math.PI / (scrollDuration / (newTimestamp - oldTimestamp));
+         if (scrollCount >= Math.PI) window.scrollTo(0, 0);
+         if (window.scrollY === 0) return;
+         window.scrollTo(0, Math.round(cosParameter + cosParameter * Math.cos(scrollCount)));
+         oldTimestamp = newTimestamp;
+         window.requestAnimationFrame(step);
+       }
+      window.requestAnimationFrame(step);
+    },
+     cancelarModal() {
+      this.$refs["modal-cancelar"].hide();
+    },
+    aceptarModal() {
+      this.$router.push('/genearl');
     },
     cancelar() {
       console.log(this.$refs);
       this.$refs["modal-cancelar"].show();
     },
-    cancelarModal() {
-      this.$refs["modal-cancelar"].hide();
-    },
-    aceptarModal() {
-      alert("aceptar modal");
+    anterior() {
+      this.$emit('decrement-step')
     },
     initMap( localizacion , latitud = null  , longitud = null) {
        this.latitud = -24.1945700;
@@ -155,13 +177,10 @@ export default {
     }
   },
   created(){
-     console.log("created localizacion");
-     console.log("localizacion: ", this.localizacion);
-
+     window.scrollTo(0,0)
   },
   // Code to run when app is mounted
   mounted() {
-    console.log("mounted");
     this.$getLocation({
        enableHighAccuracy: false, //defaults to false
        maximumAge: 1 //defaults to 0
@@ -170,13 +189,7 @@ export default {
     }).catch( error => {
        this.initMap(this.localizacion, null , null );
     });
-     //this.$scrollTo('#localizacion','body', 2000);
-     //this.$scrollTo('#steps', 'body', 1000);
-     //this.$scrollTo("#localizacion",'body', 1000)
-     $('#localizacion').scrollTop(100);
-  },
-  beforeUpdate(){
-    $('#localizacion').scrollTop(100);
+
   }
 };
 </script>

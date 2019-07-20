@@ -9,7 +9,10 @@ Vue.use(VueRouter);
 
 const enrutador = new VueRouter({
    routes : routes,
-   mode: 'history'
+   mode: 'history',
+   scrollBehavior () {
+     return { x: 0, y: 0 }
+   }
 });
 
 new Vue({

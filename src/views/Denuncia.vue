@@ -1,5 +1,6 @@
 <template>
 
+   <!--
     <div class="bs-docs-section">
       <div class="row">
         <div class="col-lg-12">
@@ -21,45 +22,46 @@
         </div>
       </div>
     </div>
+  -->
 
-    <!-- tipo de denuncias
-    <div id="denuncias" class="secundario">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="bs-component">
-            <div class="card mb-3">
-              <h3 class="card-header caja-header-2 text-center text-din">ROBO/HURTO</h3>
-              <div class="caja-imagen-robo">
-                 <router-link  to="/denuncia/robo" class="btn btn-denuncia btn-low2 btn-lg">DENUNCIÁ</router-link>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="img-wrapper">
+    <img class="img-responsive" src="../assets/images/vecinoweb.png" height="200px">
+    <div class="img-overlay">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <p class="lead text-center">
+                <button
+                  class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
+                  role="button"
+                  @click="showPageDenuncia">
+                  <span>
+                    <strong>DENUNCIÁ</strong>
+                  </span>
+                </button>
+              </p>
+    </div>
+</div>
 
-        <div class="col-lg-4">
-          <div class="bs-component">
-            <div class="card mb-3">
-              <h3 class="card-header caja-header-2 text-center text-din">CORRUPCION POLICIAL</h3>
-              <div class="caja-imagen-corrupcion"></div>
-              <div class="card-footer text-muted text-center text-din">
-                <router-link to="/denuncia/corrupcion"></router-link>
-              </div>
-            </div>
-          </div>
-        </div>
+</div>
 
-        <div class="col-lg-4">
-          <div class="bs-component">
-            <div class="card mb-3">
-              <h3 class="card-header caja-header-2 text-center text-din">VIOLENCIA FAMILIAR O DE GENERO</h3>
-              <div class="caja-imagen-violencia"></div>
-              <div class="card-footer text-muted text-center text-din">ROBO / HURTO</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
-  <!-- end tipo de denuncias -->
 </template>
 <script>
 
@@ -95,6 +97,32 @@ export default {
 
 
 <style>
+
+.img-wrapper {
+  position: relative;
+ }
+
+.img-responsive {
+  width: 100%;
+  height: 80%;
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.img-overlay:before {
+  content: ' ';
+  display: block;
+  /* adjust 'height' to position overlay content vertically */
+  height: 50%;
+}
+
 .text-titulo {
   font-family: "dinBold";
   color: #EBEBEB;
@@ -213,7 +241,7 @@ export default {
 }
 
 .presentacion {
-    background-image: url(../assets/images/vecinoweb.png);
+    background-image: url(../assets/images/rsz_1vecinoweb.png);
     background-size: cover;
     padding-left: 30px;
     text-align: center;

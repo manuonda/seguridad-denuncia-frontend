@@ -1,6 +1,6 @@
 <template>
   <div id="denunciante">
-
+     <h3>DATOS DEL DENUNCIANTE</h3>
      <fieldset class="form-group">
      <label>
      <strong>¿Desea hacer la denuncia de forma anónima? *</strong>
@@ -207,12 +207,30 @@ export default {
           this.$validate().then( success => {
           if ( success ) {
                this.$emit('increment-step');
+          } else {
+              this.scrollToTop(2000)
           }
         })
       } else { // incrementa el paso
         this.$emit('increment-step');
       }
 
+    },
+     scrollToTop: function (scrollDuration) {
+                var cosParameter = window.scrollY / 2,
+                    scrollCount = 0,
+                    oldTimestamp = performance.now();
+
+                function step(newTimestamp) {
+                    scrollCount += Math.PI / (scrollDuration / (newTimestamp - oldTimestamp));
+                    if (scrollCount >= Math.PI) window.scrollTo(0, 0);
+                    if (window.scrollY === 0) return;
+                    window.scrollTo(0, Math.round(cosParameter + cosParameter * Math.cos(scrollCount)));
+                    oldTimestamp = newTimestamp;
+                    window.requestAnimationFrame(step);
+                }
+
+                window.requestAnimationFrame(step);
     },
     cambiaToDenunciaAnonima() {
       this.denunciante.anonimo = 'SI';
@@ -226,11 +244,11 @@ export default {
       this.$refs["modal-cancelar"].hide();
     },
     aceptarModal() {
-      alert("aceptar modal");
+      this.$router.push('/general')
     }
   },
   created() {
-     this.$scrollTo('#denunciante', 'body', 2000);
+     window.scrollTo(0 , 0 )
   }
 };
 </script>

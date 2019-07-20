@@ -1,5 +1,6 @@
 <template>
   <div id="denunciante">
+    <h3>DATOS DEL DENUNCIADO</h3>
     <!-- NOMBRE -->
     <div class="form-group"><label for="nombre">Nombre</label>
     <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingrese Nombre"
@@ -149,10 +150,26 @@ export default {
     },
     aceptarModal() {
       alert("aceptar modal");
+    },
+    scrollToTop: function (scrollDuration) {
+                var cosParameter = window.scrollY / 2,
+                    scrollCount = 0,
+                    oldTimestamp = performance.now();
+
+                function step(newTimestamp) {
+                    scrollCount += Math.PI / (scrollDuration / (newTimestamp - oldTimestamp));
+                    if (scrollCount >= Math.PI) window.scrollTo(0, 0);
+                    if (window.scrollY === 0) return;
+                    window.scrollTo(0, Math.round(cosParameter + cosParameter * Math.cos(scrollCount)));
+                    oldTimestamp = newTimestamp;
+                    window.requestAnimationFrame(step);
+                }
+
+                window.requestAnimationFrame(step);
     }
   },
   created() {
-     this.$scrollTo('#denunciante', 'body', 2000);
+     window.scrollTo(0,0)
   }
 };
 </script>
