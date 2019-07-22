@@ -161,7 +161,7 @@ export default {
   letter-spacing: 3px;
   line-height: 15px;
   border: 2px solid rgb(204, 124, 122);
-  background-color: #801C1A;
+  background-color: #1955a6;
   border-radius: 40px;
   transition: all 0.3s ease 0s;
   padding: 0.375rem 0.75rem;
@@ -171,8 +171,8 @@ export default {
 
 .btn-primary-denuncia:hover {
   color: #fff;
-  background-color: #bd5916;
-  border-color: #b15315;
+  background-color: #1955a6;
+  border-color: #1955a6;
 }
 
 .secundario {
@@ -236,8 +236,8 @@ export default {
 }
 .btn-low2:hover {
   color: #fff;
-  background-color: #bd5916;
-  border-color: #b15315;
+  background-color: #1955a6;
+  border-color: #1955a6;
 }
 
 .presentacion {

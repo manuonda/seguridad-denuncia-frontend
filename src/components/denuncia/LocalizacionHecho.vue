@@ -161,6 +161,8 @@ export default {
           draggable : true
      }).addTo(this.map);
 
+     marker.bindPopup("<b>Arrastre el marcador para <br> indicar una posición.</b>").openPopup();
+
      marker.on('dragend', function( event) {
       if ( event != null && event != undefined ) {
         var marker = event.target;  // you could also simply access the marker through the closure

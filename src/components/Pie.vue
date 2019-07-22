@@ -56,7 +56,7 @@ export default {
 <style>
 .footerPrincipal {
     z-index: 0 !important;
-    margin-top: 20px;
+   /* margin-top: 20px; aqui cambio!!*/
     width: 100%;
     background-color :#1955a6 !important;
     /*background-image: url(../img/footer.jpg);*/

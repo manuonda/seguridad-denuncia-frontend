@@ -362,7 +362,7 @@ iPad 3
 }
 
 .page-content {
-  position:relative;
+  /*position:relative;  aqui cambio!!!*/
 }
 
 .presentacion {
@@ -1054,7 +1054,7 @@ hr {
 /* Fin estilos de la página de búsqueda de denuncias */
 
 .has-subheader {
-  margin-top: 20px;
+ /* margin-top: 20px;  aqui cambio!!*/
 }
 
 /* Estilos de la página de resumen */
