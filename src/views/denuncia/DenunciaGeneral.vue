@@ -217,7 +217,6 @@ export default {
       }
 
 
-      console.log( form );
       axios.post('http://192.168.0.89:4000/denuncia/add', form,
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'

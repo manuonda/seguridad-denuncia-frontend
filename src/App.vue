@@ -145,6 +145,7 @@
 <script>
 import Pie from "./components/Pie.vue";
 
+
 export default {
   name: "app",
   components: {

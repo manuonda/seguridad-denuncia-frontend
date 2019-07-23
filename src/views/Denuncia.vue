@@ -88,9 +88,14 @@ export default {
   },
   methods : {
     showPageDenuncia() {
+      console.log("shopage denuncian")
       this.$router.push('/denuncia/general')
     }
 
+  },
+  mounted() {
+       console.log("mounted ");
+       console.log(process.env.ROOT_API)
   }
 };
 </script>

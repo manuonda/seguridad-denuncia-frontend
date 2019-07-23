@@ -150,6 +150,9 @@ export default {
           this.latitud = latitud ;
           this.longitud = longitud ;
       }
+      this.localizacion.latitud = this.latitud;
+      this.localizacion.longitud = this.longitud;
+
       this.map = L.map('map').setView( [ this.latitud , this.longitud ] , 12);
       this.tileLayer = L.tileLayer( 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',{
       maxZoom: 20,
