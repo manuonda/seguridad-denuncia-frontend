@@ -115,20 +115,29 @@
       class="navbar navbar-light navbar-expand-md bg-faded justify-content-center bg-primary2"
       style="margin-bottom: 0px;"
     >
-      <a href="https://www.gba.gob.ar/">
+     <!--
+      <a href="http://seguridad.jujuy.gob.ar/">
         <img src="./assets/images/membrete.png" />
       </a>
+      -->
+      <a class="navbar-brand2" href="http://seguridad.jujuy.gob.ar/">
+            <img src="./assets/images/membrete_buzon.png" />
+          </a>
       <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+        <!--
         <ul class="nav2 navbar-nav">
           <li class="nav-item">
             <router-link tag="a" to="/">INICIO</router-link>
           </li>
         </ul>
+        -->
+        <!--
         <div class="nav navbar-nav ml-auto w-100 justify-content-end">
-          <a class="navbar-brand2" href="https://www.gba.gob.ar/">
+          <a class="navbar-brand2" href="http://seguridad.jujuy.gob.ar/">
             <img src="./assets/images/membrete_buzon.png" />
           </a>
         </div>
+        -->
       </div>
     </nav>
 

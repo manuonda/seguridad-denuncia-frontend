@@ -1,52 +1,41 @@
 <template>
 
-   <!--
+
     <div class="bs-docs-section">
       <div class="row">
         <div class="col-lg-12">
           <div class="bs-component">
             <div class="presentacion" >
+                <div>
+    <h2 class="home-title sombra ng-binding">El Vecino Avisa Web</h2>
+    <br>
+    <p class="intro sombra ng-binding">
+      Si tenes conocimiento de quien vende <strong>Drogas</strong>, quien vende bebidas alcohólicas fuera del horario permitido o a menores de edad,
+        lugares funcionando como <strong>After Clandestinos</strong>, junta de personas en lugares públicos para <strong>Consumir Drogas</strong>
+        y <strong>Otros Delitos</strong> que te preocupan.<br>
+      <br>
+      Brindanos información de manera fácil, rápida y segura.
+      <br><br>
+      <span style="font-family:'dinBold'" class="ng-binding">La seguridad la hacemos entre todos</span>
+      <br><br>
+      <button type="button" class="btn btn-lg btn-action ng-binding"
+          @click="showPageDenuncia">REPORTÁ</button>
 
-              <p class="lead text-center">
-                <button
-                  class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
-                  role="button"
-                  @click="showPageDenuncia">
-                  <span>
-                    <strong>DENUNCIÁ</strong>
-                  </span>
-                </button>
-              </p>
+
+    </p>
+  </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-  -->
 
+<!--
 <div class="img-wrapper">
-    <img class="img-responsive" src="../assets/images/vecinoweb.png" height="200px">
+    <img class="img-responsive" src="../assets/images/vecinoweb2.png" height="200px">
     <div class="img-overlay">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+
       <p class="lead text-center">
                 <button
                   class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
@@ -59,8 +48,9 @@
               </p>
     </div>
 </div>
+-->
 
-</div>
+
 
 </template>
 <script>
@@ -155,6 +145,7 @@ export default {
     font-size: 45px;
     margin-top: 30 px!important;
     margin-bottom: 5px !important;
+    color: white
 }
 
 .btn-primary-denuncia {
@@ -246,7 +237,7 @@ export default {
 }
 
 .presentacion {
-    background-image: url(../assets/images/rsz_1vecinoweb.png);
+    background-image: url(../assets/images/denuncia4.png);
     background-size: cover;
     padding-left: 30px;
     text-align: center;
