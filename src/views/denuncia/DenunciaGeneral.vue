@@ -9,6 +9,8 @@
         <slider :step="step"></slider>
 
         <form  style="display: block;margin-top: 0em;">
+
+
         <fieldset v-if="step == 1">
               <localizacion-hecho  v-bind:localizacion="localizacion"
                                    @decrement-step="decrementStep"
@@ -44,6 +46,7 @@
            </fieldset>
 
            <fieldset v-if="step === 5 ">
+
              <resumen-hecho       v-bind:denunciante="denunciante"
                                   v-bind:denunciado="denunciado"
                                   v-bind:localizacion="localizacion"
@@ -51,15 +54,19 @@
                                   @decrement-step="decrementStep"
                                   @finalizar-denuncia="finalizarDenuncia">
             </resumen-hecho>
+
            </fieldset>
+
+
              <fieldset v-if="step === 6 ">
+
               <finalizado    v-bind:seguimiento="seguimiento"
                           @inicio-denuncia="inicio">
               </finalizado>
               </fieldset>
 
 
-           <img :src="src" style="width: 220px;">
+
         </form>
       </div>
     </div>
@@ -78,6 +85,14 @@ import LocalizacionHecho from '../../components/denuncia/LocalizacionHecho.vue';
 import Hecho from '../../components/denuncia/Hecho.vue';
 import ResumenHecho from '../../components/denuncia/ResumenHecho.vue';
 import Finalizado from '../../components/denuncia/Finalizado.vue';
+
+import Vue from 'vue';
+    // Import component
+    import Loading from 'vue-loading-overlay';
+    // Import stylesheet
+    import 'vue-loading-overlay/dist/vue-loading.css';
+    // Init plugin
+    Vue.use(Loading);
 
 
 export default {
@@ -98,6 +113,8 @@ export default {
       format: "dd MMM yyyy",
       src : "",
       disabled: '',
+      enviado : false,
+      fullPage: false,
       options: {
           format: 'DD/MM/YYYY',
           useCurrent: false,
@@ -172,6 +189,12 @@ export default {
       var date = new Date();
       var time = new Date().getTimezoneOffset();
       let form = new FormData();
+      this.enviado = true;
+
+      let loader = this.$loading.show({
+                  // Optional parameters
+                  container: this.fullPage ? null : this.$refs.formContainer
+      });
 
       form.append("denunciaPlataforma" , this.denuncia.plataforma);
 
@@ -216,8 +239,10 @@ export default {
          localizacion : this.localizacion
       }
 
-
+       this.enviado = true;
+       console.log( this.enviado )
       axios.post('http://200.43.219.66:4000/denuncia/add', form,
+      //axios.post('http://localhost:4000/denuncia/add', form,
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'
          }
@@ -227,10 +252,12 @@ export default {
                this.step = 6 ;
                this.disableAll = true ;
                this.seguimiento = result.data.seguimiento;
+               loader.hide()
           } else {
               this.step = 6 ;
               this.disableAll = true;
               this.seguimiento = "Se produjo un error al realizar la denuncia";
+              loader.hide()
           }
       })
       .catch( error => {
@@ -241,6 +268,7 @@ export default {
          } else {
            this.seguimiento = "Se produjo un error al realizar la denuncia";
          }
+          loader.hide()
 
       });
 

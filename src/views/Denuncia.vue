@@ -1,6 +1,6 @@
 <template>
 
-
+ <!--
     <div class="bs-docs-section">
       <div class="row">
         <div class="col-lg-12">
@@ -31,24 +31,24 @@
       </div>
     </div>
 
-<!--
-<div class="img-wrapper">
-    <img class="img-responsive" src="../assets/images/vecinoweb2.png" height="200px">
-    <div class="img-overlay">
 
-      <p class="lead text-center">
-                <button
-                  class="btn btn-primary-denuncia btn-lg text-din btn-rounded"
-                  role="button"
-                  @click="showPageDenuncia">
-                  <span>
-                    <strong>DENUNCIÁ</strong>
-                  </span>
-                </button>
-              </p>
-    </div>
-</div>
 -->
+
+<div>
+<div class="img-wrapper">
+    <img class="img-responsive" src="../assets/images/image_corregida_2.png" height="200px">
+</div>
+ <div class="col text-center" style="background-color :#00B2EA">
+      <button type="button" class="btn btn-lg btn-action ng-binding"
+          @click="showPageDenuncia">REPORTÁ</button>
+    </div>
+
+
+    </div>
+
+
+
+
 
 
 
@@ -237,12 +237,14 @@ export default {
 }
 
 .presentacion {
-    background-image: url(../assets/images/denuncia4.png);
+    background-image: url(../assets/images/fondo_imagen.png);
     background-size: cover;
     padding-left: 30px;
-    text-align: center;
+    text-align: left;
     padding-top: 50px;
     padding: 30px;
+    padding-top: 120px;
+    padding-left: 60px;
     vertical-align: middle;
     height: 90vh;
     position: relative;
