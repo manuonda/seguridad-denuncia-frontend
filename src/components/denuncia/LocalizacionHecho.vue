@@ -18,14 +18,15 @@
       <div class="col">
       <div class="form-group">
       <label for="numero">Número</label>
-      <input type="text" class="form-control" name="numero" id="numero" v-model="localizacion.numero">
+      <input type="number" min="0" class="form-control" name="numero" id="numero" v-model="localizacion.numero">
       </div>
       </div>
+
       <!-- piso -->
       <div class="col">
       <div class="form-group">
       <label for="numero">Piso</label>
-      <input type="text" class="form-control" name="piso" id="piso" v-model="localizacion.piso"/>
+      <input type="number" min="0" class="form-control" name="piso" id="piso" v-model="localizacion.piso"/>
       </div>
       </div>
       <!-- puerta -->

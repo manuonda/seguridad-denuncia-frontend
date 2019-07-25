@@ -37,7 +37,7 @@
       <p v-if="localizacion.detalle != ''"> {{localizacion.detalle }}</p>
       <p v-if="localizacion.detalle == ''"> Sin especificar </p>
       </div>
-      <p class="resume-header">hecho DEL HECHO</p>
+      <p class="resume-header">HECHO</p>
       <div class="form-group">
       <label>Descripción del hecho *</label>
        <pre class="form-control-static">{{hecho.descripcion}}
