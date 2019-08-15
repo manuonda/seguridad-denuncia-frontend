@@ -166,7 +166,9 @@
     </div>
 
     <div class="form-right-button">
-      <button type="button" class="btn btn-primary" @click="finalizar">Finalizar</button>
+          <vue-recaptcha sitekey="6LevP7MUAAAAAOVsPOl2vGe1zT8YjnrHaBgqlo8h">
+        <button type="button" class="btn btn-primary" @click="finalizar">Finalizar</button>
+          </vue-recaptcha>
     </div>
     </div>
       <!-- modal -->
@@ -188,7 +190,10 @@
   </div>
 </template>
 <script>
+  import VueRecaptcha from 'vue-recaptcha';
+
 export default {
+  components : {VueRecaptcha},
   props :{
     denunciante    : Object,
     denunciado     : Object,

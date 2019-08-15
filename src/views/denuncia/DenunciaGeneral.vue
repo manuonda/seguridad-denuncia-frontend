@@ -60,7 +60,7 @@
 
              <fieldset v-if="step === 6 ">
 
-              <finalizado    v-bind:seguimiento="seguimiento"
+              <finalizado v-bind:seguimiento="seguimiento"
                           @inicio-denuncia="inicio">
               </finalizado>
               </fieldset>
@@ -86,13 +86,29 @@ import Hecho from '../../components/denuncia/Hecho.vue';
 import ResumenHecho from '../../components/denuncia/ResumenHecho.vue';
 import Finalizado from '../../components/denuncia/Finalizado.vue';
 
-import Vue from 'vue';
-    // Import component
-    import Loading from 'vue-loading-overlay';
-    // Import stylesheet
-    import 'vue-loading-overlay/dist/vue-loading.css';
-    // Init plugin
-    Vue.use(Loading);
+
+// Impor recaptcha
+import Vue from 'vue'
+import { VueReCaptcha } from 'vue-recaptcha-v3'
+
+// For more options see below
+Vue.use(VueReCaptcha, { siteKey: '6LevP7MUAAAAAOVsPOl2vGe1zT8YjnrHaBgqlo8h' })
+
+/*
+Vue.use(VueReCaptcha, {
+  siteKey: '6LcAPbMUAAAAABiuxf5S9SZexiIkpd-_tQTL60o1',
+  loaderOptions: {
+    useRecaptchaNet: true
+  }
+})
+*/
+
+// Import component
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+// Init plugin
+Vue.use(Loading);
 
 
 export default {
@@ -185,6 +201,10 @@ export default {
        this.$router.push('/');
     },
     finalizarDenuncia(){
+       console.log('recaptcha clicked')
+      this.$recaptchaLoaded().then(() => {
+        this.$recaptcha('denuncia/general').then((token) => {
+
       console.log("finalizar denuncias");
       var date = new Date();
       var time = new Date().getTimezoneOffset();
@@ -241,8 +261,8 @@ export default {
 
        this.enviado = true;
        console.log( this.enviado )
-      axios.post('http://192.168.0.89:4000/vecino/add', form,
-      //axios.post('http://200.43.219.66:4000/denuncia/add', form,
+      //axios.post('http://192.168.0.89:4000/vecino/add', form,
+      axios.post('http://200.43.219.66:4000/denuncia/add', form,
       ////axios.post('http://localhost:4000/denuncia/add', form,
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'
@@ -292,6 +312,9 @@ export default {
          console.log( error );
       });
       */
+
+        })
+      })
 
     }
   },

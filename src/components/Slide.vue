@@ -14,7 +14,7 @@
        <a>
         <span v-bind:class="{'number-active' : this.step == 2 || this.step > 2 ,'number': this.step < 2 }">2</span>
          <span v-bind:class="{'title-active' : this.step == 2 || this.step > 2, 'title': this.step < 2 }">
-            DATOS DEL HECHO</span>
+            LOCALIZACION DEL HECHO</span>
         </span>
        </a>
       </li>
