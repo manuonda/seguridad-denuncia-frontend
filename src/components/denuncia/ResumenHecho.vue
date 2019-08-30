@@ -166,9 +166,11 @@
     </div>
 
     <div class="form-right-button">
-          <vue-recaptcha sitekey="6LevP7MUAAAAAOVsPOl2vGe1zT8YjnrHaBgqlo8h">
+         <!-- <vue-recaptcha sitekey="6LevP7MUAAAAAOVsPOl2vGe1zT8YjnrHaBgqlo8h"> -->
         <button type="button" class="btn btn-primary" @click="finalizar">Finalizar</button>
+          <!--
           </vue-recaptcha>
+          -->
     </div>
     </div>
       <!-- modal -->

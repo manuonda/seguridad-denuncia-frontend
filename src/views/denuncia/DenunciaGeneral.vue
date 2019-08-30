@@ -201,10 +201,10 @@ export default {
        this.$router.push('/');
     },
     finalizarDenuncia(){
-       console.log('recaptcha clicked')
-      this.$recaptchaLoaded().then(() => {
+       //console.log('recaptcha clicked')
+       /* this.$recaptchaLoaded().then(() => {
         this.$recaptcha('denuncia/general').then((token) => {
-
+      */
       console.log("finalizar denuncias");
       var date = new Date();
       var time = new Date().getTimezoneOffset();
@@ -260,10 +260,9 @@ export default {
       }
 
        this.enviado = true;
-       console.log( this.enviado )
-      //axios.post('http://192.168.0.89:4000/vecino/add', form,
-      axios.post('http://200.43.219.66:4000/denuncia/add', form,
-      ////axios.post('http://localhost:4000/denuncia/add', form,
+       //axios.post('http://192.168.0.89:4000/vecino/add', form,
+        axios.post('http://200.43.219.66:4000/vecino/add', form,
+      //axios.post('http://localhost:4000/vecino/add', form,
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'
          }
@@ -313,8 +312,8 @@ export default {
       });
       */
 
-        })
-      })
+      /*  })
+      })*/
 
     }
   },
