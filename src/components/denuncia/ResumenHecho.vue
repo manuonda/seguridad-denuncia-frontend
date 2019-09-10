@@ -37,14 +37,14 @@
       <p v-if="localizacion.detalle != ''"> {{localizacion.detalle }}</p>
       <p v-if="localizacion.detalle == ''"> Sin especificar </p>
       </div>
-      <p class="resume-header">HECHO</p>
+      <p class="resume-header">CARACTERISTICA DEL HECHO</p>
       <div class="form-group">
       <label>Descripción del hecho *</label>
        <pre class="form-control-static">{{hecho.descripcion}}
        </pre>
       </div>
       <div v-if="hecho.files.length > 0" class="resume-images">
-          <div v-for="item in hecho.files" class="file-upload-resume">
+          <div v-for="item in hecho.files" class="file-upload-resume" >
             <p> {{ item.name}}</p>
           <img   :src="item.image" style="width: 320px;">
           </div>

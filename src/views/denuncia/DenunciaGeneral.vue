@@ -91,18 +91,6 @@ import Finalizado from '../../components/denuncia/Finalizado.vue';
 import Vue from 'vue'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 
-// For more options see below
-Vue.use(VueReCaptcha, { siteKey: '6LevP7MUAAAAAOVsPOl2vGe1zT8YjnrHaBgqlo8h' })
-
-/*
-Vue.use(VueReCaptcha, {
-  siteKey: '6LcAPbMUAAAAABiuxf5S9SZexiIkpd-_tQTL60o1',
-  loaderOptions: {
-    useRecaptchaNet: true
-  }
-})
-*/
-
 // Import component
 import Loading from 'vue-loading-overlay';
 // Import stylesheet
@@ -139,7 +127,7 @@ export default {
       denuncia : {
           tipo: '',
          from : '',
-    plataforma: 'WEB',
+         plataforma: 'WEB',
          date : '',
          time  : ''
       },
@@ -176,6 +164,7 @@ export default {
         detalle: ''
       },
       hecho : {
+        tipoDenuncia: '',
         descripcion: '',
         files : []
       },
@@ -201,10 +190,7 @@ export default {
        this.$router.push('/');
     },
     finalizarDenuncia(){
-       //console.log('recaptcha clicked')
-       /* this.$recaptchaLoaded().then(() => {
-        this.$recaptcha('denuncia/general').then((token) => {
-      */
+
       console.log("finalizar denuncias");
       var date = new Date();
       var time = new Date().getTimezoneOffset();
@@ -245,6 +231,7 @@ export default {
       form.append("localizacionDetalle",  this.localizacion.detalle );
       //  hecho
       form.append("hechoDescripcion" , this.hecho.descripcion );
+      form.append("tipoDenuncia", this.hecho.tipoDenuncia);
       if ( this.hecho.files != null  && this.hecho.files.length > 0 ){
            this.hecho.files.forEach( (elemento, index ) => {
           form.append('files[]', elemento.file );
@@ -260,9 +247,9 @@ export default {
       }
 
        this.enviado = true;
-       //axios.post('http://192.168.0.89:4000/vecino/add', form,
-        axios.post('http://200.43.219.66:4000/vecino/add', form,
-      //axios.post('http://localhost:4000/vecino/add', form,
+       //axios.post('http://192.168.0.89:4000/vecino/add', form,   // oficina database
+         axios.post('http://200.43.219.66:4000/vecino/add', form,  // produccion
+      //axios.post('http://localhost:4000/vecino/add', form,       //local apunt a produccion
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'
          }
@@ -292,28 +279,6 @@ export default {
 
       });
 
-      /* axios.get('http://localhost:4000/evidencia/list').then ( (result ) =>{
-          console.log( result );
-          var imagen = result.data[0];
-            console.log( imagen );
-              /* var bytes = new Uint8Array(imagen.file.data);
-              var binary = bytes.reduce((data, b) => data += String.fromCharCode(b), '');
-              this.src = "data:image/jpeg;base64," + btoa(binary);
-               var binary = '';
-                var bytes = [].slice.call(new Uint8Array(imagen.file.data));
-                bytes.forEach((b) => binary += String.fromCharCode(b));
-                this.src = 'data:image/jpeg;base64,' + window.btoa(binary);*/
-       /*
-            this.src='data:'+imagen.type+";base64,"+imagen.file_encode;
-
-      })
-      .catch( error => {
-         console.log( error );
-      });
-      */
-
-      /*  })
-      })*/
 
     }
   },

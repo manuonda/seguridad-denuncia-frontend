@@ -1,6 +1,6 @@
 <template>
   <div id="denunciante">
-     <h3>DATOS DEL DENUNCIANTE</h3>
+     <h3 class="title">DATOS DEL DENUNCIANTE <span class="title-opcional">(OPCIONAL)</span></h3>
      <fieldset class="form-group">
      <label>
      <strong>¿Desea hacer la denuncia de forma anónima? *</strong>
@@ -253,6 +253,11 @@ export default {
 };
 </script>
 <style>
+
+.title-opciona{
+  color: red;
+  font-weight: 400;
+}
 .warning {
   background-color: #f2e18c;
   border-radius: 6px;

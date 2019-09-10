@@ -1,6 +1,6 @@
 <template>
   <div id="localizacion">
-     <h4>DATOS DEL HECHO</h4>
+     <h4>LOCALIZACION DEL HECHO</h4>
      <!-- calle -->
      <div class="form-group">
       <label for="calle"> Calle (*)</label>

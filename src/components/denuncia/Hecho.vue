@@ -1,11 +1,34 @@
 <template>
   <div id="hecho">
-       <h4>CARACTERÍSTICA DEL HECHO</h4>
+    <h4>CARACTERÍSTICA DEL HECHO</h4>
+       <div class="form-group">
+         <label>Tipo de Denuncia(*)</label>
+        </div>
+       <div class="row">
+       <div class="col-md-6 ml-3">
+       <fieldset class="form-group">
+       <div v-for="item in items" v-bind:key="item.id_tipo_denuncia">
+       <input type="radio"
+              v-model="hecho.tipoDenuncia"
+              class="form-check-input"
+              name="optionsRadios"
+              id="optionsRadios2" :value="item.id_tipo_denuncia"
+               v-bind:class="{'is-invalid' :  validation.hasError('hecho.tipoDenuncia')}">
+           <label class="label-none" >{{ item.nombre }}</label>
+      </div>
+      </fieldset>
+      <div v-if="validation.hasError('hecho.tipoDenuncia')" class="text-danger">
+         {{validation.firstError('hecho.tipoDenuncia')}}</div>
+      </div>
+
+     </div>
+
     <div class="row">
       <div class="form-group">
-        <label>Descripción del Hecho(*)</label>
+        <label for="descripcion">Descripción del Hecho(*)</label>
         <textarea
-          type="text" rows="11" cols="150" name="descripcion" v-model="hecho.descripcion"
+          type="text" id="descripcion" rows="11" cols="150" name="descripcion" v-model="hecho.descripcion"
+          class="form-control"
           v-bind:class="{'is-invalid' :  validation.hasError('hecho.descripcion')}"/>
       </div>
        <div v-if="validation.hasError('hecho.descripcion')" class="text-danger">
@@ -96,16 +119,35 @@
 <script>
 import SimpleVueValidator from "simple-vue-validator";
 const Validator = SimpleVueValidator.Validator;
+import axios from 'axios';
+
 
 export default {
   props: {
     hecho: Object
+  },
+  data(){
+
+    return {
+       items: [
+          { message: 'Foo' },
+          { message: 'Bar' }
+         ]
+    }
+
   },
   validators :{
     'hecho.descripcion' : function ( value ) {
       return Validator.custom(function() {
           if( Validator.isEmpty(value )) {
             return "Debe ingresar una descripción del Hecho"
+          }
+      })
+    },
+    'hecho.tipoDenuncia' : function ( value ) {
+      return Validator.custom(function() {
+          if( Validator.isEmpty(value )) {
+            return "Debe Seleccionar Tipo Denuncia"
           }
       })
     }
@@ -188,9 +230,19 @@ export default {
      window.scrollTo(0,0)
   },
   mounted() {
-
+    console.log("mounted")
+     axios.get('http://200.43.219.66:4000/tipoDenuncia/list')
+     .then((result) => {
+       console.log("result ", result );
+       this.items = result.data;
+     }).catch( error => {
+         console.log('error : ', error );
+     });
   }
 };
 </script>
 <style>
+.label-none {
+  font-weight : normal;
+}
 </style>

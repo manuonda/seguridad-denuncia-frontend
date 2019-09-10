@@ -7,14 +7,14 @@
         <a>
           <span v-bind:class="{'number-active' : this.step == 1 || this.step > 1 }">1</span>
           <span v-bind:class="{'title-active' : this.step == 1 || this.step > 1 }">
-            DATOS DEL HECHO</span>
+            LOCALIZACION DEL HECHO </span>
         </a>
       </li>
       <li>
        <a>
         <span v-bind:class="{'number-active' : this.step == 2 || this.step > 2 ,'number': this.step < 2 }">2</span>
          <span v-bind:class="{'title-active' : this.step == 2 || this.step > 2, 'title': this.step < 2 }">
-            LOCALIZACION DEL HECHO</span>
+            CARACTERISTICA DEL HECHO</span>
         </span>
        </a>
       </li>
@@ -29,7 +29,7 @@
          <a>
         <span v-bind:class="{'number-active' : this.step == 4 || this.step > 4 ,'number': this.step < 4 }">4</span>
          <span v-bind:class="{'title-active' : this.step == 4 || this.step > 4, 'title': this.step < 4 }">
-           DATOS DEL DENUNCIANTE</span>
+           DATOS DEL DENUNCIANTE</span><span class="title-opcional">(OPCIONAL)</span>
        </a>
       </li>
       <li>
@@ -61,6 +61,10 @@ export default {
   font-weight: 400;
   padding: 14px 0 8px;
   display: block;
+}
+.title-opcional{
+  color: red;
+  font-weight: 400;
 }
 .title-active{
   color: #1955a6;
@@ -96,7 +100,7 @@ export default {
     margin-left: -30px;
     margin-right: -30px;
     padding: 10px 0 0;
-    height: 80px;
+    height: 100px;
     list-style: none;
     font-family: 'dinBold';
     font-size: 13px;
