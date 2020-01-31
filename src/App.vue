@@ -115,11 +115,11 @@
       class="navbar navbar-light navbar-expand-md bg-faded justify-content-center bg-primary2"
       style="margin-bottom: 0px;"
     >
-     <!--
+
       <a href="http://seguridad.jujuy.gob.ar/">
         <img src="./assets/images/membrete.png" />
       </a>
-      -->
+
       <a class="navbar-brand2" href="http://seguridad.jujuy.gob.ar/">
             <img src="./assets/images/membrete_buzon.png" />
           </a>

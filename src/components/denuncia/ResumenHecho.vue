@@ -1,5 +1,6 @@
 <template>
   <div class="form-resume">
+     <h4>RESUMEN</h4>
         <p class="resume-header">LOCALIZACION DEL HECHO</p>
          <div class="form-group">
            <label>Calle</label>
@@ -44,10 +45,21 @@
        </pre>
       </div>
       <div v-if="hecho.files.length > 0" class="resume-images">
-          <div v-for="item in hecho.files" class="file-upload-resume" >
+        <table>
+          <tr v-for="item in hecho.files" :key="item.id" >
+            <td>
+              <p> {{ item.name}}</p>
+               <img  class="image" :src="item.image" >
+            </td>
+          </tr>
+        </table>
+        <tboyd>
+
+        </tboyd>
+          <!-- <div v-for="item in hecho.files" class="file-upload-resume" >
             <p> {{ item.name}}</p>
-          <img   :src="item.image" style="width: 320px;">
-          </div>
+          <img  class="image" :src="item.image" >
+          </div> -->
       </div>
 
      <p class="resume-header">DATOS DEL DENUNCIADO</p>

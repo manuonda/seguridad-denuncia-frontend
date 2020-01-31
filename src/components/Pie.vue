@@ -67,7 +67,7 @@
           <img src="../assets/images/membrete.png" width="200" alt="Logo Provincia" style="margin-right: 50px">
         </a>
         <div class="version ng-binding">
-          Seguridad Provincia v1.12.0
+          Seguridad Policia de la Provincia
         </div>
       </div>
     </div>

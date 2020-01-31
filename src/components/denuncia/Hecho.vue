@@ -1,13 +1,16 @@
 <template>
   <div id="hecho">
     <h4>CARACTERÍSTICA DEL HECHO</h4>
-       <div class="form-group">
-         <label>Tipo de Denuncia(*)</label>
-        </div>
        <div class="row">
-       <div class="col-md-6 ml-3">
-       <fieldset class="form-group">
-       <div v-for="item in items" v-bind:key="item.id_tipo_denuncia">
+         <div class="">
+         <div class="form-group">
+         <label>Tipo de Denuncia(*)</label>
+       <!--<fieldset class="form-group">-->
+       <select class="form-control" v-model="hecho.tipoDenuncia"
+        v-bind:class="{'is-invalid' :  validation.hasError('hecho.tipoDenuncia')}">
+       <option class="form-control"  v-for="item in items"  :value="item.id_tipoDenuncia"  v-bind:key="item.id_tipodenuncia"> {{ item.nombre}}</option>
+       </select>
+       <!-- <div v-for="item in items" v-bind:key="item.id_tipo_denuncia">
        <input type="radio"
               v-model="hecho.tipoDenuncia"
               class="form-check-input"
@@ -16,11 +19,11 @@
                v-bind:class="{'is-invalid' :  validation.hasError('hecho.tipoDenuncia')}">
            <label class="label-none" >{{ item.nombre }}</label>
       </div>
-      </fieldset>
+      </fieldset>-->
       <div v-if="validation.hasError('hecho.tipoDenuncia')" class="text-danger">
          {{validation.firstError('hecho.tipoDenuncia')}}</div>
       </div>
-
+      </div>
      </div>
 
     <div class="row">
@@ -30,6 +33,7 @@
           type="text" id="descripcion" rows="11" cols="150" name="descripcion" v-model="hecho.descripcion"
           class="form-control"
           v-bind:class="{'is-invalid' :  validation.hasError('hecho.descripcion')}"/>
+
       </div>
        <div v-if="validation.hasError('hecho.descripcion')" class="text-danger">
          {{validation.firstError('hecho.descripcion')}}</div>
@@ -49,7 +53,8 @@
 
     </div>
     <div class="form-group" v-show="hecho.files.length > 0">
-      <table class="table">
+
+    <table class="table">
     <thead>
       <tr>
         <th width="50%">
@@ -71,11 +76,11 @@
          <td >
             <strong> {{ item.name }} </strong>
             <br>
-            <img :src="item.image" style="width: 220px;">
+            <img class="image" :src="item.image" >
           </td>
           <td>{{ item.size}}</td>
           <td>{{ item.type }}</td>
-          <td> <button type="button" class="btn btn-danger btn-xs ng-binding" @click="removeItem(item)">
+          <td> <button type="button" class="btn btn-danger btn-xs" @click="removeItem(item)">
             <span class="glyphicon glyphicon-trash"></span> Eliminar
           </button>
         </td>
@@ -85,6 +90,7 @@
 
     </tbody>
   </table>
+
     </div>
     <hr>
      <div id="actions">
@@ -230,9 +236,10 @@ export default {
      window.scrollTo(0,0)
   },
   mounted() {
-    console.log("mounted")
-     axios.get('http://200.43.219.66:4000/tipoDenuncia/list')
-     .then((result) => {
+     axios.get('http://200.43.219.66:4000/tipoDenuncia/list') //produccion
+     // axios.get('http://192.168.0.89:4000/tipoDenuncia/list') //oficina
+     // axios.get('http://localhost:4000/tipoDenuncia/list') //oficina
+      .then((result) => {
        console.log("result ", result );
        this.items = result.data;
      }).catch( error => {
