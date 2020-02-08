@@ -7,8 +7,8 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+     publicPath: '/',
+     filename: 'build.js'
   },
   module: {
     rules: [
@@ -89,6 +89,7 @@ if (process.env.NODE_ENV === 'production') {
         }
        }
     ),
+
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
