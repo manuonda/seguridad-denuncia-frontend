@@ -6,9 +6,10 @@
          <div class="form-group">
          <label>Tipo de Denuncia(*)</label>
        <!--<fieldset class="form-group">-->
+
        <select class="form-control" v-model="hecho.tipoDenuncia"
         v-bind:class="{'is-invalid' :  validation.hasError('hecho.tipoDenuncia')}">
-       <option class="form-control"  v-for="item in items"  :value="item.id_tipoDenuncia"  v-bind:key="item.id_tipodenuncia"> {{ item.nombre}}</option>
+       <option class="form-control"  v-for="item in items"  :value="item.id_tipo_denuncia"  v-bind:key="item.id_tipodenuncia"> {{ item.nombre}}</option>
        </select>
        <!-- <div v-for="item in items" v-bind:key="item.id_tipo_denuncia">
        <input type="radio"
@@ -72,7 +73,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in hecho.files" >
+      <tr v-for="item in hecho.files"  v-bind:key="item.name" >
          <td >
             <strong> {{ item.name }} </strong>
             <br>

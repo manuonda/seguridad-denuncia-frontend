@@ -174,6 +174,7 @@ export default {
   color: white;
 }
 
+/*
 .caja-imagen-robo {
   background-image: url(../assets/categorias/robo-wide.jpg);
   width: 100% !important;
@@ -186,7 +187,6 @@ export default {
   background-size: cover;
   height: 28vh;
   position: inherit;
-  /*border-radius: 15px 15px 0px 0px;*/
 
   height: 200px;
   width: 100%;
@@ -197,11 +197,9 @@ export default {
   background-size: cover;
   height: 28vh;
   position: inherit;
-  /*border-radius: 15px 15px 0px 0px;*/
-
   height: 150px;
   width: 100%;
-}
+}*/
 
 .caja-header-2 {
   background-color: #1955a6;
