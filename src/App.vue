@@ -116,11 +116,11 @@
       style="margin-bottom: 0px;"
     >
 
-      <a href="http://seguridad.jujuy.gob.ar/">
+      <a href="http://elvecinoavisa.seguridad.jujuy.gob.ar/">
         <img src="./assets/images/membrete.png" />
       </a>
 
-      <a class="navbar-brand2" href="http://seguridad.jujuy.gob.ar/">
+      <a class="navbar-brand2" href="http://elvecinoavisa.seguridad.jujuy.gob.ar/">
             <img src="./assets/images/membrete_buzon.png" />
           </a>
       <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
