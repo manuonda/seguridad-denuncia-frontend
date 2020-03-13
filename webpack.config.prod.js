@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 var PrerenderSpaPlugin = require('prerender-spa-plugin')
 var HtmlWebpackPlugin  = require('html-webpack-plugin')
+var RobotstxtPlugin = require("robotstxt-webpack-plugin");
 
 module.exports = {
   entry: './src/main.js',

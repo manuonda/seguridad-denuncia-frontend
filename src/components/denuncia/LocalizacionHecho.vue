@@ -18,7 +18,9 @@
       <div class="col">
       <div class="form-group">
       <label for="numero">Número</label>
-      <input type="number" min="0" class="form-control" name="numero" id="numero" v-model="localizacion.numero">
+      <input type="number" min="0" class="form-control" name="numero" id="numero" v-model="localizacion.numero"
+       placeholder="Ejemplo : Numero">
+
       </div>
       </div>
 
@@ -42,9 +44,13 @@
      <div id="map" class="map"></div>
 
      <div class="form-group">
-     <label>Detalle de la ubicación</label>
+     <label>Detalle de la ubicación(*)</label>
      <input type="text" class="form-control" name="detalle" v-model="localizacion.detalle"
-      placeholder="Ej: Casa de rejas negras, timbre 2A"/>
+       v-bind:class="{'is-invalid' :  validation.hasError('localizacion.detalle')}"
+       placeholder="Ej: Casa de rejas negras, timbre 2A"/>
+      <div v-if="validation.hasError('localizacion.detalle')" class="text-danger">
+        {{ validation.firstError('localizacion.detalle')}}
+      </div>
      </div>
      <br>
      <hr>
@@ -93,6 +99,13 @@ export default {
      return Validator.custom(function() {
         if ( Validator.isEmpty( value )) {
            return "Debe Ingresar Calle"
+        }
+     })
+   },
+   'localizacion.detalle': function(value){
+     return Validator.custom(function() {
+        if ( Validator.isEmpty( value )) {
+           return "Debe Ingresar Detalle de la Ubicacion"
         }
      })
    }
