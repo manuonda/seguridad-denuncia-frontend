@@ -1,0 +1,63 @@
+# Sitemap
+Sitemap: http://elvecinoavisa.seguridad.jujuy.gob.ar/sitemap.xml
+
+# Files and Directories to notindexing of our WordPress
+
+User-Agent: *
+Allow: /wp-content/uploads/
+Allow: /feed/$
+Disallow: /wp-
+Disallow: /wp-content/
+Disallow: /trackback/
+Disallow: /wp-admin/
+Disallow: /?s=
+Disallow: /search
+Disallow: /index.php
+Disallow: /*?
+Disallow: /*.php$
+Disallow: /*.js$
+Disallow: /*.inc$
+Disallow: /*.css$
+Disallow: */trackback/
+
+# Rules for most known bots
+
+User-agent: Googlebot
+
+User-agent: Googlebot-Image
+Disallow: /wp-includes/
+Allow: /wp-content/uploads/
+
+User-agent: Mediapartners-Google*
+Disallow:
+
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: duggmirror
+Disallow: /
+
+User-agent: noxtrumbot
+Crawl-delay: 50
+
+User-agent: msnbot
+Crawl-delay: 30
+
+User-agent: Slurp
+Crawl-delay: 10
+
+User-agent: MSIECrawler
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: Microsoft.URL.Control
+Disallow: /
+
+User-agent: libwww
+Disallow: / 
+
