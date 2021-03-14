@@ -248,7 +248,7 @@ export default {
 
        this.enviado = true;
        //axios.post('http://192.168.0.89:4000/vecino/add', form,   // oficina database
-        axios.post('http://200.43.219.66:4000/vecino/add', form,  // produccion
+        axios.post('http://52.204.55.170:4000/vecino/add', form,  // produccion
       //axios.post('http://localhost:4000/vecino/add', form,       //local apunt a produccion
         { headers: {
          'content-type': 'application/x-www-form-urlencoded'
