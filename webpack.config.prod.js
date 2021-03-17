@@ -51,7 +51,10 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    stats:{
+      errorDetails: true, // --display-error-details
+    }
   },
   performance: {
     hints: false

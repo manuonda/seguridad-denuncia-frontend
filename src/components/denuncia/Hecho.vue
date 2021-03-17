@@ -237,9 +237,9 @@ export default {
      window.scrollTo(0,0)
   },
   mounted() {
-     axios.get('http://200.43.219.66:4000/tipoDenuncia/list') //produccion
      // axios.get('http://192.168.0.89:4000/tipoDenuncia/list') //oficina
      // axios.get('http://localhost:4000/tipoDenuncia/list') //oficina
+     axios.get('http://52.204.55.170:4000/tipoDenuncia/list') //production
       .then((result) => {
        console.log("result ", result );
        this.items = result.data;

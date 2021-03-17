@@ -28,6 +28,7 @@
                 >
                   REPORTÁ
                 </button>
+                <br/><br/>
               </p>
             </div>
           </div>
@@ -227,7 +228,7 @@ export default {
   background-image: url(../assets/images/fondo_imagen.png);
   background-size: cover;
   padding-left: 30px;
-  text-align: left;
+  text-align: center;
   padding-top: 50px;
   padding: 30px;
   padding-top: 120px;
