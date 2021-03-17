@@ -161,7 +161,9 @@ export default {
         numero:'',
         piso : '',
         puerta : '',
-        detalle: ''
+        detalle: '',
+        barrio: '',
+        localidad: '',
       },
       hecho : {
         tipoDenuncia: '',
@@ -229,6 +231,9 @@ export default {
       form.append("localizacionPiso",     this.localizacion.piso );
       form.append("localizacionPuerta",   this.localizacion.puerta );
       form.append("localizacionDetalle",  this.localizacion.detalle );
+      form.append("localizacionBarrio",   this.localizacion.barrio);
+      form.append("localizacionLocalidad",this.localizacion.localidad);
+
       //  hecho
       form.append("hechoDescripcion" , this.hecho.descripcion );
       form.append("tipoDenuncia", this.hecho.tipoDenuncia);

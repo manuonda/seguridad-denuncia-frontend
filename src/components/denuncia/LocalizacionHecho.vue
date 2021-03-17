@@ -13,6 +13,8 @@
       </div>
 
 
+
+
       <div class="row">
       <!-- numero -->
       <div class="col">
@@ -37,6 +39,26 @@
       <label for="puerta">Puerta</label>
       <input type="text" class="form-control" name="puerta" id="puerta" v-model="localizacion.puerta"/>
       </div>
+      </div>
+      </div>
+
+          <div class="form-group">
+      <label for="barrio"> Barrio (*)</label>
+      <input type="text" class="form-control" name="barrio" id="barrio" v-model="localizacion.barrio"
+       v-bind:class="{'is-invalid' :  validation.hasError('localizacion.barrio')}"
+       placeholder="Ejemplo : Barrio Alto Comedero">
+      <div v-if="validation.hasError('localizacion.barrio')" class="text-danger">
+        {{ validation.firstError('localizacion.barrio')}}
+      </div>
+      </div>
+
+        <div class="form-group">
+      <label for="calle"> Localidad (*)</label>
+      <input type="text" class="form-control" name="localidad" id="localidad" v-model="localizacion.localidad"
+       v-bind:class="{'is-invalid' :  validation.hasError('localizacion.localidad')}"
+       placeholder="Ejemplo : localidad la angostura">
+      <div v-if="validation.hasError('localizacion.localidad')" class="text-danger">
+        {{ validation.firstError('localizacion.localidad')}}
       </div>
       </div>
 
@@ -99,6 +121,20 @@ export default {
      return Validator.custom(function() {
         if ( Validator.isEmpty( value )) {
            return "Debe Ingresar Calle"
+        }
+     })
+   },
+   'localizacion.barrio':function ( value ){
+     return Validator.custom(function() {
+        if ( Validator.isEmpty( value )) {
+           return "Debe Ingresar Barrio"
+        }
+     })
+   },
+   'localizacion.localidad':function ( value ){
+     return Validator.custom(function() {
+        if ( Validator.isEmpty( value )) {
+           return "Debe Ingresar Localidad"
         }
      })
    },
